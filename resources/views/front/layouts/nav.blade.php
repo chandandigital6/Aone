@@ -1,6 +1,6 @@
 <div class="max-w-screen-xl px-4 mx-auto md:px-6">
     <h1 class="text-lg font-bold text-center text-gray-900 uppercase">
-        Super A7 Satta King Result Today – Updated Live Instantly
+        A1 Satta King Result Today – Updated Live Instantly
     </h1>
 </div>
 
@@ -42,7 +42,7 @@
             </div>
         @empty
             <div class="col-span-2 text-center">
-                <p class="text-xl font-bold text-white uppercase">NA</p>
+                <p class="text-xl font-bold text-white uppercase">Result Coming Soon</p>
                 <img class="lazy w-10 h-10 object-contain mx-auto mt-2"
                      src="{{ asset('tamplate/admin/upimages/d.gif') }}"
                      alt="waiting">

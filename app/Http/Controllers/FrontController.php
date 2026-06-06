@@ -328,20 +328,7 @@ class FrontController extends Controller
 
 
 
-    public function products()
-    {
-        return view('front.products.index');
-    }
-
-    public function singleProduct()
-    {
-        return view('front.products.single');
-    }
-
-    public function services()
-    {
-        return view('front.services.index');
-    }
+   
 
     public function aboutUs()
     {

@@ -1,127 +1,355 @@
-@extends('front.layouts.app',[
+@extends('front.layouts.app', [
     'seo' => $seo ?? null
-    ])
+])
 
 @section('content')
 
-<section class="bg-white">
-    <div class="text-center py-4">
-        <h1 class="text-2xl font-bold uppercase text-black">
-            All Satta King Chart
-        </h1>
-
-        <p class="py-2 text-sm text-gray-800">
-            Select any game and year to check full chart record
-        </p>
+<section class="a1-chart-hero">
+    <div class="a1-hero-inner">
+        <h1>A1 Satta King Chart</h1>
+        <p>Select any game and year to check full chart record</p>
     </div>
 </section>
 
-<section class="grid grid-cols-1 gap-2 bg-white lg:grid-cols-1">
-    <div class="text-center text-black px-4 py-2 shadow-xl bg-yellow-50 border pt-4 mx-2 my-2 rounded-xl leading-6 font-semibold h-fit text-lg">
-        <h3>To Check instant SATTA KING Results, Check Below Chart 👇🏿</h3>
-    </div>
+<section class="a1-notice">
+    <h3>To Check Instant SATTA KING Results, Check Below Chart 👇</h3>
 </section>
 
-<h3 class="py-2 text-sm font-semibold text-center text-gray-900 bg-white">
+<h3 class="a1-small-heading">
     FASTEST SATTA KING RESULT SITE ON INTERNET
 </h3>
 
-<div class="w-full overflow-x-auto bg-white shadow-md mt-4">
-    <table class="w-full overflow-x-auto text-sm text-left text-gray-500 border-separate table-auto whitespace-nowrap lg:table-fixed">
-        <thead>
-            <tr>
-                <td class="py-3 bg-[#0aa485] shadow-custom-inset-2 rounded-lg lg:rounded-xl text-center text-[12px] lg:text-base font-bold text-white">
-                    GAME NAME
-                </td>
+<section class="a1-table-section">
+    <div class="a1-table-card">
+        <div class="a1-table-title">
+            All Game Year Chart List
+        </div>
 
-                <td class="py-3 bg-[#0aa485] shadow-custom-inset-2 rounded-lg lg:rounded-xl text-center text-[12px] lg:text-base font-bold text-white">
-                    RESULT TIME
-                </td>
+        <div class="a1-table-scroll">
+            <table class="a1-game-table">
+                <thead>
+                    <tr>
+                        <th>GAME NAME</th>
+                        <th>RESULT TIME</th>
+                        <th>YEAR CHART</th>
+                    </tr>
+                </thead>
 
-                <td class="py-3 bg-[#0aa485] shadow-custom-inset-2 rounded-lg lg:rounded-xl text-center text-[12px] lg:text-base font-bold text-white">
-                    YEAR CHART
-                </td>
-            </tr>
-        </thead>
+                <tbody>
+                    @forelse($games as $game)
+                        <tr>
+                            <td class="game-name">
+                                {{ $game->name }}
+                            </td>
 
-        <tbody>
-            @forelse($games as $game)
-                <tr>
-                    <td class="text-white lg:px-6 px-1 lg:py-4 py-3 bg-[#2d4b58] shadow-custom-inset1 text-sm font-semibold whitespace-nowrap lg:text-base rounded-lg uppercase">
-                        {{ $game->name }}
-                    </td>
+                            <td>
+                                {{ $game->result_time ?: '-' }}
+                            </td>
 
-                    <td class="text-white lg:px-6 px-1 lg:py-4 py-3 bg-[#2d4b58] shadow-custom-inset1 text-sm font-semibold whitespace-nowrap lg:text-base rounded-lg text-center">
-                        {{ $game->result_time ?: '-' }}
-                    </td>
+                            <td>
+                                <div class="year-buttons">
+                                    @forelse($game->chartYears as $chartYear)
+                                        <a href="{{ route('game.yearRecord', [$game->slug, $chartYear->year]) }}">
+                                            {{ $chartYear->year }}
+                                        </a>
+                                    @empty
+                                        <a href="{{ route('game.record', $game->slug) }}">
+                                            {{ now('Asia/Kolkata')->year }}
+                                        </a>
+                                    @endforelse
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="empty-row">
+                                No chart games found
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
-                    <td class="text-white lg:px-6 px-1 lg:py-4 py-3 bg-[#2d4b58] shadow-custom-inset1 text-sm font-semibold whitespace-nowrap lg:text-base rounded-lg">
-                        <div class="flex flex-wrap gap-2 justify-center">
-                            @forelse($game->chartYears as $chartYear)
-                                <a href="{{ route('game.yearRecord', [$game->slug, $chartYear->year]) }}"
-                                   class="inline-block px-3 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-300 font-bold">
-                                    {{ $chartYear->year }}
-                                </a>
-                            @empty
-                                <a href="{{ route('game.record', $game->slug) }}"
-                                   class="inline-block px-3 py-1 bg-yellow-400 text-black rounded-md hover:bg-yellow-300 font-bold">
-                                    {{ now('Asia/Kolkata')->year }}
-                                </a>
-                            @endforelse
-                        </div>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="3" class="text-center p-4 bg-white text-black">
-                        No chart games found
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div>
-
-<div class="py-8 mx-auto mt-4 bg-gray-600">
-    <h2 class="pb-4 text-2xl font-bold text-center text-white">
-        Check All Game Year Chart
-    </h2>
+<section class="a1-check-box">
+    <h2>Check All Game Year Chart</h2>
 
     <form method="get" action="javascript:void(0);">
-        <div class="flex items-center justify-center mx-auto rounded">
-            <div class="flex mx-2">
-                <select id="gameSelect"
-                        class="py-2 text-sm uppercase bg-white rounded-md outline-none md:py-3 md:text-base lg:px-3">
-                    @foreach($games as $game)
-                        <option value="{{ $game->slug }}">
-                            {{ $game->name }}
-                        </option>
-                    @endforeach
-                </select>
+        <div class="a1-check-form">
+            <select id="gameSelect">
+                @foreach($games as $game)
+                    <option value="{{ $game->slug }}">
+                        {{ $game->name }}
+                    </option>
+                @endforeach
+            </select>
 
-                <select id="yearSelect"
-                        class="px-2 py-2 mx-0 ml-1 text-sm bg-white rounded-md outline-none md:py-3 md:text-base lg:mx-3">
-                    <option value="{{ now('Asia/Kolkata')->year }}">
-                        {{ now('Asia/Kolkata')->year }}
-                    </option>
-                    <option value="{{ now('Asia/Kolkata')->copy()->subYear()->year }}">
-                        {{ now('Asia/Kolkata')->copy()->subYear()->year }}
-                    </option>
-                    <option value="{{ now('Asia/Kolkata')->copy()->subYears(2)->year }}">
-                        {{ now('Asia/Kolkata')->copy()->subYears(2)->year }}
-                    </option>
-                    <option value="{{ now('Asia/Kolkata')->copy()->subYears(3)->year }}">
-                        {{ now('Asia/Kolkata')->copy()->subYears(3)->year }}
-                    </option>
-                </select>
-            </div>
+            <select id="yearSelect">
+                <option value="{{ now('Asia/Kolkata')->year }}">
+                    {{ now('Asia/Kolkata')->year }}
+                </option>
+                <option value="{{ now('Asia/Kolkata')->copy()->subYear()->year }}">
+                    {{ now('Asia/Kolkata')->copy()->subYear()->year }}
+                </option>
+                <option value="{{ now('Asia/Kolkata')->copy()->subYears(2)->year }}">
+                    {{ now('Asia/Kolkata')->copy()->subYears(2)->year }}
+                </option>
+                <option value="{{ now('Asia/Kolkata')->copy()->subYears(3)->year }}">
+                    {{ now('Asia/Kolkata')->copy()->subYears(3)->year }}
+                </option>
+            </select>
 
-            <button type="button" onclick="openYearChart()" class="ShinyButton_shadow__btn__ZfTiW">
+            <button type="button" onclick="openYearChart()">
                 Check Chart
             </button>
         </div>
     </form>
-</div>
+</section>
+
+<style>
+    .a1-chart-hero {
+        background: linear-gradient(180deg, #ffcf00, #ff9800);
+        border-top: 2px solid #111;
+        border-bottom: 2px solid #111;
+        padding: 28px 12px;
+        text-align: center;
+    }
+
+    .a1-hero-inner h1 {
+        margin: 0;
+        color: #000;
+        font-size: 34px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .a1-hero-inner p {
+        margin-top: 8px;
+        color: #111;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .a1-notice {
+        margin: 14px 10px;
+        padding: 14px 12px;
+        background: #fff8d7;
+        border: 1px solid #f2c400;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .a1-notice h3 {
+        margin: 0;
+        color: #111;
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1.5;
+    }
+
+    .a1-small-heading {
+        background: #fff;
+        color: #111;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 800;
+        padding: 8px 10px;
+        margin: 0;
+    }
+
+    .a1-table-section {
+        padding: 18px 8px;
+        background: #f3f4f6;
+    }
+
+    .a1-table-card {
+        background: #fff;
+        border: 2px solid #111;
+        overflow: hidden;
+    }
+
+    .a1-table-title {
+        background: linear-gradient(180deg, #ffc400, #ff9f00);
+        color: #000;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 900;
+        padding: 18px 10px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #111;
+    }
+
+    .a1-table-scroll {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .a1-game-table {
+        width: 100%;
+        min-width: 850px;
+        border-collapse: collapse;
+        text-align: center;
+        background: #fff;
+    }
+
+    .a1-game-table th {
+        color: #000;
+        font-size: 17px;
+        font-weight: 900;
+        padding: 14px 10px;
+        border-bottom: 1px solid #ddd;
+        white-space: nowrap;
+    }
+
+    .a1-game-table td {
+        color: #0618ff;
+        font-size: 18px;
+        font-weight: 900;
+        padding: 13px 10px;
+        border-bottom: 1px solid #e5e5e5;
+        white-space: nowrap;
+    }
+
+    .a1-game-table .game-name {
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    .a1-game-table tbody tr:hover {
+        background: #fff7d6;
+    }
+
+    .year-buttons {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .year-buttons a {
+        display: inline-block;
+        background: #0618ff;
+        color: #fff;
+        padding: 7px 14px;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 900;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+    .year-buttons a:hover {
+        background: #000;
+        color: #ffcf00;
+    }
+
+    .empty-row {
+        color: #000 !important;
+        padding: 20px !important;
+    }
+
+    .a1-check-box {
+        background: linear-gradient(135deg, #374151, #111827);
+        padding: 36px 12px;
+        text-align: center;
+    }
+
+    .a1-check-box h2 {
+        margin: 0 0 24px;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    .a1-check-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .a1-check-form select {
+        height: 54px;
+        min-width: 160px;
+        padding: 0 18px;
+        border: none;
+        border-radius: 8px;
+        background: #fff;
+        color: #000;
+        font-size: 17px;
+        font-weight: 700;
+        outline: none;
+        text-transform: uppercase;
+    }
+
+    .a1-check-form button {
+        height: 54px;
+        padding: 0 34px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #0057a8, #003d78);
+        color: #fff;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0, 87, 168, 0.35);
+    }
+
+    .a1-check-form button:hover {
+        background: linear-gradient(135deg, #003d78, #002b55);
+    }
+
+    @media (max-width: 768px) {
+        .a1-hero-inner h1 {
+            font-size: 25px;
+        }
+
+        .a1-table-title {
+            font-size: 22px;
+            padding: 14px 8px;
+        }
+
+        .a1-game-table {
+            min-width: 720px;
+        }
+
+        .a1-game-table th {
+            font-size: 14px;
+        }
+
+        .a1-game-table td {
+            font-size: 15px;
+        }
+
+        .a1-check-box h2 {
+            font-size: 23px;
+        }
+
+        .a1-check-form {
+            gap: 10px;
+        }
+
+        .a1-check-form select {
+            height: 48px;
+            min-width: 130px;
+            font-size: 14px;
+        }
+
+        .a1-check-form button {
+            height: 48px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            padding: 0 20px;
+        }
+    }
+</style>
 
 <script>
     function openYearChart() {

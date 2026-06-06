@@ -3,13 +3,7 @@
 ])
 
 @section('content')
-    {{-- <section class="bg-white">
-        <div class="text-center py-4">
-            <h2 class="text-2xl font-bold uppercase">
-                Super A7 Satta King Result Today – Updated Live Instantly
-            </h2>
-        </div>
-    </section> --}}
+  
 
 
    <style>
@@ -325,7 +319,7 @@
 
 
     {{-- Game List Section - 2 Parts --}}
-<section class="row">
+{{-- <section class="row">
     @php
         // $gameSections = $games->chunk(ceil($games->count() / 2));
          $gameSections = $games->chunk(17);
@@ -406,138 +400,345 @@
 
         </div>
     @endforeach
+</section> --}}
+
+
+
+
+{{-- Game List Section - Compact --}}
+<section class="w-full py-2 bg-gray-100">
+    @php
+        $gameSections = $games->chunk(17);
+    @endphp
+
+    @foreach ($gameSections as $sectionIndex => $gameSection)
+        <div class="{{ $sectionIndex > 0 ? 'mt-4' : '' }}">
+            <div class="grid grid-cols-1 gap-3 px-2 sm:grid-cols-2 lg:grid-cols-3">
+
+                @forelse($gameSection as $game)
+                    <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
+
+                      <div class="py-3 text-center bg-white border-b border-gray-200">
+    <a href="{{ route('game.record', $game->slug) }}"
+       class="block text-xl font-black tracking-wide text-red-700 uppercase hover:underline">
+        {{ $game->name ?: 'NA' }}
+    </a>
+
+    @if (!empty($game->result_time))
+        <p class="mt-1 text-sm font-bold text-black">
+            {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
+        </p>
+    @endif
+</div>
+
+                        <div class="flex items-center justify-center gap-3 px-3 py-4 text-center bg-white">
+
+                            <div>
+                                <p class="text-sm font-bold text-gray-700">कल</p>
+                                <p class="text-3xl font-black text-black">
+                                    @if (!empty($game->yesterdayResult->result))
+                                        {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
+                                            ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
+                                            : $game->yesterdayResult->result }}
+                                    @else
+                                        XX
+                                    @endif
+                                </p>
+                            </div>
+
+                            <span class="text-3xl font-black text-green-600">➜</span>
+
+                            <div>
+                                <p class="text-sm font-bold text-gray-700">आज</p>
+                                <p class="text-3xl font-black text-blue-700">
+                                    @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
+                                        {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
+                                            ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
+                                            : $game->todayResult->result }}
+                                    @else
+                                        XX
+                                    @endif
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <a href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}"
+                           class="block py-2 text-xs font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
+                            View Chart
+                        </a>
+
+                    </div>
+                @empty
+                    <div class="p-3 text-center bg-white border rounded-lg">
+                        No result found
+                    </div>
+                @endforelse
+
+            </div>
+        </div>
+    @endforeach
 </section>
 
 
+    {{-- Year Chart Search --}}
+<div class="chart-search-box">
+    <h2>Check All Game Year Chart</h2>
 
-    <div class="py-8 mx-auto mt-4 bg-gray-600">
-        <h2 class="pb-4 text-2xl font-bold text-center text-white">
-            Check All Game Year Chart
-        </h2>
+    <div class="chart-search-form">
+        <select id="gameSelect">
+            @foreach ($chartGames as $game)
+                <option value="{{ $game->slug }}">{{ $game->name }}</option>
+            @endforeach
+        </select>
 
-        <form method="get" action="#">
-            <div class="flex items-center justify-center mx-auto rounded">
-                <div class="flex mx-2">
-                    <select id="gameSelect"
-                        class="py-2 text-sm uppercase bg-white rounded-md outline-none md:py-3 md:text-base lg:px-3">
-                        @foreach ($chartGames as $game)
-                            <option value="{{ $game->slug }}">
-                                {{ $game->name }}
-                            </option>
-                        @endforeach
-                    </select>
+        <select id="yearSelect">
+            <option value="{{ now('Asia/Kolkata')->year }}">{{ now('Asia/Kolkata')->year }}</option>
+            <option value="{{ now('Asia/Kolkata')->subYear()->year }}">
+                {{ now('Asia/Kolkata')->subYear()->year }}
+            </option>
+            <option value="{{ now('Asia/Kolkata')->subYears(2)->year }}">
+                {{ now('Asia/Kolkata')->subYears(2)->year }}
+            </option>
+        </select>
 
-                    <select id="yearSelect"
-                        class="px-2 py-2 mx-0 ml-1 text-sm bg-white rounded-md outline-none md:py-3 md:text-base lg:mx-3">
-                        <option value="{{ now('Asia/Kolkata')->year }}">{{ now('Asia/Kolkata')->year }}</option>
-                        <option value="{{ now('Asia/Kolkata')->subYear()->year }}">
-                            {{ now('Asia/Kolkata')->subYear()->year }}</option>
-                        <option value="{{ now('Asia/Kolkata')->subYears(2)->year }}">
-                            {{ now('Asia/Kolkata')->subYears(2)->year }}</option>
-                    </select>
-                </div>
-
-                <button type="button" onclick="openYearChart()" class="ShinyButton_shadow__btn__ZfTiW">
-                    Check Chart
-                </button>
-            </div>
-        </form>
+        <button type="button" onclick="openYearChart()">Check Chart</button>
     </div>
+</div>
 
-  
-    {{-- Monthly Chart Result Section --}}
-    @php
-        $chartGameSections = $chartGames->chunk(15);
-    @endphp
 
-    <section class="w-full mt-6 px-2">
+{{-- Calendar Style Chart Result --}}
+<section class="year-chart-wrapper">
+
+    <div class="year-chart-card">
+        <div class="year-chart-title">
+            ALL GAME YEARLY CHART {{ now('Asia/Kolkata')->year }}
+        </div>
+
+        @php
+            $chartGameSections = $chartGames->chunk(15);
+        @endphp
 
         @foreach ($chartGameSections as $sectionIndex => $gameSection)
-            <div class="mb-8 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="chart-table-scroll {{ $sectionIndex > 0 ? 'mt-6' : '' }}">
+                <table class="year-chart-table">
+                    <thead>
+                        <tr>
+                            <th class="date-col">DATE</th>
+                            @foreach ($gameSection as $game)
+                                <th>{{ strtoupper($game->name) }}</th>
+                            @endforeach
+                        </tr>
+                    </thead>
 
-                <div class="bg-[#0aa485] text-white text-center font-bold py-3 text-base lg:text-xl">
-                    Chart Result
+                    <tbody>
+                        @foreach ($dates as $date)
+                            @php
+                                $dateKey = $date->format('Y-m-d');
+                                $dayResults = $monthlyResults->get($dateKey, collect())->keyBy('game_slug');
+                            @endphp
 
-                </div>
-
-                <div class="w-full overflow-x-auto">
-                    <table class="min-w-max w-full border-separate border-spacing-[3px] text-center">
-
-                        <thead>
                             <tr>
-                                <th
-                                    class="sticky left-0 z-20 min-w-[115px] bg-[#0aa485] text-white px-3 py-3 rounded-lg text-sm font-bold">
-                                    Date
-                                </th>
+                                <td class="date-col">
+                                    {{ $date->format('d') }}
+                                </td>
 
                                 @foreach ($gameSection as $game)
-                                    <th
-                                        class="min-w-[100px] bg-[#0aa485] text-white px-3 py-3 rounded-lg text-xs lg:text-sm font-bold leading-tight whitespace-normal">
-                                        {{ $game->name }}
-                                    </th>
+                                    @php
+                                        $result = $dayResults->get($game->slug);
+                                    @endphp
+
+                                    <td>
+                                        @if (!empty($result?->result))
+                                            {{ str_pad($result->result, 2, '0', STR_PAD_LEFT) }}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
                                 @endforeach
                             </tr>
-                        </thead>
-
-                        <tbody>
-                            @foreach ($dates as $date)
-                                @php
-                                    $dateKey = $date->format('Y-m-d');
-                                    $dayResults = $monthlyResults->get($dateKey, collect())->keyBy('game_slug');
-                                @endphp
-
-                                <tr>
-                                    <td
-                                        class="sticky left-0 z-10 min-w-[115px] bg-[#2d4b58] text-white px-3 py-4 rounded-lg text-sm font-semibold">
-                                        {{ $date->format('d-m-Y') }}
-                                    </td>
-
-                                    @foreach ($gameSection as $game)
-                                        @php
-                                            $result = $dayResults->get($game->slug);
-                                        @endphp
-
-                                        <td
-                                            class="min-w-[100px] bg-[#2d4b58] text-white px-3 py-4 rounded-lg text-sm font-bold">
-                                            @if (!empty($result?->result))
-                                                {{ str_pad($result->result, 2, '0', STR_PAD_LEFT) }}
-                                            @else
-                                                -
-                                            @endif
-                                        </td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
-                        </tbody>
-
-                    </table>
-                </div>
-
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         @endforeach
+    </div>
 
-    </section>
+</section>
 
 
+<style>
+    .chart-search-box {
+        margin-top: 20px;
+        padding: 36px 15px;
+        background: linear-gradient(135deg, #374151, #111827);
+        text-align: center;
+    }
 
-    <section class="bg-white md:py-4 homeContent">
-        {{-- <h2 style="padding:1rem 1.5rem;background:#406e83;text-align:center;font-size:1.2rem;color:#fff;">
-            Super A7 Satta – India's Most Trusted A7 Satta King Result Platform
-        </h2> --}}
+    .chart-search-box h2 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 800;
+        margin-bottom: 24px;
+    }
 
-        {{-- <div style="padding:10px;">
-            Welcome to Super 7 Satta — your daily source for A7 Satta results, charts, and live number updates.
-        </div> --}}
-    </section>
+    .chart-search-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
 
-    <script>
-        function openYearChart() {
-            let slug = document.getElementById('gameSelect').value;
-            let year = document.getElementById('yearSelect').value;
+    .chart-search-form select {
+        height: 54px;
+        padding: 0 18px;
+        min-width: 150px;
+        border-radius: 8px;
+        border: 0;
+        font-size: 18px;
+        font-weight: 600;
+        background: #fff;
+        outline: none;
+        text-transform: uppercase;
+    }
 
-            window.location.href = "{{ url('/records') }}/" + slug + "/" + year;
+    .chart-search-form button {
+        height: 54px;
+        padding: 0 36px;
+        border: 0;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #0057a8, #003d78);
+        color: #fff;
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0, 87, 168, 0.35);
+    }
+
+    .year-chart-wrapper {
+        padding: 28px 10px;
+        background: #f4f6f8;
+    }
+
+    .year-chart-card {
+        background: #fff;
+        border: 2px solid #111;
+        overflow: hidden;
+    }
+
+    .year-chart-title {
+        background: linear-gradient(180deg, #ffc400, #ff9f00);
+        color: #000;
+        text-align: center;
+        font-size: 34px;
+        font-weight: 900;
+        padding: 22px 10px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #111;
+    }
+
+    .chart-table-scroll {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .year-chart-table {
+        width: 100%;
+        min-width: 1450px;
+        border-collapse: collapse;
+        text-align: center;
+        background: #fff;
+    }
+
+    .year-chart-table th {
+        color: #000;
+        font-size: 17px;
+        font-weight: 900;
+        padding: 12px 10px;
+        border-bottom: 1px solid #ddd;
+        white-space: nowrap;
+    }
+
+    .year-chart-table td {
+        color: #0618ff;
+        font-size: 19px;
+        font-weight: 900;
+        padding: 10px 10px;
+        border-bottom: 1px solid #e5e5e5;
+        white-space: nowrap;
+    }
+
+    .year-chart-table td.date-col,
+    .year-chart-table th.date-col {
+        position: sticky;
+        left: 0;
+        z-index: 5;
+        background: #fff;
+        color: #000;
+        min-width: 80px;
+    }
+
+    .year-chart-table tbody tr:hover {
+        background: #fff7d6;
+    }
+
+    .year-chart-table tbody tr:hover .date-col {
+        background: #fff7d6;
+    }
+
+    @media (max-width: 768px) {
+        .chart-search-box h2 {
+            font-size: 24px;
         }
-    </script>
+
+        .chart-search-form {
+            gap: 10px;
+        }
+
+        .chart-search-form select {
+            height: 48px;
+            font-size: 15px;
+            min-width: 120px;
+        }
+
+        .chart-search-form button {
+            height: 48px;
+            font-size: 15px;
+            letter-spacing: 3px;
+            padding: 0 22px;
+        }
+
+        .year-chart-title {
+            font-size: 24px;
+            padding: 16px 8px;
+        }
+
+        .year-chart-table {
+            min-width: 1200px;
+        }
+
+        .year-chart-table th {
+            font-size: 14px;
+        }
+
+        .year-chart-table td {
+            font-size: 16px;
+        }
+    }
+</style>
+
+
+<script>
+    function openYearChart() {
+        let slug = document.getElementById('gameSelect').value;
+        let year = document.getElementById('yearSelect').value;
+
+        window.location.href = "{{ url('/records') }}/" + slug + "/" + year;
+    }
+</script>
 
 
 
