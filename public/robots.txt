@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Admin & auth routes
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /password/
+
+# Block URL parameters
+Disallow: /*?replytocom=
+Disallow: /*?utm_
+Disallow: /*&utm_
+
+# Sitemap
+Sitemap: https://super-7-satta.com/sitemap.xml
