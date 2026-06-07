@@ -3,108 +3,33 @@
 ])
 
 @section('content')
-  
 
 
-   <style>
-    .rv-ad-wrap{
-        width:100%;
-        margin:12px auto;
-        font-family:Arial,'Noto Sans Devanagari',sans-serif;
-    }
 
-    .rv-ad-box{
-        background:linear-gradient(180deg,#ffd900 0%,#fff8cf 100%);
-        border:3px dashed #e60000;
-        border-radius:16px;
-        padding:12px 10px;
-        text-align:center;
-        overflow:hidden;
-        box-shadow:0 4px 12px rgba(0,0,0,.10);
-    }
-
-    .rv-ad-box,
-    .rv-ad-box *{
-        color:#111!important;
-        font-size:16px!important;
-        font-weight:700!important;
-        line-height:1.45!important;
-        word-break:break-word;
-    }
-
-    .rv-ad-box h1,
-    .rv-ad-box h2,
-    .rv-ad-box h3,
-    .rv-ad-box h4,
-    .rv-ad-box h5,
-    .rv-ad-box h6,
-    .rv-ad-box p,
-    .rv-ad-box div{
-        margin:4px 0!important;
-        font-size:16px!important;
-    }
-
-    .rv-ad-title{
-        font-size:18px!important;
-        font-weight:800!important;
-    }
-
-    .rv-ad-name{
-        font-size:19px!important;
-        font-weight:900!important;
-        color:#c9342d!important;
-    }
-
-    .rv-ad-img{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        background:#fff;
-        border-radius:999px;
-        padding:5px 12px;
-        margin-top:8px;
-        max-width:100%;
-    }
-
-    .rv-ad-img img{
-        width:auto;
-        height:auto;
-        max-height:55px;
-        max-width:200px;
-        object-fit:contain;
-    }
-
-    .rv-middle{
-        background:linear-gradient(180deg,#111827,#1f2937);
-        border:3px dashed #ffd900;
-    }
-
-    .rv-middle,
-    .rv-middle *{
-        color:#fff!important;
-    }
-
-    .rv-middle .rv-ad-img img{
-        max-height:55px;
-        max-width:200px;
-    }
-
-    @media(max-width:640px){
-        .rv-ad-wrap{
-            margin:10px auto;
+    <style>
+        .rv-ad-wrap {
+            width: 100%;
+            margin: 12px auto;
+            font-family: Arial, 'Noto Sans Devanagari', sans-serif;
         }
 
-        .rv-ad-box{
-            border-width:3px;
-            border-radius:14px;
-            padding:10px 8px;
+        .rv-ad-box {
+            background: linear-gradient(180deg, #ffd900 0%, #fff8cf 100%);
+            border: 3px dashed #e60000;
+            border-radius: 16px;
+            padding: 12px 10px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .10);
         }
 
         .rv-ad-box,
-        .rv-ad-box *{
-            font-size:14px!important;
-            line-height:1.4!important;
-            font-weight:700!important;
+        .rv-ad-box * {
+            color: #111 !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            line-height: 1.45 !important;
+            word-break: break-word;
         }
 
         .rv-ad-box h1,
@@ -114,212 +39,287 @@
         .rv-ad-box h5,
         .rv-ad-box h6,
         .rv-ad-box p,
-        .rv-ad-box div{
-            font-size:14px!important;
+        .rv-ad-box div {
+            margin: 4px 0 !important;
+            font-size: 16px !important;
         }
 
-        .rv-ad-title{
-            font-size:15px!important;
+        .rv-ad-title {
+            font-size: 18px !important;
+            font-weight: 800 !important;
         }
 
-        .rv-ad-name{
-            font-size:16px!important;
+        .rv-ad-name {
+            font-size: 19px !important;
+            font-weight: 900 !important;
+            color: #c9342d !important;
         }
 
-        .rv-ad-img{
-            padding:4px 10px;
-            margin-top:6px;
+        .rv-ad-img {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 999px;
+            padding: 5px 12px;
+            margin-top: 8px;
+            max-width: 100%;
         }
 
-        .rv-ad-img img{
-            max-height:48px;
-            max-width:175px;
+        .rv-ad-img img {
+            width: auto;
+            height: auto;
+            max-height: 55px;
+            max-width: 200px;
+            object-fit: contain;
         }
-    }
-</style>
+
+        .rv-middle {
+            background: linear-gradient(180deg, #111827, #1f2937);
+            border: 3px dashed #ffd900;
+        }
+
+        .rv-middle,
+        .rv-middle * {
+            color: #fff !important;
+        }
+
+        .rv-middle .rv-ad-img img {
+            max-height: 55px;
+            max-width: 200px;
+        }
+
+        @media(max-width:640px) {
+            .rv-ad-wrap {
+                margin: 10px auto;
+            }
+
+            .rv-ad-box {
+                border-width: 3px;
+                border-radius: 14px;
+                padding: 10px 8px;
+            }
+
+            .rv-ad-box,
+            .rv-ad-box * {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+                font-weight: 700 !important;
+            }
+
+            .rv-ad-box h1,
+            .rv-ad-box h2,
+            .rv-ad-box h3,
+            .rv-ad-box h4,
+            .rv-ad-box h5,
+            .rv-ad-box h6,
+            .rv-ad-box p,
+            .rv-ad-box div {
+                font-size: 14px !important;
+            }
+
+            .rv-ad-title {
+                font-size: 15px !important;
+            }
+
+            .rv-ad-name {
+                font-size: 16px !important;
+            }
+
+            .rv-ad-img {
+                padding: 4px 10px;
+                margin-top: 6px;
+            }
+
+            .rv-ad-img img {
+                max-height: 48px;
+                max-width: 175px;
+            }
+        }
+    </style>
 
 
-{{-- top --}}
-@php
-    $topAdvertisement = $advertisements->where('position', 'top')->first();
-@endphp
+    {{-- top --}}
+    @php
+        $topAdvertisement = $advertisements->where('position', 'top')->first();
+    @endphp
 
-@if ($topAdvertisement)
-    <section class="rv-ad-wrap">
-        <div class="rv-ad-box">
-            @if (!empty($topAdvertisement->content))
-                <div class="addb-content">
-                    {!! $topAdvertisement->content !!}
-                </div>
-            @endif
+    @if ($topAdvertisement)
+        <section class="rv-ad-wrap">
+            <div class="rv-ad-box">
+                @if (!empty($topAdvertisement->content))
+                    <div class="addb-content">
+                        {!! $topAdvertisement->content !!}
+                    </div>
+                @endif
 
-            @if (!empty($topAdvertisement->image))
-                @if (!empty($topAdvertisement->link))
-                    <a href="{{ $topAdvertisement->link }}" target="_blank" style="text-decoration:none;">
+                @if (!empty($topAdvertisement->image))
+                    @if (!empty($topAdvertisement->link))
+                        <a href="{{ $topAdvertisement->link }}" target="_blank" style="text-decoration:none;">
+                            <span class="rv-ad-img">
+                                <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
+                                    alt="{{ $topAdvertisement->title }}">
+                            </span>
+                        </a>
+                    @else
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                 alt="{{ $topAdvertisement->title }}">
+                                alt="{{ $topAdvertisement->title }}">
                         </span>
-                    </a>
-                @else
-                    <span class="rv-ad-img">
-                        <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                             alt="{{ $topAdvertisement->title }}">
-                    </span>
+                    @endif
                 @endif
-            @endif
-        </div>
-    </section>
-@else
-    <section class="rv-ad-wrap">
-        <div class="rv-ad-box">
-            <h2 class="rv-ad-title">नमस्कार साथियों</h2>
+            </div>
+        </section>
+    @else
+        <section class="rv-ad-wrap">
+            <div class="rv-ad-box">
+                <h2 class="rv-ad-title">नमस्कार साथियों</h2>
 
-            <p>
-                सीधा कंपनी खाईवाल के पास गेम प्ले करे<br>
-                बिंदास 1001% पेमेंट की गारंटी के साथ<br>
-                आपका अपना भाई
-            </p>
+                <p>
+                    सीधा कंपनी खाईवाल के पास गेम प्ले करे<br>
+                    बिंदास 1001% पेमेंट की गारंटी के साथ<br>
+                    आपका अपना भाई
+                </p>
 
-            <h2 class="rv-ad-name">S.K BHAI</h2>
+                <h2 class="rv-ad-name">S.K BHAI</h2>
 
-            <span class="rv-ad-img">
-                <img src="{{ asset('Wp.png') }}" alt="S.K Bhai">
-            </span>
-        </div>
-    </section>
-@endif
-{{-- end top --}}
+                <span class="rv-ad-img">
+                    <img src="{{ asset('Wp.png') }}" alt="S.K Bhai">
+                </span>
+            </div>
+        </section>
+    @endif
+    {{-- end top --}}
 
 
-{{-- middle --}}
-@php
-    $middleAdvertisement = $advertisements->where('position', 'middle')->first();
-@endphp
+    {{-- middle --}}
+    @php
+        $middleAdvertisement = $advertisements->where('position', 'middle')->first();
+    @endphp
 
-@if ($middleAdvertisement)
-    <section class="rv-ad-wrap">
-        <div class="rv-ad-box rv-middle">
-            @if (!empty($middleAdvertisement->content))
-                <div class="addb-content">
-                    {!! $middleAdvertisement->content !!}
-                </div>
-            @endif
+    @if ($middleAdvertisement)
+        <section class="rv-ad-wrap">
+            <div class="rv-ad-box rv-middle">
+                @if (!empty($middleAdvertisement->content))
+                    <div class="addb-content">
+                        {!! $middleAdvertisement->content !!}
+                    </div>
+                @endif
 
-            @if ($middleAdvertisement->image)
-                @if ($middleAdvertisement->link)
-                    <a href="{{ $middleAdvertisement->link }}" target="_blank" style="text-decoration:none;">
+                @if ($middleAdvertisement->image)
+                    @if ($middleAdvertisement->link)
+                        <a href="{{ $middleAdvertisement->link }}" target="_blank" style="text-decoration:none;">
+                            <span class="rv-ad-img">
+                                <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
+                                    alt="{{ $middleAdvertisement->title }}">
+                            </span>
+                        </a>
+                    @else
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                 alt="{{ $middleAdvertisement->title }}">
+                                alt="{{ $middleAdvertisement->title }}">
                         </span>
-                    </a>
-                @else
-                    <span class="rv-ad-img">
-                        <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                             alt="{{ $middleAdvertisement->title }}">
-                    </span>
+                    @endif
                 @endif
-            @endif
-        </div>
-    </section>
-@else
-    <section class="rv-ad-wrap">
-        <div class="rv-ad-box rv-middle">
-            <h4>
-                व्हाट्सएप पर सुपर फास्ट रिजल्ट देखने के लिए नीचे दिए गए लिंक पर जाएं और चैनल को फॉलो करें।
-            </h4>
+            </div>
+        </section>
+    @else
+        <section class="rv-ad-wrap">
+            <div class="rv-ad-box rv-middle">
+                <h4>
+                    व्हाट्सएप पर सुपर फास्ट रिजल्ट देखने के लिए नीचे दिए गए लिंक पर जाएं और चैनल को फॉलो करें।
+                </h4>
 
-            <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" style="text-decoration:none;">
-                <span class="rv-ad-img">
-                    <img src="{{ asset('Join-WhatsApp.png') }}" alt="Join WhatsApp">
-                </span>
-            </a>
-        </div>
-    </section>
-@endif
-{{-- end middle --}}
+                <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" style="text-decoration:none;">
+                    <span class="rv-ad-img">
+                        <img src="{{ asset('Join-WhatsApp.png') }}" alt="Join WhatsApp">
+                    </span>
+                </a>
+            </div>
+        </section>
+    @endif
+    {{-- end middle --}}
 
 
-{{-- bottom --}}
-@php
-    $bottomAdvertisement = $advertisements->where('position', 'bottom')->first();
-@endphp
+    {{-- bottom --}}
+    @php
+        $bottomAdvertisement = $advertisements->where('position', 'bottom')->first();
+    @endphp
 
-@if ($bottomAdvertisement)
-    <section class="rv-ad-wrap">
-        <div class="rv-ad-box">
-            @if (!empty($bottomAdvertisement->content))
-                <div class="addb-content">
-                    {!! $bottomAdvertisement->content !!}
-                </div>
-            @endif
+    @if ($bottomAdvertisement)
+        <section class="rv-ad-wrap">
+            <div class="rv-ad-box">
+                @if (!empty($bottomAdvertisement->content))
+                    <div class="addb-content">
+                        {!! $bottomAdvertisement->content !!}
+                    </div>
+                @endif
 
-            @if (!empty($bottomAdvertisement->image))
-                @if (!empty($bottomAdvertisement->link))
-                    <a href="{{ $bottomAdvertisement->link }}" target="_blank" style="text-decoration:none;">
+                @if (!empty($bottomAdvertisement->image))
+                    @if (!empty($bottomAdvertisement->link))
+                        <a href="{{ $bottomAdvertisement->link }}" target="_blank" style="text-decoration:none;">
+                            <span class="rv-ad-img">
+                                <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
+                                    alt="{{ $bottomAdvertisement->title }}">
+                            </span>
+                        </a>
+                    @else
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                 alt="{{ $bottomAdvertisement->title }}">
+                                alt="{{ $bottomAdvertisement->title }}">
                         </span>
-                    </a>
-                @else
-                    <span class="rv-ad-img">
-                        <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                             alt="{{ $bottomAdvertisement->title }}">
-                    </span>
+                    @endif
                 @endif
-            @endif
-        </div>
-    </section>
-@else
-    <section class="rv-ad-wrap">
-        <div class="rv-ad-box">
-            <div class="rv-ad-title">सीधे सट्टा कंपनी का No 1 खाईवाल</div>
-
-            <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
-
-            <div>
-                🎯 पालिका बाजार..1:20pm<br>
-                🎯 प्रयागराज........2:00pm<br>
-                🎯 दिल्लीबाजार ...3:00pm<br>
-                🎯 दिल्ली दरबार....3:30pm<br>
-                🎯 श्री गणेश........4:30 Pm<br>
-                🎯 रूप नगर..........5:10pm<br>
-                🎯 फरीदाबाद.......5:50 pm<br>
-                🎯 फतेहपुर..........7:10 pm<br>
-                🎯 गाजियाबाद......8:50 pm<br>
-                🎯 नोएडानाईट.....10:00 pm<br>
-                🎯 गली...............11:15pm<br>
-                🎯 दिसावर ..........3:00 am
             </div>
+        </section>
+    @else
+        <section class="rv-ad-wrap">
+            <div class="rv-ad-box">
+                <div class="rv-ad-title">सीधे सट्टा कंपनी का No 1 खाईवाल</div>
 
-            <div>
-                जोड़ी रेट<br>
-                जोड़ी रेट 10-------960<br>
-                हरफ रेट 100-----960
+                <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
+
+                <div>
+                    🎯 पालिका बाजार..1:20pm<br>
+                    🎯 प्रयागराज........2:00pm<br>
+                    🎯 दिल्लीबाजार ...3:00pm<br>
+                    🎯 दिल्ली दरबार....3:30pm<br>
+                    🎯 श्री गणेश........4:30 Pm<br>
+                    🎯 रूप नगर..........5:10pm<br>
+                    🎯 फरीदाबाद.......5:50 pm<br>
+                    🎯 फतेहपुर..........7:10 pm<br>
+                    🎯 गाजियाबाद......8:50 pm<br>
+                    🎯 नोएडानाईट.....10:00 pm<br>
+                    🎯 गली...............11:15pm<br>
+                    🎯 दिसावर ..........3:00 am
+                </div>
+
+                <div>
+                    जोड़ी रेट<br>
+                    जोड़ी रेट 10-------960<br>
+                    हरफ रेट 100-----960
+                </div>
+
+                <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
+
+                <div style="color:#9b59b6!important;font-weight:800!important;">
+                    Game Play करने के लिए नीचे लिंक पर क्लिक करे
+                </div>
+
+                <span class="rv-ad-img">
+                    <img src="{{ asset('whatsAppChat.png') }}" alt="ABHISHEK BHAI">
+                </span>
+
+                <div>Click to chat</div>
             </div>
-
-            <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
-
-            <div style="color:#9b59b6!important;font-weight:800!important;">
-                Game Play करने के लिए नीचे लिंक पर क्लिक करे
-            </div>
-
-            <span class="rv-ad-img">
-                <img src="{{ asset('whatsAppChat.png') }}" alt="ABHISHEK BHAI">
-            </span>
-
-            <div>Click to chat</div>
-        </div>
-    </section>
-@endif
-{{-- end bottom --}}
+        </section>
+    @endif
+    {{-- end bottom --}}
 
 
 
     {{-- Game List Section - 2 Parts --}}
-{{-- <section class="row">
+    {{-- <section class="row">
     @php
         // $gameSections = $games->chunk(ceil($games->count() / 2));
          $gameSections = $games->chunk(17);
@@ -405,7 +405,83 @@
 
 
 
-{{-- Game List Section - Compact --}}
+    {{-- Game List Section - Compact --}}
+    {{-- <section class="w-full py-2 bg-gray-100">
+        @php
+            $gameSections = $games->chunk(17);
+        @endphp
+
+        @foreach ($gameSections as $sectionIndex => $gameSection)
+            <div class="{{ $sectionIndex > 0 ? 'mt-4' : '' }}">
+                <div class="grid grid-cols-1 gap-3 px-2 sm:grid-cols-2 lg:grid-cols-3">
+
+                    @forelse($gameSection as $game)
+                        <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
+
+                            <div class="py-3 text-center bg-white border-b border-gray-200">
+                                <a href="{{ route('game.record', $game->slug) }}"
+                                    class="block text-xl font-black tracking-wide text-red-700 uppercase hover:underline">
+                                    {{ $game->name ?: 'NA' }}
+                                </a>
+
+                                @if (!empty($game->result_time))
+                                    <p class="mt-1 text-sm font-bold text-black">
+                                        {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
+                                    </p>
+                                @endif
+                            </div>
+
+                            <div class="flex items-center justify-center gap-3 px-3 py-4 text-center bg-white">
+
+                                <div>
+                                    <p class="text-sm font-bold text-gray-700">कल</p>
+                                    <p class="text-3xl font-black text-black">
+                                        @if (!empty($game->yesterdayResult->result))
+                                            {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
+                                                ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
+                                                : $game->yesterdayResult->result }}
+                                        @else
+                                            XX
+                                        @endif
+                                    </p>
+                                </div>
+
+                                <span class="text-3xl font-black text-green-600">➜</span>
+
+                                <div>
+                                    <p class="text-sm font-bold text-gray-700">आज</p>
+                                    <p class="text-3xl font-black text-blue-700">
+                                        @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
+                                            {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
+                                                ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
+                                                : $game->todayResult->result }}
+                                        @else
+                                            XX
+                                        @endif
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <a href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}"
+                                class="block py-2 text-xs font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
+                                View Chart
+                            </a>
+
+                        </div>
+                    @empty
+                        <div class="p-3 text-center bg-white border rounded-lg">
+                            No result found
+                        </div>
+                    @endforelse
+
+                </div>
+            </div>
+        @endforeach
+    </section> --}}
+
+
+    {{-- Game List Section - Compact --}}
 <section class="w-full py-2 bg-gray-100">
     @php
         $gameSections = $games->chunk(17);
@@ -413,29 +489,31 @@
 
     @foreach ($gameSections as $sectionIndex => $gameSection)
         <div class="{{ $sectionIndex > 0 ? 'mt-4' : '' }}">
-            <div class="grid grid-cols-1 gap-3 px-2 sm:grid-cols-2 lg:grid-cols-3">
+
+            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; padding:0 8px;"
+                class="lg:grid-cols-3">
 
                 @forelse($gameSection as $game)
                     <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
 
-                      <div class="py-3 text-center bg-white border-b border-gray-200">
-    <a href="{{ route('game.record', $game->slug) }}"
-       class="block text-xl font-black tracking-wide text-red-700 uppercase hover:underline">
-        {{ $game->name ?: 'NA' }}
-    </a>
+                        <div class="py-2 text-center bg-white border-b border-gray-200">
+                            <a href="{{ route('game.record', $game->slug) }}"
+                                class="block text-base font-black tracking-wide text-red-700 uppercase hover:underline sm:text-xl">
+                                {{ $game->name ?: 'NA' }}
+                            </a>
 
-    @if (!empty($game->result_time))
-        <p class="mt-1 text-sm font-bold text-black">
-            {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
-        </p>
-    @endif
-</div>
+                            @if (!empty($game->result_time))
+                                <p class="mt-1 text-xs font-bold text-black sm:text-sm">
+                                    {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
+                                </p>
+                            @endif
+                        </div>
 
-                        <div class="flex items-center justify-center gap-3 px-3 py-4 text-center bg-white">
+                        <div class="flex items-center justify-center gap-2 px-2 py-3 text-center bg-white">
 
                             <div>
-                                <p class="text-sm font-bold text-gray-700">कल</p>
-                                <p class="text-3xl font-black text-black">
+                                <p class="text-xs font-bold text-gray-700">कल</p>
+                                <p class="text-2xl font-black text-black">
                                     @if (!empty($game->yesterdayResult->result))
                                         {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
                                             ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
@@ -446,11 +524,11 @@
                                 </p>
                             </div>
 
-                            <span class="text-3xl font-black text-green-600">➜</span>
+                            <span class="text-2xl font-black text-green-600">➜</span>
 
                             <div>
-                                <p class="text-sm font-bold text-gray-700">आज</p>
-                                <p class="text-3xl font-black text-blue-700">
+                                <p class="text-xs font-bold text-gray-700">आज</p>
+                                <p class="text-2xl font-black text-blue-700">
                                     @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
                                         {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
                                             ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
@@ -464,13 +542,13 @@
                         </div>
 
                         <a href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}"
-                           class="block py-2 text-xs font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
+                            class="block py-2 text-[11px] font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
                             View Chart
                         </a>
 
                     </div>
                 @empty
-                    <div class="p-3 text-center bg-white border rounded-lg">
+                    <div style="grid-column: span 2;" class="p-3 text-center bg-white border rounded-lg">
                         No result found
                     </div>
                 @endforelse
@@ -482,557 +560,541 @@
 
 
     {{-- Year Chart Search --}}
-<div class="chart-search-box">
-    <h2>Check All Game Year Chart</h2>
+    <div class="chart-search-box">
+        <h2>Check All Game Year Chart</h2>
 
-    <div class="chart-search-form">
-        <select id="gameSelect">
-            @foreach ($chartGames as $game)
-                <option value="{{ $game->slug }}">{{ $game->name }}</option>
-            @endforeach
-        </select>
+        <div class="chart-search-form">
+            <select id="gameSelect">
+                @foreach ($chartGames as $game)
+                    <option value="{{ $game->slug }}">{{ $game->name }}</option>
+                @endforeach
+            </select>
 
-        <select id="yearSelect">
-            <option value="{{ now('Asia/Kolkata')->year }}">{{ now('Asia/Kolkata')->year }}</option>
-            <option value="{{ now('Asia/Kolkata')->subYear()->year }}">
-                {{ now('Asia/Kolkata')->subYear()->year }}
-            </option>
-            <option value="{{ now('Asia/Kolkata')->subYears(2)->year }}">
-                {{ now('Asia/Kolkata')->subYears(2)->year }}
-            </option>
-        </select>
+            <select id="yearSelect">
+                <option value="{{ now('Asia/Kolkata')->year }}">{{ now('Asia/Kolkata')->year }}</option>
+                <option value="{{ now('Asia/Kolkata')->subYear()->year }}">
+                    {{ now('Asia/Kolkata')->subYear()->year }}
+                </option>
+                <option value="{{ now('Asia/Kolkata')->subYears(2)->year }}">
+                    {{ now('Asia/Kolkata')->subYears(2)->year }}
+                </option>
+            </select>
 
-        <button type="button" onclick="openYearChart()">Check Chart</button>
-    </div>
-</div>
-
-
-{{-- Calendar Style Chart Result --}}
-<section class="year-chart-wrapper">
-
-    <div class="year-chart-card">
-        <div class="year-chart-title">
-            ALL GAME YEARLY CHART {{ now('Asia/Kolkata')->year }}
+            <button type="button" onclick="openYearChart()">Check Chart</button>
         </div>
+    </div>
 
-        @php
-            $chartGameSections = $chartGames->chunk(15);
-        @endphp
 
-        @foreach ($chartGameSections as $sectionIndex => $gameSection)
-            <div class="chart-table-scroll {{ $sectionIndex > 0 ? 'mt-6' : '' }}">
-                <table class="year-chart-table">
-                    <thead>
-                        <tr>
-                            <th class="date-col">DATE</th>
-                            @foreach ($gameSection as $game)
-                                <th>{{ strtoupper($game->name) }}</th>
-                            @endforeach
-                        </tr>
-                    </thead>
+    {{-- Calendar Style Chart Result --}}
+    <section class="year-chart-wrapper">
 
-                    <tbody>
-                        @foreach ($dates as $date)
-                            @php
-                                $dateKey = $date->format('Y-m-d');
-                                $dayResults = $monthlyResults->get($dateKey, collect())->keyBy('game_slug');
-                            @endphp
+        <div class="year-chart-card">
+            <div class="year-chart-title">
+                ALL GAME YEARLY CHART {{ now('Asia/Kolkata')->year }}
+            </div>
 
+            @php
+                $chartGameSections = $chartGames->chunk(15);
+            @endphp
+
+            @foreach ($chartGameSections as $sectionIndex => $gameSection)
+                <div class="chart-table-scroll {{ $sectionIndex > 0 ? 'mt-6' : '' }}">
+                    <table class="year-chart-table">
+                        <thead>
                             <tr>
-                                <td class="date-col">
-                                    {{ $date->format('d') }}
-                                </td>
-
+                                <th class="date-col">DATE</th>
                                 @foreach ($gameSection as $game)
-                                    @php
-                                        $result = $dayResults->get($game->slug);
-                                    @endphp
-
-                                    <td>
-                                        @if (!empty($result?->result))
-                                            {{ str_pad($result->result, 2, '0', STR_PAD_LEFT) }}
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
+                                    <th>{{ strtoupper($game->name) }}</th>
                                 @endforeach
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endforeach
-    </div>
+                        </thead>
 
-</section>
+                        <tbody>
+                            @foreach ($dates as $date)
+                                @php
+                                    $dateKey = $date->format('Y-m-d');
+                                    $dayResults = $monthlyResults->get($dateKey, collect())->keyBy('game_slug');
+                                @endphp
+
+                                <tr>
+                                    <td class="date-col">
+                                        {{ $date->format('d') }}
+                                    </td>
+
+                                    @foreach ($gameSection as $game)
+                                        @php
+                                            $result = $dayResults->get($game->slug);
+                                        @endphp
+
+                                        <td>
+                                            @if (!empty($result?->result))
+                                                {{ str_pad($result->result, 2, '0', STR_PAD_LEFT) }}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endforeach
+        </div>
+
+    </section>
 
 
-<style>
-    .chart-search-box {
-        margin-top: 20px;
-        padding: 36px 15px;
-        background: linear-gradient(135deg, #374151, #111827);
-        text-align: center;
-    }
+    <style>
+        .chart-search-box {
+            margin-top: 20px;
+            padding: 36px 15px;
+            background: linear-gradient(135deg, #374151, #111827);
+            text-align: center;
+        }
 
-    .chart-search-box h2 {
-        color: #fff;
-        font-size: 30px;
-        font-weight: 800;
-        margin-bottom: 24px;
-    }
-
-    .chart-search-form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
-        flex-wrap: wrap;
-    }
-
-    .chart-search-form select {
-        height: 54px;
-        padding: 0 18px;
-        min-width: 150px;
-        border-radius: 8px;
-        border: 0;
-        font-size: 18px;
-        font-weight: 600;
-        background: #fff;
-        outline: none;
-        text-transform: uppercase;
-    }
-
-    .chart-search-form button {
-        height: 54px;
-        padding: 0 36px;
-        border: 0;
-        border-radius: 8px;
-        background: linear-gradient(135deg, #0057a8, #003d78);
-        color: #fff;
-        font-size: 19px;
-        font-weight: 800;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        cursor: pointer;
-        box-shadow: 0 8px 18px rgba(0, 87, 168, 0.35);
-    }
-
-    .year-chart-wrapper {
-        padding: 28px 10px;
-        background: #f4f6f8;
-    }
-
-    .year-chart-card {
-        background: #fff;
-        border: 2px solid #111;
-        overflow: hidden;
-    }
-
-    .year-chart-title {
-        background: linear-gradient(180deg, #ffc400, #ff9f00);
-        color: #000;
-        text-align: center;
-        font-size: 34px;
-        font-weight: 900;
-        padding: 22px 10px;
-        text-transform: uppercase;
-        border-bottom: 2px solid #111;
-    }
-
-    .chart-table-scroll {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .year-chart-table {
-        width: 100%;
-        min-width: 1450px;
-        border-collapse: collapse;
-        text-align: center;
-        background: #fff;
-    }
-
-    .year-chart-table th {
-        color: #000;
-        font-size: 17px;
-        font-weight: 900;
-        padding: 12px 10px;
-        border-bottom: 1px solid #ddd;
-        white-space: nowrap;
-    }
-
-    .year-chart-table td {
-        color: #0618ff;
-        font-size: 19px;
-        font-weight: 900;
-        padding: 10px 10px;
-        border-bottom: 1px solid #e5e5e5;
-        white-space: nowrap;
-    }
-
-    .year-chart-table td.date-col,
-    .year-chart-table th.date-col {
-        position: sticky;
-        left: 0;
-        z-index: 5;
-        background: #fff;
-        color: #000;
-        min-width: 80px;
-    }
-
-    .year-chart-table tbody tr:hover {
-        background: #fff7d6;
-    }
-
-    .year-chart-table tbody tr:hover .date-col {
-        background: #fff7d6;
-    }
-
-    @media (max-width: 768px) {
         .chart-search-box h2 {
-            font-size: 24px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 24px;
         }
 
         .chart-search-form {
-            gap: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
         }
 
         .chart-search-form select {
-            height: 48px;
-            font-size: 15px;
-            min-width: 120px;
+            height: 54px;
+            padding: 0 18px;
+            min-width: 150px;
+            border-radius: 8px;
+            border: 0;
+            font-size: 18px;
+            font-weight: 600;
+            background: #fff;
+            outline: none;
+            text-transform: uppercase;
         }
 
         .chart-search-form button {
-            height: 48px;
-            font-size: 15px;
-            letter-spacing: 3px;
-            padding: 0 22px;
+            height: 54px;
+            padding: 0 36px;
+            border: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #0057a8, #003d78);
+            color: #fff;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(0, 87, 168, 0.35);
+        }
+
+        .year-chart-wrapper {
+            padding: 28px 10px;
+            background: #f4f6f8;
+        }
+
+        .year-chart-card {
+            background: #fff;
+            border: 2px solid #111;
+            overflow: hidden;
         }
 
         .year-chart-title {
-            font-size: 24px;
-            padding: 16px 8px;
+            background: linear-gradient(180deg, #ffc400, #ff9f00);
+            color: #000;
+            text-align: center;
+            font-size: 34px;
+            font-weight: 900;
+            padding: 22px 10px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #111;
+        }
+
+        .chart-table-scroll {
+            width: 100%;
+            overflow-x: auto;
         }
 
         .year-chart-table {
-            min-width: 1200px;
+            width: 100%;
+            min-width: 1450px;
+            border-collapse: collapse;
+            text-align: center;
+            background: #fff;
         }
 
         .year-chart-table th {
-            font-size: 14px;
+            color: #000;
+            font-size: 17px;
+            font-weight: 900;
+            padding: 12px 10px;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap;
         }
 
         .year-chart-table td {
-            font-size: 16px;
+            color: #0618ff;
+            font-size: 19px;
+            font-weight: 900;
+            padding: 10px 10px;
+            border-bottom: 1px solid #e5e5e5;
+            white-space: nowrap;
         }
-    }
-</style>
+
+        .year-chart-table td.date-col,
+        .year-chart-table th.date-col {
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            background: #fff;
+            color: #000;
+            min-width: 80px;
+        }
+
+        .year-chart-table tbody tr:hover {
+            background: #fff7d6;
+        }
+
+        .year-chart-table tbody tr:hover .date-col {
+            background: #fff7d6;
+        }
+
+        @media (max-width: 768px) {
+            .chart-search-box h2 {
+                font-size: 24px;
+            }
+
+            .chart-search-form {
+                gap: 10px;
+            }
+
+            .chart-search-form select {
+                height: 48px;
+                font-size: 15px;
+                min-width: 120px;
+            }
+
+            .chart-search-form button {
+                height: 48px;
+                font-size: 15px;
+                letter-spacing: 3px;
+                padding: 0 22px;
+            }
+
+            .year-chart-title {
+                font-size: 24px;
+                padding: 16px 8px;
+            }
+
+            .year-chart-table {
+                min-width: 1200px;
+            }
+
+            .year-chart-table th {
+                font-size: 14px;
+            }
+
+            .year-chart-table td {
+                font-size: 16px;
+            }
+        }
+    </style>
 
 
-<script>
-    function openYearChart() {
-        let slug = document.getElementById('gameSelect').value;
-        let year = document.getElementById('yearSelect').value;
+    <script>
+        function openYearChart() {
+            let slug = document.getElementById('gameSelect').value;
+            let year = document.getElementById('yearSelect').value;
 
-        window.location.href = "{{ url('/records') }}/" + slug + "/" + year;
-    }
-</script>
-
-
-
-    {{-- <section class="bg-white md:py-4 homeContent container">
+            window.location.href = "{{ url('/records') }}/" + slug + "/" + year;
+        }
+    </script>
 
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;"> Super A7
-            Satta – India's Most Trusted A7 Satta King Result Platform </h2>
-        <div style="padding: 10px;">
-            Welcome to Super 7 Satta — your daily source for A7 Satta results, charts, and live number updates. If you are
-            looking for today's result or want to browse past records, everything is available here in one place. This is
-            one of the most followed games in the satta world. Players visit daily because the result is declared every day,
-            the chart history is easy to access, and the format is simple to understand — whether you are new or have been
-            following satta games for years. Along with A7 Satta, you can also check the <a
-                href="https://super-7-satta.com/records/disawar" style="color:blue;">Desawar Result Today</a> updated on
-            this platform daily.
-            <br>
-            On this website you will get:<br>
-            • Daily A7 Satta result — updated the moment it is declared<br>
-            • Full chart history — easy to read and navigate<br>
-            • Past records going back to 2023<br>
-            • Live updates for all major satta markets
 
-        </div>
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">A7 Satta
-            Result Today</h2>
-        <div style="padding: 10px;">
-            Thousands of players check the <a href="/" style="color:blue;">A7 Satta</a> result every single day.
-            Getting the number on time helps players stay updated and compare with previous outcomes. This page is updated
-            daily in a clean, organized format. No need to visit multiple websites — the latest result is right here as soon
-            as it is officially announced. Players who also follow <a href="https://super-7-satta.com/records/delhi-bazar"
-                style="color:blue;">Delhi Bazar Result Chart</a> will find that update here as well, listed alongside A7 in
-            the same table.
+    <section class="bg-white md:py-4 homeContent container">
 
-        </div>
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            Why This Platform is Popular
-        </h2>
-        <div style="padding: 10px;">
-            Many satta result websites exist online, but Super 7 Satta stands out for a few clear reasons:<br>
-            • Daily Results — A fresh number is declared every day, keeping the game consistently active<br>
-            • Clear Chart History — Past results are presented in a clean, date-wise format<br>
-            • Wide Coverage — 25+ markets updated daily, all in one table<br>
-            • No Login Needed — Results and charts are fully accessible without signing up<br>
-            • Simple Format — Easy for both new visitors and long-time followers<br>
-            For players who also track the <a href="https://super-7-satta.com/records/shri-ganesh"
-                style="color:blue;">Shri
-                Ganesh Result Chart</a>, all records are available here without needing to switch
-            between different websites.
-
-        </div>
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A7 Satta Chart & Past Records
-        </h2>
-        <div style="padding: 10px;">
-            The chart is one of the most useful features on this platform. It is a complete date-by-date record of every
-            result declared for each market, going back to 2023. Daily results are listed in chronological order, with
-            monthly and yearly records available for every market in a clean table format. Many players refer to the chart
-            to verify old numbers or study historical data. Those who regularly follow the <a
-                href="https://super-7-satta.com/records/faridabad" style="color:blue;">Faridabad Result Chart</a> can find
-            its full chart history here as well. To access any chart, simply click View Chart next to the game on the
-            homepage — no extra steps required.</div>
         <h2 class="ql-align-center"
             style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A7 Satta King – What the Term Means
+            A1 Satta King Result 2026 – Live Updates, Daily Chart & All Bazaar Records
         </h2>
         <div style="padding: 10px;">
-            The term A7 Satta King is widely used across the satta community in India. In the traditional Satta Matka
-            format, the declared number for a market determines the winner for that day. The player who correctly predicts
-            that number is informally referred to as the Satta King for that round. Super 7 Satta publishes these results as
-            soon as they are officially declared. The platform does not conduct games or accept bets — its only role is to
-            deliver accurate, timely result updates. Players tracking the <a
-                href="https://super-7-satta.com/records/gaziabad" style="color:blue;">Ghaziabad Result Today Chart</a>
-            will find the same reliable, on-time updates here.
+            This is where you check A1 Satta King results every day. Disawar, Gali, Faridabad, Ghaziabad — all four bazaars
+            are covered here. Results go live the moment each bazaar closes. No delays. No wrong numbers. We also keep a
+            full satta chart going back to 2024. So whether you want today's result or an old record, it is all here.
         </div>
+
         <h2 class="ql-align-center"
             style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            Live Updates – Always On Time
+            A1 Satta King Result Today – Live Numbers Across All Bazaars
         </h2>
         <div style="padding: 10px;">
-            No one wants to wait for a result. On Super 7 Satta, numbers go live within seconds of the official announcement
-            — whether you are checking on your phone or desktop. The layout is kept simple on purpose — today's live result
-            for every market, full chart history accessible with one click, and links to all related satta games in one
-            place. This makes it easy to stay updated without confusion or delay, no matter how many markets you follow. If
-            <a href="https://super-7-satta.com/records/gali" style="color:blue;">Gali Result Chart</a> is part of your
-            daily check, you will find it updated here the moment it is officially declared.
+            Results come out at different times through the day. Disawar opens the morning at 5:00 AM. Faridabad follows in
+            the evening at 6:15 PM. Ghaziabad closes at 8:40 PM. Gali is the last one — 11:30 PM every night.
+            <br><br>
+            We post each number right after the official declaration. No estimated numbers are ever published here. Want to
+            see today's live result? Check the full result chart below.
+            <br><br>
+            <a href="/" style="color:blue;">See Today's A1 Satta King Result</a>
         </div>
+
         <h2 class="ql-align-center"
             style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            Responsible Information
+            A1 Satta Chart 2026 – Full Monthly Record
         </h2>
         <div style="padding: 10px;">
-            All result data and charts published on this website are for informational and entertainment purposes only. This
-            platform does not promote, conduct, or facilitate gambling or betting of any kind. Satta-related activities may
-            be restricted or illegal in certain states in India. Visitors are advised to check local laws before accessing
-            this content. We are not responsible for any financial loss or legal consequences.
-
+            The A1 satta chart 2026 is the most visited page on this site. It shows every daily result from January 2026 to
+            today. Each bazaar has its own separate chart. You can scan through the whole month in seconds.
         </div>
+
+        <h3 class="ql-align-center"
+            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
+            What Is Inside the Chart
+        </h3>
+        <div style="padding: 10px;">
+            ● Daily results from 01 to 31 for every month<br>
+            ● Separate records for Disawar, Gali, Faridabad, and Ghaziabad<br>
+            ● Old charts from 2024 and 2025<br>
+            ● Works fast on mobile — no heavy loading<br><br>
+            Old record data is useful. Many people use it to track past numbers. Our archive has everything in one clean
+            place.
+            <br><br>
+            <a href="/chart" style="color:blue;">Open the Full A1 Satta Chart 2026</a>
+        </div>
+
         <h2 class="ql-align-center"
             style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            Conclusion
+            A1 Satta King Disawar – India's First Morning Result
         </h2>
         <div style="padding: 10px;">
-            Super 7 Satta is a reliable daily destination for A7 Satta result updates, chart history, and live number
-            announcements. Whether you want today's result or need to look up a past number — it is all here, updated every
-            day without delay. Bookmark this page and come back daily so you never miss an update.
-
-        </div>
-        <h4 class="ql-align-center">FAQs — Super A7 Satta</h4>
-        <h4 class="ql-align-center">Q1.What is Super 7 Satta and how does it connect to A7 Satta King?</h4>
-        <div class="answer" id="a1" style="padding:10px;">
-            If you've been searching for Satta King results and landed on super-7-satta.com, you already know what this
-            place is about. Super 7 Satta has been running as one of the more reliable spots to get A7 Satta King updates —
-            things like live results, old charts, and daily game numbers for markets like Disawar, Gali, Faridabad,
-            Ghaziabad, Delhi Bazaar, Palika Bazar, and others. Players in the community started calling it A7 Satta or Super
-            7 Satta interchangeably, and the name just stuck. It's not complicated — you open the site, results are right
-            there.
+            Disawar is the oldest bazaar in the satta king market.
+            <br><br>
+            It closes at 5:00 AM sharp. That makes it the first result of every single day. A lot of people start their
+            morning by checking this number.
         </div>
 
-
-
-        <h4 class="ql-align-center">What exactly is A7 Satta King? Where does the name 'A7' come from?</h4>
-        <div class="answer" id="a2" style="padding:10px;">
-            Honestly, there's no deep meaning behind it. 'A7' is just a term that caught on within the Satta player
-            community — people started associating it with fast, no-nonsense result sites, and Super-7-Satta.com became one
-            of the names people trust when they want Disawar, Gali, or Faridabad results without waiting around. It's grown
-            quite a bit over the past couple of years, mostly through word of mouth.
+        <h3 class="ql-align-center"
+            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
+            Why People Follow Disawar
+        </h3>
+        <div style="padding: 10px;">
+            ● It is the earliest result in India<br>
+            ● The morning number is widely discussed all day<br>
+            ● Disawar's old chart is one of the most searched records online<br>
+            ● It has been running consistently for many years<br><br>
+            Our Disawar page updates every morning right after the result. You get today's number at the top. Below that is
+            the full monthly chart and year-wise archive.
+            <br><br>
+            <a href="/records/disawar" style="color:blue;">Check Disawar Result</a>
         </div>
 
-
-
-        <h4 class="ql-align-center">How many games does Super 7 Satta cover every day?</h4>
-        <div class="answer" id="a3" style="padding:10px;">
-            More than 25 games, updated every single day. We're talking Disawar, Gali, Ghaziabad, Faridabad, Delhi Bazaar,
-            Palika Bazar — the ones everyone already knows — but also Prayagraj, Shri Ganesh, Roop Nagar, Gwalior, Fatehpur,
-            Alwar, Noida Night, Dwarka, Goa Night, Jeevan Shree, Delhi Matka, MeghaCity, Dehradun City, Aligarh Night,
-            Chatisgarh, Sadar Bazar, and a few more. Finding all these results on a single site is actually rare — most
-            platforms miss half these markets.
+        <h2 class="ql-align-center"
+            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
+            A1 Satta King Faridabad – The Evening Bazaar
+        </h2>
+        <div style="padding: 10px;">
+            Faridabad closes at 6:15 PM every day.
+            <br><br>
+            It is the most checked evening result across North India. People wrap up their day and check this number. It
+            gets a lot of traffic in the 6 to 7 PM window.
         </div>
 
-
-
-        <h4 class="ql-align-center">How do I check today's A7 Satta King result on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Just open super-7-satta.com. No login, no registration, no pop-ups asking you to sign up. The homepage has a
-            live result table showing yesterday's number and today's result for every game, side by side. As soon as a
-            result is officially declared, it goes up. That's it — nothing fancy about the process.
+        <h3 class="ql-align-center"
+            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
+            Faridabad — Quick Facts
+        </h3>
+        <div style="padding: 10px;">
+            ● Result time: 6:15 PM daily<br>
+            ● Published within minutes of the official closing<br>
+            ● Full monthly chart available<br>
+            ● Archive goes back to 2022<br><br>
+            The Faridabad page is clean and simple. Today's number is at the top. The full chart is right below it.
+            <br><br>
+            <a href="/records/faridabad" style="color:blue;">Check Faridabad Result</a>
         </div>
 
-        <h4 class="ql-align-center">What time does the Disawar result usually come on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Disawar result comes out at around 2:00 AM in the night. Super 7 Satta posts it within seconds after the
-            official announcement — if you've been using the site for a while, you've probably noticed it's usually up
-            before most other sites even update. Disawar is one of those old-school markets that people have been following
-            for decades, so there's a lot of interest in it.
+        <h2 class="ql-align-center"
+            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
+            A1 Satta King Gali – The Last Result of the Night
+        </h2>
+        <div style="padding: 10px;">
+            Gali closes at 11:30 PM.
+            <br><br>
+            It is the final satta result of every day. Late at night, Gali gets the most searches. People wait for this
+            number all evening.
         </div>
 
-        <h4 class="ql-align-center">Why does the result show 'waiting' for some games on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            That just means the result hasn't come out yet from the official source. The site only updates when the real
-            number is declared — it won't guess or post anything unofficial. Sometimes games get delayed for reasons on the
-            operator's side. If you see 'waiting' for longer than usual, try refreshing. Or better yet, join the WhatsApp or
-            Telegram channel — you'll get an alert the moment the result drops.
+        <h3 class="ql-align-center"
+            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
+            Why Gali Gets So Much Attention
+        </h3>
+        <div style="padding: 10px;">
+            ● Last major bazaar to close each night<br>
+            ● Searched heavily for guessing numbers before closing<br>
+            ● Full 2026 year chart is available<br>
+            ● Monthly records go back several years<br><br>
+            We update the Gali result as soon as it is officially out. If you are waiting for the night result, this is the
+            right page.
+            <br><br>
+            <a href="/records/gali" style="color:blue;">Check Gali Result</a>
         </div>
 
-        <h4 class="ql-align-center">Can I get Super 7 Satta results on WhatsApp or Telegram?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Yes, and many regular users actually prefer this over opening the website every time. Both the WhatsApp channel
-            and Telegram channel push result updates directly to your phone as soon as they're posted. You'll find the links
-            on the homepage. If you follow multiple markets, this saves a lot of time — results just come to you.
+        <h2 class="ql-align-center"
+            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
+            Why People Use A1 Satta King Result
+        </h2>
+        <div style="padding: 10px;">
+            There are many result sites online. Most are slow or post the wrong numbers.
+            <br><br>
+            Here is what is different about this platform.
         </div>
 
-        <h4 class="ql-align-center">What is a Satta King chart and how do I read the one on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            A chart is just a date-by-date record of past results for a game. Each row shows one date and the number that
-            was declared on that day. People use charts to study old results, spot patterns, or simply verify a past number.
-            On Super 7 Satta, charts are available from 2023 to 2026. Hit the 'View Chart' button on the homepage next to
-            any game and it opens right up — no extra steps.
+        <h3 class="ql-align-center">Results Come Fast</h3>
+        <div style="padding: 10px;">
+            Every result is live within minutes of closing time. You do not have to wait or refresh endlessly.
         </div>
 
-        <h4 class="ql-align-center">How do I check the yearly chart for Disawar or Gali on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Two ways to do it. First option — scroll to the game in the list and click 'View Chart' directly. Second option
-            — go to the 'Check All Game Year Chart' section near the bottom of the homepage, choose the game name, pick a
-            year (2023, 2024, 2025, or 2026), and click 'Check Chart'. The full year's record loads up. Useful if you're
-            looking at a specific game's history in one go.
+        <h3 class="ql-align-center">Only Verified Numbers</h3>
+        <div style="padding: 10px;">
+            We never post guessed or estimated results. Every number here is the officially declared satta king result —
+            nothing else.
         </div>
 
-        <h4 class="ql-align-center">Is the monthly chart updated every day?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Yes. After each game result comes in, the current month's chart is updated to include it. So whatever you see is
-            current. Older charts from past months and years are stored permanently on the site — you can go back and look
-            up results from 2023 just as easily as checking last week's numbers.
-        </div>
-        <h4 class="ql-align-center">Does Super 7 Satta have charts for Faridabad, Ghaziabad, and Shri Ganesh Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Yes — charts for all of them are available. Faridabad, Ghaziabad, Shri Ganesh, Gali, Disawar, Delhi Bazaar,
-            Sadar Bazar — all covered with full monthly and yearly records. Click 'View Chart' next to the game you want
-            from the homepage and it'll pull up the complete history.
-        </div>
-        <h4 class="ql-align-center">What is Satta King and how does the number game work?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Satta King is a number-guessing game where you pick a two-digit number between 00 and 99. If the declared result
-            matches your number, you win. Different markets — like Gali, Disawar, Faridabad — announce results at different
-            times of the day and night. Super 7 Satta's role is only to publish those results once they're officially
-            declared. The platform doesn't run games, doesn't take bets, doesn't involve itself in any of that.
-        </div>
-        <h4 class="ql-align-center">Who is a Khaiwal in Satta King, and how do I find one through Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            A Khaiwal is essentially a middleman — they collect your bet, pass it to the game operator, and then handle your
-            payout if you win. Super 7 Satta lists verified Khaiwal contacts on the homepage through WhatsApp. These are
-            people who work directly with the official game companies. If you want to place a bet, you reach out to them.
-            Super 7 Satta itself only shares result information — it has nothing to do with taking or managing bets.
-        </div>
-        <h4 class="ql-align-center">Is Satta King legal in India? What about Super 7 Satta's legal status?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Gambling laws in India differ from state to state. The main law is the Public Gambling Act of 1867, and most
-            states use it to restrict or ban Satta and number-based gambling. Whether something is legal for you depends on
-            your state. Super 7 Satta only publishes results — it's an informational website, not a gambling platform. Think
-            of it like a news site that reports scores. It doesn't conduct or promote any gambling. That said, anyone using
-            Satta platforms should look into what the rules say in their state.
-        </div>
-        <h4 class="ql-align-center">Is it safe to use super-7-satta.com? Will my data be shared?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            The site is read-only — you're just looking at results and charts. No personal information is collected from
-            regular visitors. There's no sign-up wall for accessing results, so nothing is being stored about you in the
-            background. The site runs on ad sponsorship. If you want to read the full disclaimer, it's on the website.
-        </div>
-        <h4 class="ql-align-center">Are the results on Super 7 Satta accurate?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Results are sourced directly from official game operators and verified through Khaiwal networks. Super 7 Satta
-            has maintained a consistent record of accurate, timely updates across all the markets it covers. That said, when
-            there's a delay or error, it usually comes from the source operator's end — the platform can't control what
-            happens before the number is submitted. Errors that get flagged are corrected quickly.
+        <h3 class="ql-align-center">Works Great on Mobile</h3>
+        <div style="padding: 10px;">
+            The site loads fast on any phone. No pop-ups. No heavy ads. Just the result you came here for.
         </div>
 
-
-        <h4 class="ql-align-center">What makes Super 7 Satta better than other A7 Satta King websites?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            A few things make a real difference. Coverage is wider — 25+ games daily is more than most competitors bother
-            with. Speed matters too — results go up in real time, and regular users have noted it beats other sites to the
-            post fairly often. The chart history is also more complete — year-wise records from 2023 to 2026 are available
-            for every game. On top of that, content is available in both Hindi and English, which opens it up to more users.
-        </div>
-        <h4 class="ql-align-center">Does Super 7 Satta cover all the games other A7 Satta King sites cover?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Yes, and beyond. Every game you'd find on a typical A7 Satta platform is here — Disawar, Gali, Faridabad,
-            Ghaziabad, Delhi Bazaar, Shri Ganesh, Sadar Bazar. But Super 7 Satta also covers Palika Bazar, Prayagraj, Roop
-            Nagar, Gwalior, Fatehpur, Alwar, Agra, Dwarka, Noida Night, Goa Night, Jeevan Shree, MeghaCity, Dehradun City,
-            Aligarh Night, Delhi Matka, and Chatisgarh. That's hard to match on a single platform.
-        </div>
-        <h4 class="ql-align-center">How do I bookmark Super 7 Satta on my mobile?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            On Android with Chrome — open the site, tap the three-dot menu at the top right, and select 'Add to Home
-            Screen'. On iPhone with Safari — tap the Share icon at the bottom and pick 'Add to Home Screen'. A shortcut icon
-            appears on your phone's home screen and opens the site directly, like an app. No typing the URL every time.
-        </div>
-        <h4 class="ql-align-center">Does Super 7 Satta have a login? What is it used for?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            There's a login on the site, but it's only for Khaiwal partners and verified game operators who submit results.
-            If you're a regular visitor checking results or browsing charts, you don't need an account. Everything —
-            results, charts, game lists — is visible without logging in.
-        </div>
-        <h4 class="ql-align-center">What should I do if a result is missing or incorrect on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            First thing — refresh the page. If the result was just declared, it might still be loading. If refreshing
-            doesn't help after a minute or two, use the WhatsApp contact on the homepage to report it. The team checks these
-            reports and corrects issues quickly. Result accuracy is something they take seriously.
+        <h3 class="ql-align-center">Years of Old Data</h3>
+        <div style="padding: 10px;">
+            Need a result from 2024 or 2025? It is in the archive. The full satta chart history is stored and easy to find.
         </div>
 
-        <h4 class="ql-align-center">Can I see yesterday's Gali Satta and Disawar Satta result on Super 7 Satta?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            Yes — the homepage shows yesterday's result and today's live result side by side for every game. For anything
-            older than that, the View Chart feature has records going back to 2023. Just click 'View Chart' on any game and
-            search by date — whatever you're looking for will be there.
-        </div>
-        <h4 class="ql-align-center">Is there a Super 7 Satta app for Android or iOS?</h4>
-        <div class="answer" id="a4" style="padding:10px;">
-            No dedicated app at the moment — it's not on Google Play or the App Store. But the website itself works well on
-            mobile browsers and loads fast on both Android and iPhone. Adding it to your home screen (as mentioned above)
-            basically gives you the same experience as using an app. And the WhatsApp and Telegram channels act as a push
-            notification system for result updates, so you're not missing much without a standalone app.
+        <h3 class="ql-align-center">Updated Every Day</h3>
+        <div style="padding: 10px;">
+            No breaks. No holidays. All four bazaars are tracked 365 days a year.
         </div>
 
+        <h2 class="ql-align-center"
+            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
+            The Reality of A1 Satta King Result
+        </h2>
+        <div style="padding: 10px;">
+            A lot of websites make big claims. We want to be straight with you instead.
+            <br><br>
+            A1 Satta King Result is a result tracking platform. We collect declared satta king numbers from major bazaars
+            and publish them here every day. Disawar, Faridabad, Ghaziabad, Gali — all four results are posted daily after
+            their official closing times. That is the core of what this site does.
+            <br><br>
+            We do not predict numbers. We do not sell tips or winning formulas. Any website that promises guaranteed results
+            or lucky numbers is not being honest with you. No one can predict a satta result before it is declared. The
+            numbers are random. The outcome is always uncertain.
+            <br><br>
+            What we can give you is accurate, verified, and timely information. The result that is posted here is the same
+            result that was officially declared — nothing added, nothing changed.
+        </div>
 
-        <!--<h4 class="ql-align-center" >Q5. Is it safe to play Super A7 Satta online?</h4>-->
-        <!--<div class="answer" id="a5">-->
-        <!--  A5. We provide information only. The satta is all about luck, so play it responsibly.-->
-        <!--</div>-->
-    </section> --}}
+        <h3 class="ql-align-center">What This Site Is</h3>
+        <div style="padding: 10px;">
+            This is a free result information platform. You can check today's live result. You can browse the monthly chart.
+            You can look up old records going back to 2022. All of that is available here without any sign-up or payment.
+            <br><br>
+            We update the site every single day. All four bazaars are tracked without exception — including weekends and
+            public holidays. If a result is delayed for any reason, we wait for the official declaration before posting
+            anything.
+        </div>
+
+        <h3 class="ql-align-center">What This Site Is Not</h3>
+        <div style="padding: 10px;">
+            This is not a betting platform. We do not accept bets. We do not process payments. We do not run any kind of
+            game or lottery. We are not affiliated with any satta operator or bazaar.
+            <br><br>
+            This platform exists to make the results information easy to find. That is all.
+        </div>
+
+        <h3 class="ql-align-center">A Word About Accuracy</h3>
+        <div style="padding: 10px;">
+            Our chart archive goes back to 2024. Every number in that archive is the officially declared result for that
+            date and bazaar. We take accuracy seriously because the record only has value if it is correct. If an error is
+            ever found and reported, we fix it immediately.
+            <br><br>
+            When you check results here, you are looking at real data — not estimates, not guesses, not recycled numbers
+            from the day before.
+        </div>
+
+        <h2 class="ql-align-center"
+            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
+            About This Platform
+        </h2>
+        <div style="padding: 10px;">
+            A1 Satta King Result is an information platform. We record and display publicly available satta result data.
+            This site does not promote or support any betting or gambling activity. Please follow the laws and rules that
+            apply in your state.
+        </div>
+
+        <h2 class="ql-align-center"
+            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
+            Frequently Asked Questions
+        </h2>
+
+        <h3 class="ql-align-center">What exactly is A1 Satta King Result, and what does this website do?</h3>
+        <div class="answer" style="padding:10px;">
+            A1 Satta King Result is an online result information platform. Every day we publish the officially declared
+            numbers for four major satta bazaars — Disawar, Faridabad, Ghaziabad, and Gali. We also maintain a full
+            historical chart going back to 2024 so users can look up records anytime. This site does not conduct any form of
+            betting, gambling, or lottery. It is purely an information resource for people who want to check satta king
+            results in one reliable place.
+        </div>
+
+        <h3 class="ql-align-center">Can the satta chart help me predict future results?</h3>
+        <div class="answer" style="padding:10px;">
+            The chart shows historical data — what numbers were declared on which dates in the past. It is a factual record
+            and nothing more. No chart, pattern, or formula can accurately predict a future satta result. The numbers are
+            random and each declaration is independent. The chart is useful for reviewing past records and verifying old
+            results. Using it to predict upcoming numbers is not something we recommend or support.
+        </div>
+
+        <h3 class="ql-align-center">What should I do if the result is not updated at the expected time?</h3>
+        <div class="answer" style="padding:10px;">
+            Each bazaar has a fixed closing time but the official declaration can sometimes take a few extra minutes. If you
+            visit the page right at closing time and do not see the result yet, simply refresh after 5 to 10 minutes. We
+            post the result as soon as it is officially out. We never fill in a blank entry with an unverified number just
+            to appear updated — accuracy always comes before speed on this platform.
+        </div>
+
+        <h3 class="ql-align-center">Is there any cost or registration required to use this site?</h3>
+        <div class="answer" style="padding:10px;">
+            No. A1 Satta King Result is completely free to use. There is no registration, no login, no subscription, and no
+            payment of any kind. You open the page, check the result or chart you need, and that is it. We do not collect
+            personal information and we do not require you to create an account to access any part of the site.
+        </div>
+
+        <h3 class="ql-align-center">Why do different websites sometimes show different results for the same bazaar?</h3>
+        <div class="answer" style="padding:10px;">
+            Some websites post results early based on unofficial sources. Others may have errors that never get corrected. A
+            few sites recycle old numbers or make mistakes during manual entry. On A1 Satta King, we post only after the
+            official declaration and we cross-check before publishing. Our archive is reviewed for consistency. If you ever
+            see a discrepancy between our result and another source, the version here is based on the officially declared
+            number.
+        </div>
+
+        <h3 class="ql-align-center">Does A1 Satta King Result publish guessing numbers or panels?</h3>
+        <div class="answer" style="padding:10px;">
+            Our main result and chart sections show only officially declared numbers. We do not mix guessing content into
+            the result record because it affects the reliability of the data. Some pages on the site may cover
+            guessing-related content separately — but that is always clearly labeled and never presented as an official
+            result. The result chart and live result section are strictly for verified declared numbers only.
+        </div>
+
+    </section>
 
 
     <style>
