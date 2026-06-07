@@ -742,7 +742,7 @@
 
 
 
-    <section class="bg-white md:py-4 homeContent container">
+    {{-- <section class="bg-white md:py-4 homeContent container">
 
 
         <h2 class="ql-align-center"
@@ -1032,7 +1032,7 @@
         <!--<div class="answer" id="a5">-->
         <!--  A5. We provide information only. The satta is all about luck, so play it responsibly.-->
         <!--</div>-->
-    </section>
+    </section> --}}
 
 
     <style>
