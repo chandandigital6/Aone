@@ -250,9 +250,12 @@
         <section class="rv-ad-wrap">
             <div class="rv-ad-box">
                 @if (!empty($bottomAdvertisement->content))
-                    <div class="addb-content">
+                    {{-- <div class="addb-content">
                         {!! $bottomAdvertisement->content !!}
-                    </div>
+                    </div> --}}
+                    <div class="addb-content" style="font-size:15px; line-height:1.6;">
+    {!! $bottomAdvertisement->content !!}
+</div>
                 @endif
 
                 @if (!empty($bottomAdvertisement->image))

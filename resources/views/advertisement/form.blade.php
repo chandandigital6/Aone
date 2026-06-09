@@ -128,8 +128,12 @@
           name="content"
           rows="10"
           class="w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm">
-    {{ old('content', $advertisement->content ?? '') }}
+{{ old('content', $advertisement->content ?? '') }}
 </textarea>
+
+@error('content')
+    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+@enderror
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -165,9 +169,129 @@
 
     </div>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script> --}}
+
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/super-build/ckeditor.js"></script>
 
 <script>
+CKEDITOR.ClassicEditor.create(document.getElementById("content-editor"), {
+
+    toolbar: {
+        items: [
+            'heading',
+            '|',
+            'fontfamily',
+            'fontsize',
+            'fontColor',
+            'fontBackgroundColor',
+            '|',
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            '|',
+            'alignment',
+            '|',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'link',
+            'insertTable',
+            '|',
+            'undo',
+            'redo'
+        ]
+    },
+
+    heading: {
+        options: [
+            {
+                model: 'paragraph',
+                title: 'Paragraph',
+                class: 'ck-heading_paragraph'
+            },
+            {
+                model: 'heading1',
+                view: 'h1',
+                title: 'Heading 1',
+                class: 'ck-heading_heading1'
+            },
+            {
+                model: 'heading2',
+                view: 'h2',
+                title: 'Heading 2',
+                class: 'ck-heading_heading2'
+            },
+            {
+                model: 'heading3',
+                view: 'h3',
+                title: 'Heading 3',
+                class: 'ck-heading_heading3'
+            },
+            {
+                model: 'heading4',
+                view: 'h4',
+                title: 'Heading 4',
+                class: 'ck-heading_heading4'
+            },
+            {
+                model: 'heading5',
+                view: 'h5',
+                title: 'Heading 5',
+                class: 'ck-heading_heading5'
+            },
+            {
+                model: 'heading6',
+                view: 'h6',
+                title: 'Heading 6',
+                class: 'ck-heading_heading6'
+            }
+        ]
+    },
+
+    fontSize: {
+        options: [
+            8,
+            10,
+            12,
+            14,
+            'default',
+            18,
+            20,
+            24,
+            28,
+            32,
+            40,
+            48,
+            60,
+            72
+        ],
+        supportAllValues: true
+    },
+
+    fontFamily: {
+        supportAllValues: true
+    },
+
+    htmlSupport: {
+        allow: [
+            {
+                name: /.*/,
+                attributes: true,
+                classes: true,
+                styles: true
+            }
+        ]
+    }
+})
+.catch(error => {
+    console.error(error);
+});
+</script>
+
+{{-- <script>
 document.addEventListener('DOMContentLoaded', function () {
     ClassicEditor
         .create(document.querySelector('#content-editor'))
@@ -175,6 +299,35 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(error);
         });
 });
-</script>
+</script> --}}
 
+<style>
+.ad-content *{
+    max-width:100%;
+}
+
+.ad-content h1{
+    font-size:48px;
+}
+
+.ad-content h2{
+    font-size:40px;
+}
+
+.ad-content h3{
+    font-size:32px;
+}
+
+.ad-content h4{
+    font-size:28px;
+}
+
+.ad-content h5{
+    font-size:24px;
+}
+
+.ad-content h6{
+    font-size:20px;
+}
+</style>
 </x-layouts::app>
