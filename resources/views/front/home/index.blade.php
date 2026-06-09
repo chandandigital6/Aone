@@ -1096,11 +1096,23 @@
 
     </section>
 
-<style>
+
+    <style>
+        p br {
+            display: block;
+        }
+
+
+
+        /* =========================
+   HOME CONTENT STYLING
+========================= */
+
 .homeContent{
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 15px;
+    max-width:1100px;
+    margin:0 auto;
+    padding:20px 15px;
+    background:#fff;
 }
 
 /* Main Heading */
@@ -1111,7 +1123,7 @@
     padding:16px 20px !important;
     font-size:30px !important;
     font-weight:700 !important;
-    line-height:1.4 !important;
+    line-height:1.5 !important;
     border-radius:6px;
     margin:35px 0 20px;
 }
@@ -1120,35 +1132,42 @@
 .homeContent h3{
     background:#f8f9fa;
     color:#222 !important;
-    text-align:center !important;
+    text-align:left !important;
     padding:12px 15px !important;
     font-size:24px !important;
     font-weight:700 !important;
+    line-height:1.5 !important;
     border-left:5px solid #406e83;
     border-radius:4px;
     margin:30px 0 15px;
 }
 
-/* Paragraph Content */
+/* Paragraph & Content */
 .homeContent div,
 .homeContent .answer{
     font-size:18px !important;
     line-height:1.9 !important;
     color:#333 !important;
-    text-align:center !important;
-    max-width:950px;
+    text-align:left !important;
+    max-width:1000px;
     margin:0 auto 25px auto;
-    padding:0 20px !important;
+    padding:0 10px !important;
 }
 
 /* Lists */
 .homeContent ul,
 .homeContent ol{
-    max-width:900px;
-    margin:20px auto;
+    max-width:1000px;
+    margin:15px auto 25px;
+    padding-left:25px;
     text-align:left;
+}
+
+.homeContent li{
     font-size:18px;
     line-height:1.9;
+    color:#333;
+    margin-bottom:8px;
 }
 
 /* Links */
@@ -1162,29 +1181,65 @@
     text-decoration:underline;
 }
 
-/* Mobile */
-@media(max-width:768px){
+/* Strong Text */
+.homeContent strong,
+.homeContent b{
+    font-weight:700;
+    color:#111;
+}
+
+/* Table Styling */
+.homeContent table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+}
+
+.homeContent table th,
+.homeContent table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+.homeContent table th{
+    background:#406e83;
+    color:#fff;
+}
+
+/* Spacing */
+.homeContent p{
+    margin-bottom:18px;
+}
+
+/* Mobile Responsive */
+@media (max-width:768px){
+
+    .homeContent{
+        padding:15px 10px;
+    }
 
     .homeContent h2{
         font-size:22px !important;
-        padding:14px 15px !important;
+        padding:14px 12px !important;
+        margin:25px 0 15px;
     }
 
     .homeContent h3{
-        font-size:20px !important;
+        font-size:19px !important;
+        padding:10px 12px !important;
     }
 
     .homeContent div,
     .homeContent .answer{
         font-size:16px !important;
         line-height:1.8 !important;
-        padding:0 10px !important;
+        padding:0 5px !important;
+    }
+
+    .homeContent li{
+        font-size:16px;
     }
 }
-</style>
-    <style>
-        p br {
-            display: block;
-        }
     </style>
 @endsection
