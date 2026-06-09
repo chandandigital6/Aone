@@ -102,7 +102,7 @@
 
             .rv-ad-box,
             .rv-ad-box * {
-                font-size: 14px !important;
+                font-size: 20px !important;
                 line-height: 1.4 !important;
                 font-weight: 700 !important;
             }
