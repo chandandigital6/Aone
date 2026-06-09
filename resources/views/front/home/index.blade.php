@@ -13,12 +13,6 @@
             font-family: Arial, 'Noto Sans Devanagari', sans-serif;
         }
 
-        .bottom-ad-content,
-.bottom-ad-content * {
-    font-size: 20px !important;
-    line-height: 1.6 !important;
-}
-
         .rv-ad-box {
             background: linear-gradient(180deg, #ffd900 0%, #fff8cf 100%);
             border: 3px dashed #e60000;
@@ -121,7 +115,7 @@
             .rv-ad-box h6,
             .rv-ad-box p,
             .rv-ad-box div {
-                font-size: 14px !important;
+                font-size: 20px !important;
             }
 
             .rv-ad-title {
@@ -142,11 +136,7 @@
                 max-width: 175px;
             }
 
-            .bottom-ad-content,
-.bottom-ad-content * {
-    font-size: 20px !important;
-    line-height: 1.6 !important;
-}
+            
         }
     </style>
 
