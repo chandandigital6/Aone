@@ -253,7 +253,7 @@
                     {{-- <div class="addb-content">
                         {!! $bottomAdvertisement->content !!}
                     </div> --}}
-                    <div class="addb-content" style="font-size:15px; line-height:1.6;">
+                    <div class="addb-content" style="font-size:17px; line-height:1.6;">
     {!! $bottomAdvertisement->content !!}
 </div>
                 @endif
