@@ -13,6 +13,12 @@
             font-family: Arial, 'Noto Sans Devanagari', sans-serif;
         }
 
+        .bottom-ad-content,
+.bottom-ad-content * {
+    font-size: 20px !important;
+    line-height: 1.6 !important;
+}
+
         .rv-ad-box {
             background: linear-gradient(180deg, #ffd900 0%, #fff8cf 100%);
             border: 3px dashed #e60000;
@@ -102,7 +108,7 @@
 
             .rv-ad-box,
             .rv-ad-box * {
-                font-size: 17px !important;
+                font-size: 14px !important;
                 line-height: 1.4 !important;
                 font-weight: 700 !important;
             }
@@ -115,7 +121,7 @@
             .rv-ad-box h6,
             .rv-ad-box p,
             .rv-ad-box div {
-                font-size: 17px !important;
+                font-size: 14px !important;
             }
 
             .rv-ad-title {
@@ -135,6 +141,12 @@
                 max-height: 48px;
                 max-width: 175px;
             }
+
+            .bottom-ad-content,
+.bottom-ad-content * {
+    font-size: 20px !important;
+    line-height: 1.6 !important;
+}
         }
     </style>
 
@@ -253,7 +265,7 @@
                     {{-- <div class="addb-content">
                         {!! $bottomAdvertisement->content !!}
                     </div> --}}
-                    <div class="addb-content" style="font-size:17px; line-height:1.6;">
+                    <div class="addb-content bottom-ad-content">
     {!! $bottomAdvertisement->content !!}
 </div>
                 @endif

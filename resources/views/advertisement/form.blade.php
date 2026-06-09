@@ -167,7 +167,7 @@
 
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
-<script>
+{{-- <script>
 document.addEventListener('DOMContentLoaded', function () {
     ClassicEditor
         .create(document.querySelector('#content-editor'))
@@ -175,6 +175,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(error);
         });
 });
-</script>
+</script> --}}
 
 </x-layouts::app>
