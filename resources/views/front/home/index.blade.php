@@ -41,7 +41,7 @@
         .rv-ad-box p,
         .rv-ad-box div {
             margin: 4px 0 !important;
-            font-size: 20px !important;
+            font-size: 16px !important;
         }
 
         .rv-ad-title {
@@ -102,7 +102,7 @@
 
             .rv-ad-box,
             .rv-ad-box * {
-                font-size: 20px !important;
+                font-size: 16px !important;
                 line-height: 1.4 !important;
                 font-weight: 700 !important;
             }
@@ -115,7 +115,7 @@
             .rv-ad-box h6,
             .rv-ad-box p,
             .rv-ad-box div {
-                font-size: 20px !important;
+                font-size: 14px !important;
             }
 
             .rv-ad-title {
@@ -135,8 +135,6 @@
                 max-height: 48px;
                 max-width: 175px;
             }
-
-            
         }
     </style>
 
@@ -252,12 +250,9 @@
         <section class="rv-ad-wrap">
             <div class="rv-ad-box">
                 @if (!empty($bottomAdvertisement->content))
-                    {{-- <div class="addb-content">
+                    <div class="addb-content">
                         {!! $bottomAdvertisement->content !!}
-                    </div> --}}
-                    <div class="addb-content bottom-ad-content">
-    {!! $bottomAdvertisement->content !!}
-</div>
+                    </div>
                 @endif
 
                 @if (!empty($bottomAdvertisement->image))
