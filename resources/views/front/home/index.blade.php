@@ -497,15 +497,15 @@
                     <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
 
                         <div class="py-2 text-center bg-white border-b border-gray-200">
-                            <a href="{{ route('game.record', $game->slug) }}"
-                                class="block text-base font-black tracking-wide text-red-700 uppercase hover:underline sm:text-xl">
-                                {{ $game->name ?: 'NA' }}
-                            </a>
+                          <a href="{{ route('game.record', $game->slug) }}"
+   class="block font-black tracking-wide text-red-700 uppercase hover:underline text-[18px] sm:text-[24px]">
+    {{ $game->name ?: 'NA' }}
+</a>
 
                             @if (!empty($game->result_time))
-                                <p class="mt-1 text-xs font-bold text-black sm:text-sm">
-                                    {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
-                                </p>
+                              <p class="mt-1 text-sm font-bold text-black sm:text-base">
+    {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
+</p>
                             @endif
                         </div>
 
