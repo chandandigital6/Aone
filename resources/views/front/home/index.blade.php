@@ -1096,7 +1096,92 @@
 
     </section>
 
+<style>
+.homeContent{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
 
+/* Main Heading */
+.homeContent h2{
+    background:#406e83 !important;
+    color:#fff !important;
+    text-align:center !important;
+    padding:16px 20px !important;
+    font-size:30px !important;
+    font-weight:700 !important;
+    line-height:1.4 !important;
+    border-radius:6px;
+    margin:35px 0 20px;
+}
+
+/* Sub Heading */
+.homeContent h3{
+    background:#f8f9fa;
+    color:#222 !important;
+    text-align:center !important;
+    padding:12px 15px !important;
+    font-size:24px !important;
+    font-weight:700 !important;
+    border-left:5px solid #406e83;
+    border-radius:4px;
+    margin:30px 0 15px;
+}
+
+/* Paragraph Content */
+.homeContent div,
+.homeContent .answer{
+    font-size:18px !important;
+    line-height:1.9 !important;
+    color:#333 !important;
+    text-align:center !important;
+    max-width:950px;
+    margin:0 auto 25px auto;
+    padding:0 20px !important;
+}
+
+/* Lists */
+.homeContent ul,
+.homeContent ol{
+    max-width:900px;
+    margin:20px auto;
+    text-align:left;
+    font-size:18px;
+    line-height:1.9;
+}
+
+/* Links */
+.homeContent a{
+    color:#0d6efd !important;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.homeContent a:hover{
+    text-decoration:underline;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .homeContent h2{
+        font-size:22px !important;
+        padding:14px 15px !important;
+    }
+
+    .homeContent h3{
+        font-size:20px !important;
+    }
+
+    .homeContent div,
+    .homeContent .answer{
+        font-size:16px !important;
+        line-height:1.8 !important;
+        padding:0 10px !important;
+    }
+}
+</style>
     <style>
         p br {
             display: block;
