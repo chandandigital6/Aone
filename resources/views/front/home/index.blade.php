@@ -41,7 +41,7 @@
         .rv-ad-box p,
         .rv-ad-box div {
             margin: 4px 0 !important;
-            font-size: 16px !important;
+            font-size: 20px !important;
         }
 
         .rv-ad-title {
