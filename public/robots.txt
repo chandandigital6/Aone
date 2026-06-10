@@ -1,16 +1,24 @@
 User-agent: *
+
+# Allow all important content
 Allow: /
 
-# Admin & auth routes
+# Block system folders
 Disallow: /admin/
 Disallow: /login/
 Disallow: /register/
 Disallow: /password/
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /bootstrap/
+Disallow: /config/
+Disallow: /resources/
+Disallow: /routes/
+Disallow: /app/
 
-# Block URL parameters
-Disallow: /*?replytocom=
-Disallow: /*?utm_
-Disallow: /*&utm_
+# Block URL parameters (optional)
+Disallow: /*?*
 
 # Sitemap
-Sitemap: https://super-7-satta.com/sitemap.xml
+Sitemap: https://a1sattakingresult.com/sitemap.xml
+
