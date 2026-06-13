@@ -30,7 +30,7 @@
                 @csrf
 
                 @if(isset($advertisement))
-                    @method('PUT')
+                    {{-- @method('PUT') --}}
                 @endif
 
                 <div class="grid gap-6 md:grid-cols-2">
