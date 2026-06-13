@@ -26,7 +26,7 @@ class AdvertisementController extends Controller
             'title'     => ['nullable', 'string', 'max:255'],
             'position'  => ['nullable', 'string', 'max:255'],
             'content'   => ['nullable', 'string'],
-            'image'     => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:4096'],
+            'image'     => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif,webp', 'max:4096'],
             'link'      => ['nullable', 'url', 'max:255'],
             'is_active' => ['nullable', 'boolean'],
         ]);
@@ -54,7 +54,7 @@ class AdvertisementController extends Controller
             'title'     => ['nullable', 'string', 'max:255'],
             'position'  => ['nullable', 'string', 'max:255'],
             'content'   => ['nullable', 'string'],
-            'image'     => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:4096'],
+            'image'     => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif,webp', 'max:4096'],
             'link'      => ['nullable', 'url', 'max:255'],
             'is_active' => ['nullable', 'boolean'],
         ]);

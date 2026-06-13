@@ -165,13 +165,13 @@
                         <a href="{{ $topAdvertisement->link }}" target="_blank" style="text-decoration:none;">
                             <span class="rv-ad-img">
                                 <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                    alt="{{ $topAdvertisement->title }}">
+                                    alt="{{ $topAdvertisement->title }}" width="139" height="48">
                             </span>
                         </a>
                     @else
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                alt="{{ $topAdvertisement->title }}">
+                                alt="{{ $topAdvertisement->title }}" width="139" height="48">
                         </span>
                     @endif
                 @endif
@@ -191,7 +191,7 @@
                 <h2 class="rv-ad-name">S.K BHAI</h2>
 
                 <span class="rv-ad-img">
-                    <img src="{{ asset('Wp.png') }}" alt="S.K Bhai">
+                    <img src="{{ asset('Wp.png') }}" alt="S.K Bhai" width="139" height="48">
                 </span>
             </div>
         </section>
@@ -218,13 +218,13 @@
                         <a href="{{ $middleAdvertisement->link }}" target="_blank" style="text-decoration:none;">
                             <span class="rv-ad-img">
                                 <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                    alt="{{ $middleAdvertisement->title }}">
+                                    alt="{{ $middleAdvertisement->title }}" width="139" height="48">
                             </span>
                         </a>
                     @else
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                alt="{{ $middleAdvertisement->title }}">
+                                alt="{{ $middleAdvertisement->title }}" width="139" height="48">
                         </span>
                     @endif
                 @endif
@@ -233,13 +233,13 @@
     @else
         <section class="rv-ad-wrap">
             <div class="rv-ad-box rv-middle">
-                <h4>
+                <h3>
                     व्हाट्सएप पर सुपर फास्ट रिजल्ट देखने के लिए नीचे दिए गए लिंक पर जाएं और चैनल को फॉलो करें।
-                </h4>
+                </h3>
 
                 <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" style="text-decoration:none;">
                     <span class="rv-ad-img">
-                        <img src="{{ asset('Join-WhatsApp.png') }}" alt="Join WhatsApp">
+                        <img src="{{ asset('Join-WhatsApp.png') }}" alt="Join WhatsApp" width="159" height="55">
                     </span>
                 </a>
             </div>
@@ -267,13 +267,13 @@
                         <a href="{{ $bottomAdvertisement->link }}" target="_blank" style="text-decoration:none;">
                             <span class="rv-ad-img">
                                 <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                    alt="{{ $bottomAdvertisement->title }}">
+                                    alt="{{ $bottomAdvertisement->title }}" width="139" height="48">
                             </span>
                         </a>
                     @else
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                alt="{{ $bottomAdvertisement->title }}">
+                                alt="{{ $bottomAdvertisement->title }}" width="139" height="48">
                         </span>
                     @endif
                 @endif
@@ -314,7 +314,7 @@
                 </div>
 
                 <span class="rv-ad-img">
-                    <img src="{{ asset('whatsAppChat.png') }}" alt="ABHISHEK BHAI">
+                    <img src="{{ asset('whatsAppChat.png') }}" alt="ABHISHEK BHAI" width="139" height="48">
                 </span>
 
                 <div>Click to chat</div>
@@ -325,168 +325,12 @@
 
 
 
-    {{-- Game List Section - 2 Parts --}}
-    {{-- <section class="row">
-    @php
-        // $gameSections = $games->chunk(ceil($games->count() / 2));
-         $gameSections = $games->chunk(17);
-    @endphp
-
-    @foreach ($gameSections as $sectionIndex => $gameSection)
-        <div class="{{ $sectionIndex > 0 ? 'mt-8' : '' }}">
-
-            <div class="flex items-center justify-around space-x-4 bg-yellow-400">
-                <p class="w-full p-3 font-bold text-white bg-purple-800">
-                    GAME 
-                </p>
-
-                <div class="flex items-center justify-around bg-yellow-400 w-[75%]">
-                    <p class="text-lg font-semibold">कल</p>
-                    <p class="text-lg font-semibold">आज</p>
-                </div>
-            </div>
-
-            <div class="w-full px-0 text-center">
-                <div class="grid grid-cols-1 bg-white lg:grid-cols-3 md:grid-cols-2">
-
-                    @forelse($gameSection as $game)
-                        <div class="flex items-center justify-around space-x-4 border border-gray-900">
-                            <div class="w-full p-3">
-                                <p class="pb-2 text-xl font-bold tracking-wide text-gray-900 uppercase text-start hover:underline">
-                                    <a href="{{ route('game.record', $game->slug) }}">
-                                        {{ $game->name }}
-                                    </a>
-                                </p>
-
-                                <div class="flex items-center justify-between gap-2">
-                                    <p class="text-sm font-semibold text-red-900">
-                                        @if (!empty($game->result_time))
-                                            {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
-                                        @endif
-                                    </p>
-
-                                    <a class="text-sm font-semibold text-blue-700 hover:underline"
-                                       href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}">
-                                        View Chart
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-around w-[75%]">
-                                <p class="text-2xl font-medium tracking-wider">
-                                    @if (!empty($game->yesterdayResult->result))
-                                        {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
-                                            ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
-                                            : $game->yesterdayResult->result }}
-                                    @else
-                                        XX
-                                    @endif
-                                </p>
-
-                                <p class="text-2xl font-medium tracking-wider">
-                                    @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
-                                        {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
-                                            ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
-                                            : $game->todayResult->result }}
-                                    @else
-                                        <strong class="waitimg">
-                                            <img class="lazy"
-                                                 alt="waiting"
-                                                 src="{{ asset('tamplate/admin/upimages/d.gif') }}">
-                                        </strong>
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="p-4 text-center">No result found</div>
-                    @endforelse
-
-                </div>
-            </div>
-
-        </div>
-    @endforeach
-</section> --}}
+  
 
 
 
 
-    {{-- Game List Section - Compact --}}
-    {{-- <section class="w-full py-2 bg-gray-100">
-        @php
-            $gameSections = $games->chunk(17);
-        @endphp
-
-        @foreach ($gameSections as $sectionIndex => $gameSection)
-            <div class="{{ $sectionIndex > 0 ? 'mt-4' : '' }}">
-                <div class="grid grid-cols-1 gap-3 px-2 sm:grid-cols-2 lg:grid-cols-3">
-
-                    @forelse($gameSection as $game)
-                        <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
-
-                            <div class="py-3 text-center bg-white border-b border-gray-200">
-                                <a href="{{ route('game.record', $game->slug) }}"
-                                    class="block text-xl font-black tracking-wide text-red-700 uppercase hover:underline">
-                                    {{ $game->name ?: 'NA' }}
-                                </a>
-
-                                @if (!empty($game->result_time))
-                                    <p class="mt-1 text-sm font-bold text-black">
-                                        {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
-                                    </p>
-                                @endif
-                            </div>
-
-                            <div class="flex items-center justify-center gap-3 px-3 py-4 text-center bg-white">
-
-                                <div>
-                                    <p class="text-sm font-bold text-gray-700">कल</p>
-                                    <p class="text-3xl font-black text-black">
-                                        @if (!empty($game->yesterdayResult->result))
-                                            {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
-                                                ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
-                                                : $game->yesterdayResult->result }}
-                                        @else
-                                            XX
-                                        @endif
-                                    </p>
-                                </div>
-
-                                <span class="text-3xl font-black text-green-600">➜</span>
-
-                                <div>
-                                    <p class="text-sm font-bold text-gray-700">आज</p>
-                                    <p class="text-3xl font-black text-blue-700">
-                                        @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
-                                            {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
-                                                ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
-                                                : $game->todayResult->result }}
-                                        @else
-                                            XX
-                                        @endif
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <a href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}"
-                                class="block py-2 text-xs font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
-                                View Chart
-                            </a>
-
-                        </div>
-                    @empty
-                        <div class="p-3 text-center bg-white border rounded-lg">
-                            No result found
-                        </div>
-                    @endforelse
-
-                </div>
-            </div>
-        @endforeach
-    </section> --}}
-
+   
 
     {{-- Game List Section - Compact --}}
     <section class="w-full py-2 bg-gray-100">
@@ -571,13 +415,13 @@
         <h2>Check All Game Year Chart</h2>
 
         <div class="chart-search-form">
-            <select id="gameSelect">
+            <select id="gameSelect" aria-label="Select Game">
                 @foreach ($chartGames as $game)
                     <option value="{{ $game->slug }}">{{ $game->name }}</option>
                 @endforeach
             </select>
 
-            <select id="yearSelect">
+            <select id="yearSelect" aria-label="Select Year">
                 <option value="{{ now('Asia/Kolkata')->year }}">{{ now('Asia/Kolkata')->year }}</option>
                 <option value="{{ now('Asia/Kolkata')->subYear()->year }}">
                     {{ now('Asia/Kolkata')->subYear()->year }}
@@ -827,426 +671,454 @@
 
 
 
-    <section class="bg-white md:py-4 homeContent container">
+  {{-- SEO Content Section - Premium Responsive --}}
+<section class="homeContent">
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A1 Satta King Result 2026 – Live Updates, Daily Chart & All Bazaar Records
-        </h2>
-        <div style="padding: 10px;">
-            This is where you check A1 Satta King results every day. Disawar, Gali, Faridabad, Ghaziabad — all four bazaars
-            are covered here. Results go live the moment each bazaar closes. No delays. No wrong numbers. We also keep a
-            full satta chart going back to 2024. So whether you want today's result or an old record, it is all here.
-        </div>
+    <div class="content-block">
+        <h2>A1 Satta King Result 2026 – Live Updates, Daily Chart & All Bazaar Records</h2>
+        <p>
+            This is where you check A1 Satta King results every day. Disawar, Gali, Faridabad,
+            Ghaziabad — all four bazaars are covered here. Results go live the moment each bazaar
+            closes. No delays. No wrong numbers. We also keep a full satta chart going back to 2024.
+            So whether you want today's result or an old record, it is all here.
+        </p>
+    </div>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A1 Satta King Result Today – Live Numbers Across All Bazaars
-        </h2>
-        <div style="padding: 10px;">
-            Results come out at different times through the day. Disawar opens the morning at 5:00 AM. Faridabad follows in
-            the evening at 6:15 PM. Ghaziabad closes at 8:40 PM. Gali is the last one — 11:30 PM every night.
-            <br><br>
-            We post each number right after the official declaration. No estimated numbers are ever published here. Want to
-            see today's live result? Check the full result chart below.
-            <br><br>
-            <a href="/" style="color:blue;">See Today's A1 Satta King Result</a>
-        </div>
+    <div class="content-block">
+        <h2>A1 Satta King Result Today – Live Numbers Across All Bazaars</h2>
+        <p>
+            Results come out at different times through the day. Disawar opens the morning at
+            5:00 AM. Faridabad follows in the evening at 6:15 PM. Ghaziabad closes at 8:40 PM.
+            Gali is the last one — 11:30 PM every night.
+        </p>
+        <p>
+            We post each number right after the official declaration. No estimated numbers are ever
+            published here. Want to see today's live result? Check the full result chart below.
+        </p>
+        <a href="/" class="content-link">See Today's A1 Satta King Result</a>
+    </div>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A1 Satta Chart 2026 – Full Monthly Record
-        </h2>
-        <div style="padding: 10px;">
-            The A1 satta chart 2026 is the most visited page on this site. It shows every daily result from January 2026 to
-            today. Each bazaar has its own separate chart. You can scan through the whole month in seconds.
-        </div>
+    <div class="content-block">
+        <h2>A1 Satta Chart 2026 – Full Monthly Record</h2>
+        <p>
+            The A1 satta chart 2026 is the most visited page on this site. It shows every daily
+            result from January 2026 to today. Each bazaar has its own separate chart. You can scan
+            through the whole month in seconds.
+        </p>
 
-        <h3 class="ql-align-center"
-            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
-            What Is Inside the Chart
-        </h3>
-        <div style="padding: 10px;">
-            ● Daily results from 01 to 31 for every month<br>
-            ● Separate records for Disawar, Gali, Faridabad, and Ghaziabad<br>
-            ● Old charts from 2024 and 2025<br>
-            ● Works fast on mobile — no heavy loading<br><br>
-            Old record data is useful. Many people use it to track past numbers. Our archive has everything in one clean
-            place.
-            <br><br>
-            <a href="/chart" style="color:blue;">Open the Full A1 Satta Chart 2026</a>
-        </div>
+        <h3>What Is Inside the Chart</h3>
+        <ul>
+            <li>Daily results from 01 to 31 for every month</li>
+            <li>Separate records for Disawar, Gali, Faridabad, and Ghaziabad</li>
+            <li>Old charts from 2024 and 2025</li>
+            <li>Works fast on mobile — no heavy loading</li>
+        </ul>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A1 Satta King Disawar – India's First Morning Result
-        </h2>
-        <div style="padding: 10px;">
+        <p>
+            Old record data is useful. Many people use it to track past numbers. Our archive has
+            everything in one clean place.
+        </p>
+        <a href="/chart" class="content-link">Open the Full A1 Satta Chart 2026</a>
+    </div>
+
+    <div class="content-block">
+        <h2>A1 Satta King Disawar – India's First Morning Result</h2>
+        <p>
             Disawar is the oldest bazaar in the satta king market.
-            <br><br>
-            It closes at 5:00 AM sharp. That makes it the first result of every single day. A lot of people start their
-            morning by checking this number.
-        </div>
+        </p>
+        <p>
+            It closes at 5:00 AM sharp. That makes it the first result of every single day. A lot of
+            people start their morning by checking this number.
+        </p>
 
-        <h3 class="ql-align-center"
-            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
-            Why People Follow Disawar
-        </h3>
-        <div style="padding: 10px;">
-            ● It is the earliest result in India<br>
-            ● The morning number is widely discussed all day<br>
-            ● Disawar's old chart is one of the most searched records online<br>
-            ● It has been running consistently for many years<br><br>
-            Our Disawar page updates every morning right after the result. You get today's number at the top. Below that is
-            the full monthly chart and year-wise archive.
-            <br><br>
-            <a href="/records/disawar" style="color:blue;">Check Disawar Result</a>
-        </div>
+        <h3>Why People Follow Disawar</h3>
+        <ul>
+            <li>It is the earliest result in India</li>
+            <li>The morning number is widely discussed all day</li>
+            <li>Disawar's old chart is one of the most searched records online</li>
+            <li>It has been running consistently for many years</li>
+        </ul>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A1 Satta King Faridabad – The Evening Bazaar
-        </h2>
-        <div style="padding: 10px;">
+        <p>
+            Our Disawar page updates every morning right after the result. You get today's number at
+            the top. Below that is the full monthly chart and year-wise archive.
+        </p>
+        <a href="/records/disawar" class="content-link">Check Disawar Result</a>
+    </div>
+
+    <div class="content-block">
+        <h2>A1 Satta King Faridabad – The Evening Bazaar</h2>
+        <p>
             Faridabad closes at 6:15 PM every day.
-            <br><br>
-            It is the most checked evening result across North India. People wrap up their day and check this number. It
-            gets a lot of traffic in the 6 to 7 PM window.
-        </div>
+        </p>
+        <p>
+            It is the most checked evening result across North India. People wrap up their day and
+            check this number. It gets a lot of traffic in the 6 to 7 PM window.
+        </p>
 
-        <h3 class="ql-align-center"
-            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
-            Faridabad — Quick Facts
-        </h3>
-        <div style="padding: 10px;">
-            ● Result time: 6:15 PM daily<br>
-            ● Published within minutes of the official closing<br>
-            ● Full monthly chart available<br>
-            ● Archive goes back to 2022<br><br>
-            The Faridabad page is clean and simple. Today's number is at the top. The full chart is right below it.
-            <br><br>
-            <a href="/records/faridabad" style="color:blue;">Check Faridabad Result</a>
-        </div>
+        <h3>Faridabad — Quick Facts</h3>
+        <ul>
+            <li>Result time: 6:15 PM daily</li>
+            <li>Published within minutes of the official closing</li>
+            <li>Full monthly chart available</li>
+            <li>Archive goes back to 2022</li>
+        </ul>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            A1 Satta King Gali – The Last Result of the Night
-        </h2>
-        <div style="padding: 10px;">
+        <p>
+            The Faridabad page is clean and simple. Today's number is at the top. The full chart is
+            right below it.
+        </p>
+        <a href="/records/faridabad" class="content-link">Check Faridabad Result</a>
+    </div>
+
+    <div class="content-block">
+        <h2>A1 Satta King Gali – The Last Result of the Night</h2>
+        <p>
             Gali closes at 11:30 PM.
-            <br><br>
-            It is the final satta result of every day. Late at night, Gali gets the most searches. People wait for this
-            number all evening.
-        </div>
+        </p>
+        <p>
+            It is the final satta result of every day. Late at night, Gali gets the most searches.
+            People wait for this number all evening.
+        </p>
 
-        <h3 class="ql-align-center"
-            style="padding: 0.8rem 1.2rem;background: #406e83;text-align: center; font-size: 1.1rem;color: #fff;">
-            Why Gali Gets So Much Attention
-        </h3>
-        <div style="padding: 10px;">
-            ● Last major bazaar to close each night<br>
-            ● Searched heavily for guessing numbers before closing<br>
-            ● Full 2026 year chart is available<br>
-            ● Monthly records go back several years<br><br>
-            We update the Gali result as soon as it is officially out. If you are waiting for the night result, this is the
-            right page.
-            <br><br>
-            <a href="/records/gali" style="color:blue;">Check Gali Result</a>
-        </div>
+        <h3>Why Gali Gets So Much Attention</h3>
+        <ul>
+            <li>Last major bazaar to close each night</li>
+            <li>Searched heavily for guessing numbers before closing</li>
+            <li>Full 2026 year chart is available</li>
+            <li>Monthly records go back several years</li>
+        </ul>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            Why People Use A1 Satta King Result
-        </h2>
-        <div style="padding: 10px;">
+        <p>
+            We update the Gali result as soon as it is officially out. If you are waiting for the
+            night result, this is the right page.
+        </p>
+        <a href="/records/gali" class="content-link">Check Gali Result</a>
+    </div>
+
+    <div class="content-block">
+        <h2>Why People Use A1 Satta King Result</h2>
+        <p>
             There are many result sites online. Most are slow or post the wrong numbers.
-            <br><br>
+        </p>
+        <p>
             Here is what is different about this platform.
-        </div>
+        </p>
 
-        <h3 class="ql-align-center">Results Come Fast</h3>
-        <div style="padding: 10px;">
-            Every result is live within minutes of closing time. You do not have to wait or refresh endlessly.
-        </div>
+        <h3>Results Come Fast</h3>
+        <p>
+            Every result is live within minutes of closing time. You do not have to wait or refresh
+            endlessly.
+        </p>
 
-        <h3 class="ql-align-center">Only Verified Numbers</h3>
-        <div style="padding: 10px;">
-            We never post guessed or estimated results. Every number here is the officially declared satta king result —
-            nothing else.
-        </div>
+        <h3>Only Verified Numbers</h3>
+        <p>
+            We never post guessed or estimated results. Every number here is the officially declared
+            satta king result — nothing else.
+        </p>
 
-        <h3 class="ql-align-center">Works Great on Mobile</h3>
-        <div style="padding: 10px;">
+        <h3>Works Great on Mobile</h3>
+        <p>
             The site loads fast on any phone. No pop-ups. No heavy ads. Just the result you came here for.
-        </div>
+        </p>
 
-        <h3 class="ql-align-center">Years of Old Data</h3>
-        <div style="padding: 10px;">
-            Need a result from 2024 or 2025? It is in the archive. The full satta chart history is stored and easy to find.
-        </div>
+        <h3>Years of Old Data</h3>
+        <p>
+            Need a result from 2024 or 2025? It is in the archive. The full satta chart history is
+            stored and easy to find.
+        </p>
 
-        <h3 class="ql-align-center">Updated Every Day</h3>
-        <div style="padding: 10px;">
+        <h3>Updated Every Day</h3>
+        <p>
             No breaks. No holidays. All four bazaars are tracked 365 days a year.
-        </div>
+        </p>
+    </div>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            The Reality of A1 Satta King Result
-        </h2>
-        <div style="padding: 10px;">
+    <div class="content-block">
+        <h2>The Reality of A1 Satta King Result</h2>
+        <p>
             A lot of websites make big claims. We want to be straight with you instead.
-            <br><br>
-            A1 Satta King Result is a result tracking platform. We collect declared satta king numbers from major bazaars
-            and publish them here every day. Disawar, Faridabad, Ghaziabad, Gali — all four results are posted daily after
-            their official closing times. That is the core of what this site does.
-            <br><br>
-            We do not predict numbers. We do not sell tips or winning formulas. Any website that promises guaranteed results
-            or lucky numbers is not being honest with you. No one can predict a satta result before it is declared. The
-            numbers are random. The outcome is always uncertain.
-            <br><br>
-            What we can give you is accurate, verified, and timely information. The result that is posted here is the same
-            result that was officially declared — nothing added, nothing changed.
-        </div>
+        </p>
+        <p>
+            A1 Satta King Result is a result tracking platform. We collect declared satta king numbers
+            from major bazaars and publish them here every day. Disawar, Faridabad, Ghaziabad, Gali —
+            all four results are posted daily after their official closing times.
+        </p>
+        <p>
+            We do not predict numbers. We do not sell tips or winning formulas. Any website that promises
+            guaranteed results or lucky numbers is not being honest with you. No one can predict a satta
+            result before it is declared. The numbers are random. The outcome is always uncertain.
+        </p>
+        <p>
+            What we can give you is accurate, verified, and timely information. The result that is posted
+            here is the same result that was officially declared — nothing added, nothing changed.
+        </p>
 
-        <h3 class="ql-align-center">What This Site Is</h3>
-        <div style="padding: 10px;">
-            This is a free result information platform. You can check today's live result. You can browse the monthly chart.
-            You can look up old records going back to 2022. All of that is available here without any sign-up or payment.
-            <br><br>
-            We update the site every single day. All four bazaars are tracked without exception — including weekends and
-            public holidays. If a result is delayed for any reason, we wait for the official declaration before posting
-            anything.
-        </div>
+        <h3>What This Site Is</h3>
+        <p>
+            This is a free result information platform. You can check today's live result. You can browse
+            the monthly chart. You can look up old records going back to 2022. All of that is available
+            here without any sign-up or payment.
+        </p>
 
-        <h3 class="ql-align-center">What This Site Is Not</h3>
-        <div style="padding: 10px;">
-            This is not a betting platform. We do not accept bets. We do not process payments. We do not run any kind of
-            game or lottery. We are not affiliated with any satta operator or bazaar.
-            <br><br>
-            This platform exists to make the results information easy to find. That is all.
-        </div>
+        <h3>What This Site Is Not</h3>
+        <p>
+            This is not a betting platform. We do not accept bets. We do not process payments. We do not
+            run any kind of game or lottery. We are not affiliated with any satta operator or bazaar.
+        </p>
 
-        <h3 class="ql-align-center">A Word About Accuracy</h3>
-        <div style="padding: 10px;">
-            Our chart archive goes back to 2024. Every number in that archive is the officially declared result for that
-            date and bazaar. We take accuracy seriously because the record only has value if it is correct. If an error is
-            ever found and reported, we fix it immediately.
-            <br><br>
-            When you check results here, you are looking at real data — not estimates, not guesses, not recycled numbers
-            from the day before.
-        </div>
+        <h3>A Word About Accuracy</h3>
+        <p>
+            Our chart archive goes back to 2024. Every number in that archive is the officially declared
+            result for that date and bazaar. We take accuracy seriously because the record only has value
+            if it is correct. If an error is ever found and reported, we fix it immediately.
+        </p>
+    </div>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            About This Platform
-        </h2>
-        <div style="padding: 10px;">
-            A1 Satta King Result is an information platform. We record and display publicly available satta result data.
-            This site does not promote or support any betting or gambling activity. Please follow the laws and rules that
-            apply in your state.
-        </div>
+    <div class="content-block">
+        <h2>About This Platform</h2>
+        <p>
+            A1 Satta King Result is an information platform. We record and display publicly available satta
+            result data. This site does not promote or support any betting or gambling activity. Please
+            follow the laws and rules that apply in your state.
+        </p>
+    </div>
 
-        <h2 class="ql-align-center"
-            style="padding: 1rem 1.5rem;background: #406e83;text-align: center; font-size: 1.2rem;color: #fff;">
-            Frequently Asked Questions
-        </h2>
+    <div class="content-block faq-block">
+        <h2>Frequently Asked Questions</h2>
 
-        <h3 class="ql-align-center">What exactly is A1 Satta King Result, and what does this website do?</h3>
-        <div class="answer" style="padding:10px;">
-            A1 Satta King Result is an online result information platform. Every day we publish the officially declared
-            numbers for four major satta bazaars — Disawar, Faridabad, Ghaziabad, and Gali. We also maintain a full
-            historical chart going back to 2024 so users can look up records anytime. This site does not conduct any form of
-            betting, gambling, or lottery. It is purely an information resource for people who want to check satta king
-            results in one reliable place.
-        </div>
+        <h3>What exactly is A1 Satta King Result, and what does this website do?</h3>
+        <p>
+            A1 Satta King Result is an online result information platform. Every day we publish the
+            officially declared numbers for four major satta bazaars — Disawar, Faridabad, Ghaziabad,
+            and Gali. We also maintain a full historical chart going back to 2024.
+        </p>
 
-        <h3 class="ql-align-center">Can the satta chart help me predict future results?</h3>
-        <div class="answer" style="padding:10px;">
-            The chart shows historical data — what numbers were declared on which dates in the past. It is a factual record
-            and nothing more. No chart, pattern, or formula can accurately predict a future satta result. The numbers are
-            random and each declaration is independent. The chart is useful for reviewing past records and verifying old
-            results. Using it to predict upcoming numbers is not something we recommend or support.
-        </div>
+        <h3>Can the satta chart help me predict future results?</h3>
+        <p>
+            The chart shows historical data — what numbers were declared on which dates in the past.
+            It is a factual record and nothing more. No chart, pattern, or formula can accurately predict
+            a future satta result.
+        </p>
 
-        <h3 class="ql-align-center">What should I do if the result is not updated at the expected time?</h3>
-        <div class="answer" style="padding:10px;">
-            Each bazaar has a fixed closing time but the official declaration can sometimes take a few extra minutes. If you
-            visit the page right at closing time and do not see the result yet, simply refresh after 5 to 10 minutes. We
-            post the result as soon as it is officially out. We never fill in a blank entry with an unverified number just
-            to appear updated — accuracy always comes before speed on this platform.
-        </div>
+        <h3>What should I do if the result is not updated at the expected time?</h3>
+        <p>
+            Each bazaar has a fixed closing time but the official declaration can sometimes take a few
+            extra minutes. If you visit the page right at closing time and do not see the result yet,
+            simply refresh after 5 to 10 minutes.
+        </p>
 
-        <h3 class="ql-align-center">Is there any cost or registration required to use this site?</h3>
-        <div class="answer" style="padding:10px;">
-            No. A1 Satta King Result is completely free to use. There is no registration, no login, no subscription, and no
-            payment of any kind. You open the page, check the result or chart you need, and that is it. We do not collect
-            personal information and we do not require you to create an account to access any part of the site.
-        </div>
+        <h3>Is there any cost or registration required to use this site?</h3>
+        <p>
+            No. A1 Satta King Result is completely free to use. There is no registration, no login,
+            no subscription, and no payment of any kind.
+        </p>
 
-        <h3 class="ql-align-center">Why do different websites sometimes show different results for the same bazaar?</h3>
-        <div class="answer" style="padding:10px;">
-            Some websites post results early based on unofficial sources. Others may have errors that never get corrected. A
-            few sites recycle old numbers or make mistakes during manual entry. On A1 Satta King, we post only after the
-            official declaration and we cross-check before publishing. Our archive is reviewed for consistency. If you ever
-            see a discrepancy between our result and another source, the version here is based on the officially declared
-            number.
-        </div>
+        <h3>Why do different websites sometimes show different results for the same bazaar?</h3>
+        <p>
+            Some websites post results early based on unofficial sources. Others may have errors that
+            never get corrected. On A1 Satta King, we post only after the official declaration and
+            cross-check before publishing.
+        </p>
 
-        <h3 class="ql-align-center">Does A1 Satta King Result publish guessing numbers or panels?</h3>
-        <div class="answer" style="padding:10px;">
-            Our main result and chart sections show only officially declared numbers. We do not mix guessing content into
-            the result record because it affects the reliability of the data. Some pages on the site may cover
-            guessing-related content separately — but that is always clearly labeled and never presented as an official
-            result. The result chart and live result section are strictly for verified declared numbers only.
-        </div>
+        <h3>Does A1 Satta King Result publish guessing numbers or panels?</h3>
+        <p>
+            Our main result and chart sections show only officially declared numbers. We do not mix
+            guessing content into the result record because it affects the reliability of the data.
+        </p>
+    </div>
 
-    </section>
+</section>
 
-
-    <style>
-        p br {
-            display: block;
-        }
-
-
-
-        /* =========================
-       HOME CONTENT STYLING
+<style>
+    /* =========================
+       PREMIUM HOME CONTENT
     ========================= */
 
+    .homeContent {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 14px;
+        background: #ffffff;
+        color: #1f2937;
+    }
+
+    .homeContent * {
+        box-sizing: border-box;
+    }
+
+    .homeContent .content-block {
+        margin-bottom: 26px;
+        padding: 0;
+    }
+
+    .homeContent h2 {
+        margin: 0 0 18px;
+        padding: 18px 22px;
+        background: linear-gradient(135deg, #244f63, #406e83);
+        color: #ffffff !important;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.35;
+        border-radius: 8px;
+        box-shadow: 0 4px 14px rgba(36, 79, 99, 0.18);
+    }
+
+    .homeContent h3 {
+        margin: 24px 0 12px;
+        padding: 13px 16px;
+        background: #f3f7f9;
+        color: #143447 !important;
+        text-align: left;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.35;
+        border-left: 5px solid #406e83;
+        border-radius: 7px;
+    }
+
+    .homeContent p {
+        margin: 0 0 16px;
+        padding: 0 4px;
+        color: #24313a;
+        font-size: 18px;
+        line-height: 1.85;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .homeContent ul,
+    .homeContent ol {
+        margin: 0 0 18px;
+        padding-left: 28px;
+    }
+
+    .homeContent li {
+        margin-bottom: 9px;
+        color: #24313a;
+        font-size: 18px;
+        line-height: 1.75;
+    }
+
+    .homeContent .content-link {
+        display: inline-block;
+        margin-top: 4px;
+        padding: 11px 16px;
+        background: #0d6efd;
+        color: #ffffff !important;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1.3;
+        text-decoration: none;
+        border-radius: 7px;
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.22);
+        transition: all 0.2s ease;
+    }
+
+    .homeContent .content-link:hover {
+        background: #084fc7;
+        color: #ffffff !important;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .homeContent .faq-block h3 {
+        background: #fff8e6;
+        color: #3d2d00 !important;
+        border-left-color: #f0b429;
+    }
+
+    .homeContent strong,
+    .homeContent b {
+        color: #111827;
+        font-weight: 800;
+    }
+
+    .homeContent table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .homeContent table th,
+    .homeContent table td {
+        padding: 11px 10px;
+        border: 1px solid #d7e0e5;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .homeContent table th {
+        background: #406e83;
+        color: #ffffff;
+        font-weight: 800;
+    }
+
+    @media (max-width: 768px) {
         .homeContent {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px 15px;
-            background: #fff;
+            padding: 18px 10px;
         }
 
-        /* Main Heading */
+        .homeContent .content-block {
+            margin-bottom: 22px;
+        }
+
         .homeContent h2 {
-            background: #406e83 !important;
-            color: #fff !important;
-            text-align: center !important;
-            padding: 16px 20px !important;
-            font-size: 30px !important;
-            font-weight: 700 !important;
-            line-height: 1.5 !important;
-            border-radius: 6px;
-            margin: 35px 0 20px;
+            padding: 14px 12px;
+            font-size: 21px;
+            line-height: 1.4;
+            border-radius: 7px;
         }
 
-        /* Sub Heading */
         .homeContent h3 {
-            background: #f8f9fa;
-            color: #222 !important;
-            text-align: left !important;
-            padding: 12px 15px !important;
-            font-size: 24px !important;
-            font-weight: 700 !important;
-            line-height: 1.5 !important;
-            border-left: 5px solid #406e83;
-            border-radius: 4px;
-            margin: 30px 0 15px;
+            margin: 20px 0 10px;
+            padding: 11px 12px;
+            font-size: 18px;
+            line-height: 1.4;
+            border-left-width: 4px;
         }
 
-        /* Paragraph & Content */
-        .homeContent div,
-        .homeContent .answer {
-            font-size: 18px !important;
-            line-height: 1.9 !important;
-            color: #333 !important;
-            text-align: left !important;
-            max-width: 1000px;
-            margin: 0 auto 25px auto;
-            padding: 0 10px !important;
-        }
-
-        /* Lists */
-        .homeContent ul,
-        .homeContent ol {
-            max-width: 1000px;
-            margin: 15px auto 25px;
-            padding-left: 25px;
-            text-align: left;
+        .homeContent p {
+            padding: 0 2px;
+            font-size: 16px;
+            line-height: 1.75;
         }
 
         .homeContent li {
-            font-size: 18px;
-            line-height: 1.9;
-            color: #333;
-            margin-bottom: 8px;
+            font-size: 16px;
+            line-height: 1.7;
         }
 
-        /* Links */
-        .homeContent a {
-            color: #0d6efd !important;
-            font-weight: 600;
-            text-decoration: none;
+        .homeContent ul,
+        .homeContent ol {
+            padding-left: 22px;
         }
 
-        .homeContent a:hover {
-            text-decoration: underline;
-        }
-
-        /* Strong Text */
-        .homeContent strong,
-        .homeContent b {
-            font-weight: 700;
-            color: #111;
-        }
-
-        /* Table Styling */
-        .homeContent table {
+        .homeContent .content-link {
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .homeContent table th,
-        .homeContent table td {
-            border: 1px solid #ddd;
-            padding: 10px;
             text-align: center;
+            padding: 12px 14px;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .homeContent h2 {
+            font-size: 19px;
         }
 
-        .homeContent table th {
-            background: #406e83;
-            color: #fff;
+        .homeContent h3 {
+            font-size: 17px;
         }
 
-        /* Spacing */
-        .homeContent p {
-            margin-bottom: 18px;
+        .homeContent p,
+        .homeContent li {
+            font-size: 15.5px;
         }
-
-        /* Mobile Responsive */
-        @media (max-width:768px) {
-
-            .homeContent {
-                padding: 15px 10px;
-            }
-
-            .homeContent h2 {
-                font-size: 22px !important;
-                padding: 14px 12px !important;
-                margin: 25px 0 15px;
-            }
-
-            .homeContent h3 {
-                font-size: 19px !important;
-                padding: 10px 12px !important;
-            }
-
-            .homeContent div,
-            .homeContent .answer {
-                font-size: 16px !important;
-                line-height: 1.8 !important;
-                padding: 0 5px !important;
-            }
-
-            .homeContent li {
-                font-size: 16px;
-            }
-        }
-    </style>
+    }
+</style>
 @endsection

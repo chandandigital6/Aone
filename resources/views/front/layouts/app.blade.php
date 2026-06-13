@@ -51,8 +51,41 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('a1fav/android-icon-144x144.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('a1fav/apple-icon.png') }}">
 
-    <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
-    <link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
+    {{-- 
+        Issue 2 Fix: Network Dependency Chain
+        Fonts ko CSS se pehle preload kar diya.
+        Isse browser fonts ko CSS ke baad wait karke nahi, parallel me download karega.
+    --}}
+    <link rel="preload"
+          href="{{ asset('fonts/Roboto.woff2') }}"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous">
+
+    <link rel="preload"
+          href="{{ asset('fonts/RobotoBold.woff2') }}"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous">
+
+    {{-- 
+        Issue 1 Fix: Render Blocking CSS
+        CSS preload hogi aur load hone ke baad stylesheet ban jayegi.
+    --}}
+    <link rel="preload"
+          href="{{ asset('next/static/css/b357a2dcbca59595.css') }}"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+
+    <link rel="preload"
+          href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
+        <link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
+    </noscript>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QEDR9PH55"></script>
@@ -83,6 +116,7 @@
         </main>
 
         @include('front.layouts.footer')
+
         <div id="modal"></div>
     </div>
 </body>

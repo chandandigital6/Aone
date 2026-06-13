@@ -36,7 +36,7 @@
 <a href="https://api.whatsapp.com/send/?phone=919896916793&text&type=phone_number&app_absent=0"
    target="_blank"
    class="a1-whatsapp-btn">
-    <img src="{{ asset('wapp.png') }}" alt="WhatsApp">
+    <img src="{{ asset('wapp.webp') }}" alt="WhatsApp" width="82" height="82">
 </a>
 
 {{-- Fixed Refresh Button --}}
