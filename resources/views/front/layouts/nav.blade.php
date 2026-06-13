@@ -1,7 +1,7 @@
-<div class="max-w-screen-xl px-4 mx-auto md:px-6">
-    <h1 class="text-lg font-bold text-center text-gray-900 uppercase">
-        A1 Satta King Result Today – Updated Live Instantly
-    </h1>
+<div class="max-w-screen-xl px-4 mx-auto md:px-6 text-center">
+    <span class="text-lg font-bold text-center text-gray-900 uppercase">
+        A1 Satta King Result 
+    </span>
 </div>
 
 <div class="py-2 text-lg font-bold text-center text-black bg-white">

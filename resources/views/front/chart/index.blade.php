@@ -12,7 +12,7 @@
 </section>
 
 <section class="a1-notice">
-    <h3>To Check Instant SATTA KING Results, Check Below Chart 👇</h3>
+    <h2>To Check Instant SATTA KING Results, Check Below Chart 👇</h3>
 </section>
 
 <h3 class="a1-small-heading">

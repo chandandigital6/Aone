@@ -6,6 +6,13 @@
 
 
 
+
+<div class="max-w-screen-xl px-4 mx-auto md:px-6">
+    <h1 class="text-lg font-bold text-center text-gray-900 uppercase">
+    A1 Satta King Result – Tracking Every Number, Every Day
+    </h1>
+</div>
+
     <style>
         .rv-ad-wrap {
             width: 100%;
@@ -482,81 +489,81 @@
 
 
     {{-- Game List Section - Compact --}}
-<section class="w-full py-2 bg-gray-100">
-    @php
-        $gameSections = $games->chunk(17);
-    @endphp
+    <section class="w-full py-2 bg-gray-100">
+        @php
+            $gameSections = $games->chunk(17);
+        @endphp
 
-    @foreach ($gameSections as $sectionIndex => $gameSection)
-        <div class="{{ $sectionIndex > 0 ? 'mt-4' : '' }}">
+        @foreach ($gameSections as $sectionIndex => $gameSection)
+            <div class="{{ $sectionIndex > 0 ? 'mt-4' : '' }}">
 
-            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; padding:0 8px;"
-                class="lg:grid-cols-3">
+                <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; padding:0 8px;"
+                    class="lg:grid-cols-3">
 
-                @forelse($gameSection as $game)
-                    <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
+                    @forelse($gameSection as $game)
+                        <div class="overflow-hidden bg-white border border-gray-300 rounded-lg shadow">
 
-                        <div class="py-2 text-center bg-white border-b border-gray-200">
-                          <a href="{{ route('game.record', $game->slug) }}"
-   class="block font-black tracking-wide text-red-700 uppercase hover:underline text-[18px] sm:text-[24px]">
-    {{ $game->name ?: 'NA' }}
-</a>
+                            <div class="py-2 text-center bg-white border-b border-gray-200">
+                                <a href="{{ route('game.record', $game->slug) }}"
+                                    class="block font-black tracking-wide text-red-700 uppercase hover:underline text-[18px] sm:text-[24px]">
+                                    {{ $game->name ?: 'NA' }}
+                                </a>
 
-                            @if (!empty($game->result_time))
-                              <p class="mt-1 text-sm font-bold text-black sm:text-base">
-    {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
-</p>
-                            @endif
-                        </div>
-
-                        <div class="flex items-center justify-center gap-2 px-2 py-3 text-center bg-white">
-
-                            <div>
-                                <p class="text-xs font-bold text-gray-700">कल</p>
-                                <p class="text-2xl font-black text-black">
-                                    @if (!empty($game->yesterdayResult->result))
-                                        {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
-                                            ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
-                                            : $game->yesterdayResult->result }}
-                                    @else
-                                        XX
-                                    @endif
-                                </p>
+                                @if (!empty($game->result_time))
+                                    <p class="mt-1 text-sm font-bold text-black sm:text-base">
+                                        {{ \Carbon\Carbon::parse($game->result_time)->format('h:i A') }}
+                                    </p>
+                                @endif
                             </div>
 
-                            <span class="text-2xl font-black text-green-600">➜</span>
+                            <div class="flex items-center justify-center gap-2 px-2 py-3 text-center bg-white">
 
-                            <div>
-                                <p class="text-xs font-bold text-gray-700">आज</p>
-                                <p class="text-2xl font-black text-blue-700">
-                                    @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
-                                        {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
-                                            ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
-                                            : $game->todayResult->result }}
-                                    @else
-                                        XX
-                                    @endif
-                                </p>
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700">कल</p>
+                                    <p class="text-2xl font-black text-black">
+                                        @if (!empty($game->yesterdayResult->result))
+                                            {{ is_numeric($game->yesterdayResult->result) && $game->yesterdayResult->result <= 9
+                                                ? str_pad($game->yesterdayResult->result, 2, '0', STR_PAD_LEFT)
+                                                : $game->yesterdayResult->result }}
+                                        @else
+                                            XX
+                                        @endif
+                                    </p>
+                                </div>
+
+                                <span class="text-2xl font-black text-green-600">➜</span>
+
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700">आज</p>
+                                    <p class="text-2xl font-black text-blue-700">
+                                        @if (!empty($game->todayResult->result) && in_array($game->todayResult->status ?? '', ['declared', 'published']))
+                                            {{ is_numeric($game->todayResult->result) && $game->todayResult->result <= 9
+                                                ? str_pad($game->todayResult->result, 2, '0', STR_PAD_LEFT)
+                                                : $game->todayResult->result }}
+                                        @else
+                                            XX
+                                        @endif
+                                    </p>
+                                </div>
+
                             </div>
 
+                            <a href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}"
+                                class="block py-2 text-[11px] font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
+                                View Chart
+                            </a>
+
                         </div>
+                    @empty
+                        <div style="grid-column: span 2;" class="p-3 text-center bg-white border rounded-lg">
+                            No result found
+                        </div>
+                    @endforelse
 
-                        <a href="{{ route('game.yearRecord', [$game->slug, now('Asia/Kolkata')->year]) }}"
-                            class="block py-2 text-[11px] font-black text-center text-black uppercase bg-yellow-400 hover:bg-yellow-300">
-                            View Chart
-                        </a>
-
-                    </div>
-                @empty
-                    <div style="grid-column: span 2;" class="p-3 text-center bg-white border rounded-lg">
-                        No result found
-                    </div>
-                @endforelse
-
+                </div>
             </div>
-        </div>
-    @endforeach
-</section>
+        @endforeach
+    </section>
 
 
     {{-- Year Chart Search --}}
@@ -1105,141 +1112,141 @@
 
 
         /* =========================
-   HOME CONTENT STYLING
-========================= */
+       HOME CONTENT STYLING
+    ========================= */
 
-.homeContent{
-    max-width:1100px;
-    margin:0 auto;
-    padding:20px 15px;
-    background:#fff;
-}
+        .homeContent {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            background: #fff;
+        }
 
-/* Main Heading */
-.homeContent h2{
-    background:#406e83 !important;
-    color:#fff !important;
-    text-align:center !important;
-    padding:16px 20px !important;
-    font-size:30px !important;
-    font-weight:700 !important;
-    line-height:1.5 !important;
-    border-radius:6px;
-    margin:35px 0 20px;
-}
+        /* Main Heading */
+        .homeContent h2 {
+            background: #406e83 !important;
+            color: #fff !important;
+            text-align: center !important;
+            padding: 16px 20px !important;
+            font-size: 30px !important;
+            font-weight: 700 !important;
+            line-height: 1.5 !important;
+            border-radius: 6px;
+            margin: 35px 0 20px;
+        }
 
-/* Sub Heading */
-.homeContent h3{
-    background:#f8f9fa;
-    color:#222 !important;
-    text-align:left !important;
-    padding:12px 15px !important;
-    font-size:24px !important;
-    font-weight:700 !important;
-    line-height:1.5 !important;
-    border-left:5px solid #406e83;
-    border-radius:4px;
-    margin:30px 0 15px;
-}
+        /* Sub Heading */
+        .homeContent h3 {
+            background: #f8f9fa;
+            color: #222 !important;
+            text-align: left !important;
+            padding: 12px 15px !important;
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            line-height: 1.5 !important;
+            border-left: 5px solid #406e83;
+            border-radius: 4px;
+            margin: 30px 0 15px;
+        }
 
-/* Paragraph & Content */
-.homeContent div,
-.homeContent .answer{
-    font-size:18px !important;
-    line-height:1.9 !important;
-    color:#333 !important;
-    text-align:left !important;
-    max-width:1000px;
-    margin:0 auto 25px auto;
-    padding:0 10px !important;
-}
+        /* Paragraph & Content */
+        .homeContent div,
+        .homeContent .answer {
+            font-size: 18px !important;
+            line-height: 1.9 !important;
+            color: #333 !important;
+            text-align: left !important;
+            max-width: 1000px;
+            margin: 0 auto 25px auto;
+            padding: 0 10px !important;
+        }
 
-/* Lists */
-.homeContent ul,
-.homeContent ol{
-    max-width:1000px;
-    margin:15px auto 25px;
-    padding-left:25px;
-    text-align:left;
-}
+        /* Lists */
+        .homeContent ul,
+        .homeContent ol {
+            max-width: 1000px;
+            margin: 15px auto 25px;
+            padding-left: 25px;
+            text-align: left;
+        }
 
-.homeContent li{
-    font-size:18px;
-    line-height:1.9;
-    color:#333;
-    margin-bottom:8px;
-}
+        .homeContent li {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #333;
+            margin-bottom: 8px;
+        }
 
-/* Links */
-.homeContent a{
-    color:#0d6efd !important;
-    font-weight:600;
-    text-decoration:none;
-}
+        /* Links */
+        .homeContent a {
+            color: #0d6efd !important;
+            font-weight: 600;
+            text-decoration: none;
+        }
 
-.homeContent a:hover{
-    text-decoration:underline;
-}
+        .homeContent a:hover {
+            text-decoration: underline;
+        }
 
-/* Strong Text */
-.homeContent strong,
-.homeContent b{
-    font-weight:700;
-    color:#111;
-}
+        /* Strong Text */
+        .homeContent strong,
+        .homeContent b {
+            font-weight: 700;
+            color: #111;
+        }
 
-/* Table Styling */
-.homeContent table{
-    width:100%;
-    border-collapse:collapse;
-    margin:20px 0;
-}
+        /* Table Styling */
+        .homeContent table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
 
-.homeContent table th,
-.homeContent table td{
-    border:1px solid #ddd;
-    padding:10px;
-    text-align:center;
-}
+        .homeContent table th,
+        .homeContent table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
 
-.homeContent table th{
-    background:#406e83;
-    color:#fff;
-}
+        .homeContent table th {
+            background: #406e83;
+            color: #fff;
+        }
 
-/* Spacing */
-.homeContent p{
-    margin-bottom:18px;
-}
+        /* Spacing */
+        .homeContent p {
+            margin-bottom: 18px;
+        }
 
-/* Mobile Responsive */
-@media (max-width:768px){
+        /* Mobile Responsive */
+        @media (max-width:768px) {
 
-    .homeContent{
-        padding:15px 10px;
-    }
+            .homeContent {
+                padding: 15px 10px;
+            }
 
-    .homeContent h2{
-        font-size:22px !important;
-        padding:14px 12px !important;
-        margin:25px 0 15px;
-    }
+            .homeContent h2 {
+                font-size: 22px !important;
+                padding: 14px 12px !important;
+                margin: 25px 0 15px;
+            }
 
-    .homeContent h3{
-        font-size:19px !important;
-        padding:10px 12px !important;
-    }
+            .homeContent h3 {
+                font-size: 19px !important;
+                padding: 10px 12px !important;
+            }
 
-    .homeContent div,
-    .homeContent .answer{
-        font-size:16px !important;
-        line-height:1.8 !important;
-        padding:0 5px !important;
-    }
+            .homeContent div,
+            .homeContent .answer {
+                font-size: 16px !important;
+                line-height: 1.8 !important;
+                padding: 0 5px !important;
+            }
 
-    .homeContent li{
-        font-size:16px;
-    }
-}
+            .homeContent li {
+                font-size: 16px;
+            }
+        }
     </style>
 @endsection

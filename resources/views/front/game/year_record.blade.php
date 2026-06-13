@@ -16,7 +16,7 @@
 </section>
 
 <section class="record-notice">
-    <h3>{{ strtoupper($game->name ?? 'GAME') }} {{ $year }} Full Chart 👇</h3>
+    <h2>{{ strtoupper($game->name ?? 'GAME') }} {{ $year }} Full Chart 👇</h2>
 </section>
 
 @php
