@@ -24,9 +24,14 @@
             <form method="POST"
                   action="{{ isset($advertisement) ? route('advertisements.update', $advertisement) : route('advertisements.store') }}"
                   enctype="multipart/form-data"
-                  class="space-y-6">
+                  class="space-y-6"
+                  id="advertisementForm">
 
                 @csrf
+
+                @if(isset($advertisement))
+                    @method('PUT')
+                @endif
 
                 <div class="grid gap-6 md:grid-cols-2">
 
@@ -64,10 +69,12 @@
                                     'home_top' => 'Home Top',
                                     'home_bottom' => 'Home Bottom',
                                 ];
+
+                                $selectedPosition = old('position', $advertisement->position ?? '');
                             @endphp
 
                             @foreach($positions as $key => $label)
-                                <option value="{{ $key }}" @selected(old('position', $advertisement->position ?? '') == $key)>
+                                <option value="{{ $key }}" @selected($selectedPosition == $key)>
                                     {{ $label }}
                                 </option>
                             @endforeach
@@ -124,15 +131,21 @@
                         Content
                     </label>
 
-                    <textarea id="content-editor"
-          name="content"
-          rows="10"
-          class="w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm">
-    {{ old('content', $advertisement->content ?? '') }}
-</textarea>
+                    <textarea
+                        id="content-editor"
+                        name="content"
+                        rows="10"
+                        class="w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-900 outline-none focus:border-black dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                    >{{ old('content', $advertisement->content ?? '') }}</textarea>
+
+                    @error('content')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="flex items-center gap-3">
+                    <input type="hidden" name="is_active" value="0">
+
                     <input type="checkbox"
                            name="is_active"
                            value="1"
@@ -165,16 +178,161 @@
 
     </div>
 
+    <style>
+        .ck.ck-editor {
+            width: 100% !important;
+        }
+
+        .ck.ck-toolbar {
+            border-radius: 12px 12px 0 0 !important;
+            border-color: #d4d4d4 !important;
+            background: #ffffff !important;
+        }
+
+        .ck.ck-editor__main > .ck-editor__editable {
+            min-height: 360px !important;
+            background: #ffffff !important;
+            color: #111827 !important;
+            font-size: 16px !important;
+            line-height: 1.7 !important;
+            padding: 18px !important;
+            border-radius: 0 0 12px 12px !important;
+            border-color: #d4d4d4 !important;
+        }
+
+        .ck-content h1 {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .ck-content h2 {
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .ck-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .ck-content p {
+            margin-bottom: 12px;
+        }
+
+        .ck-content ul,
+        .ck-content ol {
+            padding-left: 25px;
+        }
+    </style>
+
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
-{{-- <script>
-document.addEventListener('DOMContentLoaded', function () {
-    ClassicEditor
-        .create(document.querySelector('#content-editor'))
-        .catch(error => {
-            console.error(error);
+    <script>
+        function initAdvertisementEditor() {
+            const textarea = document.querySelector('#content-editor');
+
+            if (!textarea) {
+                return;
+            }
+
+            if (textarea.dataset.ckeditorLoaded === '1') {
+                return;
+            }
+
+            if (typeof ClassicEditor === 'undefined') {
+                console.error('CKEditor load nahi hua. CDN issue ho sakta hai.');
+                return;
+            }
+
+            textarea.dataset.ckeditorLoaded = '1';
+
+            ClassicEditor
+                .create(textarea, {
+                    toolbar: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        '|',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'blockQuote',
+                        'insertTable',
+                        '|',
+                        'undo',
+                        'redo'
+                    ],
+
+                    heading: {
+                        options: [
+                            {
+                                model: 'paragraph',
+                                title: 'Paragraph',
+                                class: 'ck-heading_paragraph'
+                            },
+                            {
+                                model: 'heading1',
+                                view: 'h1',
+                                title: 'Heading 1',
+                                class: 'ck-heading_heading1'
+                            },
+                            {
+                                model: 'heading2',
+                                view: 'h2',
+                                title: 'Heading 2',
+                                class: 'ck-heading_heading2'
+                            },
+                            {
+                                model: 'heading3',
+                                view: 'h3',
+                                title: 'Heading 3',
+                                class: 'ck-heading_heading3'
+                            }
+                        ]
+                    },
+
+                    link: {
+                        addTargetToExternalLinks: true,
+                        defaultProtocol: 'https://'
+                    },
+
+                    table: {
+                        contentToolbar: [
+                            'tableColumn',
+                            'tableRow',
+                            'mergeTableCells'
+                        ]
+                    }
+                })
+                .then(function (editor) {
+                    window.advertisementEditor = editor;
+
+                    const form = document.querySelector('#advertisementForm');
+
+                    if (form) {
+                        form.addEventListener('submit', function () {
+                            textarea.value = editor.getData();
+                            editor.updateSourceElement();
+                        });
+                    }
+
+                    console.log('CKEditor loaded successfully.');
+                })
+                .catch(function (error) {
+                    textarea.dataset.ckeditorLoaded = '0';
+                    console.error('CKEditor Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', initAdvertisementEditor);
+
+        document.addEventListener('livewire:navigated', function () {
+            setTimeout(initAdvertisementEditor, 200);
         });
-});
-</script> --}}
+
+        setTimeout(initAdvertisementEditor, 500);
+    </script>
 
 </x-layouts::app>
