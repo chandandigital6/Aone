@@ -13,317 +13,502 @@
     </h1>
 </div>
 
-    <style>
+   
+<style>
+    .rv-ad-wrap {
+        width: 100%;
+        margin: 12px auto;
+        padding: 0 4px;
+        font-family: Arial, 'Noto Sans Devanagari', sans-serif;
+    }
+
+    .rv-ad-box {
+        width: 100%;
+        background: linear-gradient(180deg, #ffd900 0%, #fff8cf 100%);
+        border: 3px dashed #e60000;
+        border-radius: 16px;
+        padding: 12px 10px 14px;
+        text-align: center;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .10);
+        color: #111;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.45;
+    }
+
+    .rv-ad-box,
+    .rv-ad-box * {
+        box-sizing: border-box;
+        word-break: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .rv-ad-title {
+        display: block;
+        width: 100%;
+        margin: 4px 0 6px !important;
+        color: #111 !important;
+        font-size: 18px !important;
+        font-weight: 900 !important;
+        line-height: 1.45 !important;
+        text-align: center !important;
+    }
+
+    .rv-ad-name {
+        display: block;
+        width: 100%;
+        margin: 5px 0 7px !important;
+        color: #c9342d !important;
+        font-size: 19px !important;
+        font-weight: 900 !important;
+        line-height: 1.45 !important;
+        text-align: center !important;
+    }
+
+    .rv-ad-lines,
+    .rv-ad-play {
+        display: block;
+        width: 100%;
+        margin: 6px 0 !important;
+        color: #111 !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+    }
+
+    .rv-ad-play {
+        color: #9b00c9 !important;
+        font-weight: 900 !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CKEditor Advertisement Content Fix
+    |--------------------------------------------------------------------------
+    */
+    .addb-content {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        color: #111 !important;
+        text-align: center !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        line-height: 1.5 !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .addb-content p,
+    .addb-content div,
+    .addb-content h1,
+    .addb-content h2,
+    .addb-content h3,
+    .addb-content h4,
+    .addb-content h5,
+    .addb-content h6 {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 7px !important;
+        padding: 0 !important;
+        color: #111 !important;
+        text-align: center !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        line-height: 1.5 !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .addb-content p:empty {
+        display: none !important;
+    }
+
+    .addb-content br {
+        display: block !important;
+        content: "" !important;
+        margin: 0 !important;
+    }
+
+    .addb-content strong,
+    .addb-content b {
+        color: #000 !important;
+        font-weight: 900 !important;
+    }
+
+    .addb-content i,
+    .addb-content em {
+        font-style: italic !important;
+    }
+
+    .addb-content a {
+        color: #003cff !important;
+        font-weight: 900 !important;
+        text-decoration: none !important;
+    }
+
+    .addb-content a:hover {
+        text-decoration: underline !important;
+    }
+
+    .addb-content ul,
+    .addb-content ol {
+        display: inline-block !important;
+        margin: 6px auto 8px !important;
+        padding-left: 22px !important;
+        text-align: left !important;
+    }
+
+    .addb-content li {
+        margin: 0 0 5px !important;
+        color: #111 !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        line-height: 1.45 !important;
+        text-align: left !important;
+    }
+
+    .addb-content table {
+        width: 100% !important;
+        margin: 8px 0 !important;
+        border-collapse: collapse !important;
+    }
+
+    .addb-content table th,
+    .addb-content table td {
+        border: 1px solid #111 !important;
+        padding: 5px !important;
+        color: #111 !important;
+        text-align: center !important;
+        font-size: 14px !important;
+    }
+
+    .rv-ad-img {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 999px;
+        padding: 5px 12px;
+        margin-top: 8px;
+        max-width: 100%;
+        line-height: 1 !important;
+    }
+
+    .rv-ad-img img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-height: 55px;
+        max-width: 200px;
+        object-fit: contain;
+        border-radius: 999px;
+    }
+
+    .rv-ad-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none !important;
+    }
+
+    .rv-middle {
+        background: linear-gradient(180deg, #111827, #1f2937);
+        border: 3px dashed #ffd900;
+    }
+
+    .rv-middle,
+    .rv-middle .addb-content,
+    .rv-middle .addb-content p,
+    .rv-middle .addb-content div,
+    .rv-middle .addb-content h1,
+    .rv-middle .addb-content h2,
+    .rv-middle .addb-content h3,
+    .rv-middle .addb-content h4,
+    .rv-middle .addb-content h5,
+    .rv-middle .addb-content h6,
+    .rv-middle .addb-content strong,
+    .rv-middle .addb-content b,
+    .rv-middle .rv-ad-title,
+    .rv-middle .rv-ad-lines {
+        color: #fff !important;
+    }
+
+    .rv-middle .rv-ad-name {
+        color: #ffd900 !important;
+    }
+
+    .rv-middle .rv-ad-img img {
+        max-height: 55px;
+        max-width: 200px;
+    }
+
+    @media(max-width:640px) {
         .rv-ad-wrap {
-            width: 100%;
-            margin: 12px auto;
-            font-family: Arial, 'Noto Sans Devanagari', sans-serif;
+            margin: 10px auto;
+            padding: 0 3px;
         }
 
         .rv-ad-box {
-            background: linear-gradient(180deg, #ffd900 0%, #fff8cf 100%);
-            border: 3px dashed #e60000;
-            border-radius: 16px;
-            padding: 12px 10px;
-            text-align: center;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .10);
-        }
-
-        .rv-ad-box,
-        .rv-ad-box * {
-            color: #111 !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
+            border-width: 2px;
+            border-radius: 14px;
+            padding: 10px 7px 12px;
+            font-size: 14px !important;
             line-height: 1.45 !important;
-            word-break: break-word;
-        }
-
-        .rv-ad-box h1,
-        .rv-ad-box h2,
-        .rv-ad-box h3,
-        .rv-ad-box h4,
-        .rv-ad-box h5,
-        .rv-ad-box h6,
-        .rv-ad-box p,
-        .rv-ad-box div {
-            margin: 4px 0 !important;
-            font-size: 16px !important;
         }
 
         .rv-ad-title {
-            font-size: 18px !important;
-            font-weight: 800 !important;
+            font-size: 15px !important;
+            line-height: 1.45 !important;
         }
 
         .rv-ad-name {
-            font-size: 19px !important;
-            font-weight: 900 !important;
-            color: #c9342d !important;
+            font-size: 16px !important;
+            line-height: 1.45 !important;
+        }
+
+        .rv-ad-lines,
+        .rv-ad-play,
+        .addb-content,
+        .addb-content p,
+        .addb-content div,
+        .addb-content h1,
+        .addb-content h2,
+        .addb-content h3,
+        .addb-content h4,
+        .addb-content h5,
+        .addb-content h6,
+        .addb-content li {
+            font-size: 14px !important;
+            line-height: 1.45 !important;
         }
 
         .rv-ad-img {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            border-radius: 999px;
-            padding: 5px 12px;
-            margin-top: 8px;
-            max-width: 100%;
+            padding: 4px 10px;
+            margin-top: 6px;
         }
 
         .rv-ad-img img {
-            width: auto;
-            height: auto;
-            max-height: 55px;
-            max-width: 200px;
-            object-fit: contain;
+            max-height: 48px;
+            max-width: 175px;
         }
-
-        .rv-middle {
-            background: linear-gradient(180deg, #111827, #1f2937);
-            border: 3px dashed #ffd900;
-        }
-
-        .rv-middle,
-        .rv-middle * {
-            color: #fff !important;
-        }
-
-        .rv-middle .rv-ad-img img {
-            max-height: 55px;
-            max-width: 200px;
-        }
-
-        @media(max-width:640px) {
-            .rv-ad-wrap {
-                margin: 10px auto;
-            }
-
-            .rv-ad-box {
-                border-width: 3px;
-                border-radius: 14px;
-                padding: 10px 8px;
-            }
-
-            .rv-ad-box,
-            .rv-ad-box * {
-                font-size: 16px !important;
-                line-height: 1.4 !important;
-                font-weight: 700 !important;
-            }
-
-            .rv-ad-box h1,
-            .rv-ad-box h2,
-            .rv-ad-box h3,
-            .rv-ad-box h4,
-            .rv-ad-box h5,
-            .rv-ad-box h6,
-            .rv-ad-box p,
-            .rv-ad-box div {
-                font-size: 14px !important;
-            }
-
-            .rv-ad-title {
-                font-size: 15px !important;
-            }
-
-            .rv-ad-name {
-                font-size: 16px !important;
-            }
-
-            .rv-ad-img {
-                padding: 4px 10px;
-                margin-top: 6px;
-            }
-
-            .rv-ad-img img {
-                max-height: 48px;
-                max-width: 175px;
-            }
-        }
-    </style>
+    }
+</style>
 
 
-    {{-- top --}}
-    @php
-        $topAdvertisement = $advertisements->where('position', 'top')->first();
-    @endphp
+{{-- top --}}
+@php
+    $topAdvertisement = $advertisements->where('position', 'top')->first();
+@endphp
 
-    @if ($topAdvertisement)
-        <section class="rv-ad-wrap">
-            <div class="rv-ad-box">
-                @if (!empty($topAdvertisement->content))
-                    <div class="addb-content">
-                        {!! $topAdvertisement->content !!}
-                    </div>
-                @endif
+@if ($topAdvertisement)
+    <section class="rv-ad-wrap">
+        <div class="rv-ad-box">
+            @if (!empty($topAdvertisement->content))
+                <div class="addb-content">
+                    {!! $topAdvertisement->content !!}
+                </div>
+            @endif
 
-                @if (!empty($topAdvertisement->image))
-                    @if (!empty($topAdvertisement->link))
-                        <a href="{{ $topAdvertisement->link }}" target="_blank" style="text-decoration:none;">
-                            <span class="rv-ad-img">
-                                <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                    alt="{{ $topAdvertisement->title }}" width="139" height="48">
-                            </span>
-                        </a>
-                    @else
+            @if (!empty($topAdvertisement->image))
+                @if (!empty($topAdvertisement->link))
+                    <a href="{{ $topAdvertisement->link }}" target="_blank" rel="noopener" class="rv-ad-link">
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                alt="{{ $topAdvertisement->title }}" width="139" height="48">
+                                 alt="{{ $topAdvertisement->title ?? 'Advertisement' }}"
+                                 width="139"
+                                 height="48"
+                                 loading="lazy">
                         </span>
-                    @endif
+                    </a>
+                @else
+                    <span class="rv-ad-img">
+                        <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
+                             alt="{{ $topAdvertisement->title ?? 'Advertisement' }}"
+                             width="139"
+                             height="48"
+                             loading="lazy">
+                    </span>
                 @endif
-            </div>
-        </section>
-    @else
-        <section class="rv-ad-wrap">
-            <div class="rv-ad-box">
-                <h2 class="rv-ad-title">नमस्कार साथियों</h2>
+            @endif
+        </div>
+    </section>
+@else
+    <section class="rv-ad-wrap">
+        <div class="rv-ad-box">
+            <h2 class="rv-ad-title">नमस्कार साथियों</h2>
 
-                <p>
-                    सीधा कंपनी खाईवाल के पास गेम प्ले करे<br>
-                    बिंदास 1001% पेमेंट की गारंटी के साथ<br>
-                    आपका अपना भाई
-                </p>
+            <p class="rv-ad-lines">
+                सीधा कंपनी खाईवाल के पास गेम प्ले करे<br>
+                बिंदास 1001% पेमेंट की गारंटी के साथ<br>
+                आपका अपना भाई
+            </p>
 
-                <h2 class="rv-ad-name">S.K BHAI</h2>
+            <h2 class="rv-ad-name">S.K BHAI</h2>
 
-                <span class="rv-ad-img">
-                    <img src="{{ asset('Wp.png') }}" alt="S.K Bhai" width="139" height="48">
-                </span>
-            </div>
-        </section>
-    @endif
-    {{-- end top --}}
+            <span class="rv-ad-img">
+                <img src="{{ asset('Wp.png') }}"
+                     alt="S.K Bhai"
+                     width="139"
+                     height="48"
+                     loading="lazy">
+            </span>
+        </div>
+    </section>
+@endif
+{{-- end top --}}
 
 
-    {{-- middle --}}
-    @php
-        $middleAdvertisement = $advertisements->where('position', 'middle')->first();
-    @endphp
+{{-- middle --}}
+@php
+    $middleAdvertisement = $advertisements->where('position', 'middle')->first();
+@endphp
 
-    @if ($middleAdvertisement)
-        <section class="rv-ad-wrap">
-            <div class="rv-ad-box rv-middle">
-                @if (!empty($middleAdvertisement->content))
-                    <div class="addb-content">
-                        {!! $middleAdvertisement->content !!}
-                    </div>
-                @endif
+@if ($middleAdvertisement)
+    <section class="rv-ad-wrap">
+        <div class="rv-ad-box rv-middle">
+            @if (!empty($middleAdvertisement->content))
+                <div class="addb-content">
+                    {!! $middleAdvertisement->content !!}
+                </div>
+            @endif
 
-                @if ($middleAdvertisement->image)
-                    @if ($middleAdvertisement->link)
-                        <a href="{{ $middleAdvertisement->link }}" target="_blank" style="text-decoration:none;">
-                            <span class="rv-ad-img">
-                                <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                    alt="{{ $middleAdvertisement->title }}" width="139" height="48">
-                            </span>
-                        </a>
-                    @else
+            @if (!empty($middleAdvertisement->image))
+                @if (!empty($middleAdvertisement->link))
+                    <a href="{{ $middleAdvertisement->link }}" target="_blank" rel="noopener" class="rv-ad-link">
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                alt="{{ $middleAdvertisement->title }}" width="139" height="48">
+                                 alt="{{ $middleAdvertisement->title ?? 'Advertisement' }}"
+                                 width="139"
+                                 height="48"
+                                 loading="lazy">
                         </span>
-                    @endif
-                @endif
-            </div>
-        </section>
-    @else
-        <section class="rv-ad-wrap">
-            <div class="rv-ad-box rv-middle">
-                <h3>
-                    व्हाट्सएप पर सुपर फास्ट रिजल्ट देखने के लिए नीचे दिए गए लिंक पर जाएं और चैनल को फॉलो करें।
-                </h3>
-
-                <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" style="text-decoration:none;">
+                    </a>
+                @else
                     <span class="rv-ad-img">
-                        <img src="{{ asset('Join-WhatsApp.png') }}" alt="Join WhatsApp" width="159" height="55">
+                        <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
+                             alt="{{ $middleAdvertisement->title ?? 'Advertisement' }}"
+                             width="139"
+                             height="48"
+                             loading="lazy">
                     </span>
-                </a>
-            </div>
-        </section>
-    @endif
-    {{-- end middle --}}
-
-
-    {{-- bottom --}}
-    @php
-        $bottomAdvertisement = $advertisements->where('position', 'bottom')->first();
-    @endphp
-
-    @if ($bottomAdvertisement)
-        <section class="rv-ad-wrap">
-            <div class="rv-ad-box">
-                @if (!empty($bottomAdvertisement->content))
-                    <div class="addb-content">
-                        {!! $bottomAdvertisement->content !!}
-                    </div>
                 @endif
+            @endif
+        </div>
+    </section>
+@else
+    <section class="rv-ad-wrap">
+        <div class="rv-ad-box rv-middle">
+            <h3 class="rv-ad-lines">
+                व्हाट्सएप पर सुपर फास्ट रिजल्ट देखने के लिए नीचे दिए गए लिंक पर जाएं और चैनल को फॉलो करें।
+            </h3>
 
-                @if (!empty($bottomAdvertisement->image))
-                    @if (!empty($bottomAdvertisement->link))
-                        <a href="{{ $bottomAdvertisement->link }}" target="_blank" style="text-decoration:none;">
-                            <span class="rv-ad-img">
-                                <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                    alt="{{ $bottomAdvertisement->title }}" width="139" height="48">
-                            </span>
-                        </a>
-                    @else
+            <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" target="_blank" rel="noopener" class="rv-ad-link">
+                <span class="rv-ad-img">
+                    <img src="{{ asset('Join-WhatsApp.png') }}"
+                         alt="Join WhatsApp"
+                         width="159"
+                         height="55"
+                         loading="lazy">
+                </span>
+            </a>
+        </div>
+    </section>
+@endif
+{{-- end middle --}}
+
+
+{{-- bottom --}}
+@php
+    $bottomAdvertisement = $advertisements->where('position', 'bottom')->first();
+@endphp
+
+@if ($bottomAdvertisement)
+    <section class="rv-ad-wrap">
+        <div class="rv-ad-box">
+            @if (!empty($bottomAdvertisement->content))
+                <div class="addb-content">
+                    {!! $bottomAdvertisement->content !!}
+                </div>
+            @endif
+
+            @if (!empty($bottomAdvertisement->image))
+                @if (!empty($bottomAdvertisement->link))
+                    <a href="{{ $bottomAdvertisement->link }}" target="_blank" rel="noopener" class="rv-ad-link">
                         <span class="rv-ad-img">
                             <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                alt="{{ $bottomAdvertisement->title }}" width="139" height="48">
+                                 alt="{{ $bottomAdvertisement->title ?? 'Advertisement' }}"
+                                 width="139"
+                                 height="48"
+                                 loading="lazy">
                         </span>
-                    @endif
+                    </a>
+                @else
+                    <span class="rv-ad-img">
+                        <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
+                             alt="{{ $bottomAdvertisement->title ?? 'Advertisement' }}"
+                             width="139"
+                             height="48"
+                             loading="lazy">
+                    </span>
                 @endif
+            @endif
+        </div>
+    </section>
+@else
+    <section class="rv-ad-wrap">
+        <div class="rv-ad-box">
+            <div class="rv-ad-title">सीधे सट्टा कंपनी का No 1 खाईवाल</div>
+
+            <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
+
+            <div class="rv-ad-lines">
+                🎯 पालिका बाजार..1:20pm<br>
+                🎯 प्रयागराज........2:00pm<br>
+                🎯 दिल्लीबाजार ...3:00pm<br>
+                🎯 दिल्ली दरबार....3:30pm<br>
+                🎯 श्री गणेश........4:30 Pm<br>
+                🎯 रूप नगर..........5:10pm<br>
+                🎯 फरीदाबाद.......5:50 pm<br>
+                🎯 फतेहपुर..........7:10 pm<br>
+                🎯 गाजियाबाद......8:50 pm<br>
+                🎯 नोएडानाईट.....10:00 pm<br>
+                🎯 गली...............11:15pm<br>
+                🎯 दिसावर ..........3:00 am
             </div>
-        </section>
-    @else
-        <section class="rv-ad-wrap">
-            <div class="rv-ad-box">
-                <div class="rv-ad-title">सीधे सट्टा कंपनी का No 1 खाईवाल</div>
 
-                <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
-
-                <div>
-                    🎯 पालिका बाजार..1:20pm<br>
-                    🎯 प्रयागराज........2:00pm<br>
-                    🎯 दिल्लीबाजार ...3:00pm<br>
-                    🎯 दिल्ली दरबार....3:30pm<br>
-                    🎯 श्री गणेश........4:30 Pm<br>
-                    🎯 रूप नगर..........5:10pm<br>
-                    🎯 फरीदाबाद.......5:50 pm<br>
-                    🎯 फतेहपुर..........7:10 pm<br>
-                    🎯 गाजियाबाद......8:50 pm<br>
-                    🎯 नोएडानाईट.....10:00 pm<br>
-                    🎯 गली...............11:15pm<br>
-                    🎯 दिसावर ..........3:00 am
-                </div>
-
-                <div>
-                    जोड़ी रेट<br>
-                    जोड़ी रेट 10-------960<br>
-                    हरफ रेट 100-----960
-                </div>
-
-                <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
-
-                <div style="color:#9b59b6!important;font-weight:800!important;">
-                    Game Play करने के लिए नीचे लिंक पर क्लिक करे
-                </div>
-
-                <span class="rv-ad-img">
-                    <img src="{{ asset('whatsAppChat.png') }}" alt="ABHISHEK BHAI" width="139" height="48">
-                </span>
-
-                <div>Click to chat</div>
+            <div class="rv-ad-lines">
+                जोड़ी रेट<br>
+                जोड़ी रेट 10-------960<br>
+                हरफ रेट 100-----960
             </div>
-        </section>
-    @endif
-    {{-- end bottom --}}
 
+            <div class="rv-ad-name">☆☆ ABHISHEK BHAI KHAIWAL ☆☆</div>
 
+            <div class="rv-ad-play">
+                Game Play करने के लिए नीचे लिंक पर क्लिक करे
+            </div>
+
+            <span class="rv-ad-img">
+                <img src="{{ asset('whatsAppChat.png') }}"
+                     alt="ABHISHEK BHAI"
+                     width="139"
+                     height="48"
+                     loading="lazy">
+            </span>
+
+            <div class="rv-ad-lines">Click to chat</div>
+        </div>
+    </section>
+@endif
+{{-- end bottom --}}
 
   
 
