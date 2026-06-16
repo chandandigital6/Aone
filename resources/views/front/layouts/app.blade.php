@@ -53,24 +53,13 @@
 
     <link rel="preconnect" href="{{ url('/') }}" crossorigin>
 
-    <link rel="preload"
-          href="{{ asset('fonts/Roboto.woff2') }}"
-          as="font"
-          type="font/woff2"
-          crossorigin>
-
-    <link rel="preload"
-          href="{{ asset('fonts/RobotoBold.woff2') }}"
-          as="font"
-          type="font/woff2"
-          crossorigin>
-
+    {{-- Logo preload only if this logo is visible above the fold --}}
     <link rel="preload"
           href="{{ asset('Logo(2).png') }}"
           as="image"
           fetchpriority="high">
 
-    {{-- Render blocking fix: CSS ko async load kara rahe hain --}}
+    {{-- Non-critical CSS async load --}}
     <link rel="preload"
           href="{{ asset('next/static/css/b357a2dcbca59595.css') }}"
           as="style"
@@ -91,24 +80,9 @@
     @endif
 
     <style>
-        @font-face {
-            font-family: 'Roboto';
-            src: url('{{ asset('fonts/Roboto.woff2') }}') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Roboto';
-            src: url('{{ asset('fonts/RobotoBold.woff2') }}') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
             text-size-adjust: 100%;
         }
 
@@ -116,9 +90,9 @@
             margin: 0;
             width: 100%;
             min-height: 100vh;
-            background: #fff;
+            background: #ffffff;
             color: #111827;
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             overflow-x: hidden;
         }
 
@@ -144,7 +118,7 @@
         }
 
         .font-Roboto {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
         .logo {
@@ -157,7 +131,7 @@
             width: 100%;
             margin: 12px auto;
             padding: 0 4px;
-            font-family: Arial, 'Noto Sans Devanagari', sans-serif;
+            font-family: Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             contain: layout paint;
         }
 
@@ -206,11 +180,21 @@
         }
 
         @media(max-width: 640px) {
+            .rv-ad-wrap {
+                margin: 10px auto;
+                padding: 0 3px;
+            }
+
             .rv-ad-box {
                 min-height: 104px;
                 border-width: 2px;
                 border-radius: 14px;
                 padding: 10px 7px 12px;
+            }
+
+            .rv-ad-img {
+                min-height: 52px;
+                padding: 4px 10px;
             }
 
             .rv-ad-img img,
@@ -238,7 +222,7 @@
         <div id="modal"></div>
     </div>
 
-    {{-- GTM fix: 2.5 sec ki jagah interaction/idle par load --}}
+    {{-- GTM ko PageSpeed initial load se bahar rakha hai --}}
     <script>
         (function () {
             let gtmLoaded = false;
@@ -271,9 +255,9 @@
             window.addEventListener('touchstart', loadGtm, { once: true, passive: true });
 
             if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGtm, { timeout: 6000 });
+                requestIdleCallback(loadGtm, { timeout: 10000 });
             } else {
-                setTimeout(loadGtm, 6000);
+                setTimeout(loadGtm, 10000);
             }
         })();
     </script>

@@ -25,7 +25,7 @@ class FrontController extends Controller
         $today = Carbon::today('Asia/Kolkata')->format('Y-m-d');
 
         if ($date === $today) {
-            return now()->addSeconds(45);
+            return now()->addSeconds(60);
         }
 
         return now()->addHours(12);
@@ -270,7 +270,7 @@ class FrontController extends Controller
                 ->toArray();
         }
 
-        Cache::put($monthlyCacheKey, $monthlyArray, now()->addMinutes(10));
+        Cache::put($monthlyCacheKey, $monthlyArray, now()->addMinutes(60));
 
         $monthlyResults = collect($monthlyArray)->map(function ($items) {
             return collect($items)->map(function ($item) {
