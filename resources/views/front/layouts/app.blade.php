@@ -223,44 +223,38 @@
     </div>
 
     {{-- GTM ko PageSpeed initial load se bahar rakha hai --}}
-    <script>
-        (function () {
-            let gtmLoaded = false;
+   <script>
+    (function () {
+        let gtmLoaded = false;
 
-            function loadGtm() {
-                if (gtmLoaded) return;
-                gtmLoaded = true;
+        function loadGtm() {
+            if (gtmLoaded) return;
+            gtmLoaded = true;
 
-                const s = document.createElement('script');
-                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2QEDR9PH55';
-                s.async = true;
-                document.head.appendChild(s);
+            const s = document.createElement('script');
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2QEDR9PH55';
+            s.async = true;
+            document.head.appendChild(s);
 
-                window.dataLayer = window.dataLayer || [];
+            window.dataLayer = window.dataLayer || [];
 
-                function gtag() {
-                    dataLayer.push(arguments);
-                }
-
-                window.gtag = gtag;
-
-                gtag('js', new Date());
-                gtag('config', 'G-2QEDR9PH55', {
-                    send_page_view: true
-                });
+            function gtag() {
+                dataLayer.push(arguments);
             }
 
-            window.addEventListener('scroll', loadGtm, { once: true, passive: true });
-            window.addEventListener('click', loadGtm, { once: true });
-            window.addEventListener('touchstart', loadGtm, { once: true, passive: true });
+            window.gtag = gtag;
 
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGtm, { timeout: 10000 });
-            } else {
-                setTimeout(loadGtm, 10000);
-            }
-        })();
-    </script>
+            gtag('js', new Date());
+            gtag('config', 'G-2QEDR9PH55', {
+                send_page_view: true
+            });
+        }
+
+        window.addEventListener('click', loadGtm, { once: true });
+        window.addEventListener('touchstart', loadGtm, { once: true, passive: true });
+        window.addEventListener('scroll', loadGtm, { once: true, passive: true });
+    })();
+</script>
 
     @yield('custom-script')
     @stack('scripts')
