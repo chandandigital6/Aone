@@ -70,9 +70,21 @@
           as="image"
           fetchpriority="high">
 
-    {{-- CLS fix: critical CSS direct load --}}
-    <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
-    <link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
+    {{-- Render blocking fix: CSS ko async load kara rahe hain --}}
+    <link rel="preload"
+          href="{{ asset('next/static/css/b357a2dcbca59595.css') }}"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+
+    <link rel="preload"
+          href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
+        <link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
+    </noscript>
 
     @if(!empty($seo?->schema_markup))
         {!! $seo->schema_markup !!}
@@ -141,19 +153,69 @@
             object-fit: contain;
         }
 
+        .rv-ad-wrap {
+            width: 100%;
+            margin: 12px auto;
+            padding: 0 4px;
+            font-family: Arial, 'Noto Sans Devanagari', sans-serif;
+            contain: layout paint;
+        }
+
+        .rv-ad-box {
+            width: 100%;
+            min-height: 112px;
+            background: linear-gradient(180deg, #ffd900 0%, #fff8cf 100%);
+            border: 3px dashed #e60000;
+            border-radius: 16px;
+            padding: 12px 10px 14px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .10);
+            color: #111;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .rv-ad-img {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 58px;
+            background: #fff;
+            border-radius: 999px;
+            padding: 5px 12px;
+            margin-top: 8px;
+            max-width: 100%;
+            line-height: 1 !important;
+        }
+
         .rv-ad-img img,
         .addb-content img {
+            display: block;
             width: auto;
             height: auto;
-            max-width: 220px;
+            max-width: 200px;
             max-height: 55px;
             object-fit: contain;
         }
 
+        .rv-middle {
+            background: linear-gradient(180deg, #111827, #1f2937);
+            border: 3px dashed #ffd900;
+        }
+
         @media(max-width: 640px) {
+            .rv-ad-box {
+                min-height: 104px;
+                border-width: 2px;
+                border-radius: 14px;
+                padding: 10px 7px 12px;
+            }
+
             .rv-ad-img img,
             .addb-content img {
-                max-width: 190px;
+                max-width: 175px;
                 max-height: 48px;
             }
         }
@@ -176,11 +238,16 @@
         <div id="modal"></div>
     </div>
 
-    {{-- Google tag delayed load: unused JS / main-thread issue kam hoga --}}
+    {{-- GTM fix: 2.5 sec ki jagah interaction/idle par load --}}
     <script>
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                var s = document.createElement('script');
+        (function () {
+            let gtmLoaded = false;
+
+            function loadGtm() {
+                if (gtmLoaded) return;
+                gtmLoaded = true;
+
+                const s = document.createElement('script');
                 s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2QEDR9PH55';
                 s.async = true;
                 document.head.appendChild(s);
@@ -197,8 +264,18 @@
                 gtag('config', 'G-2QEDR9PH55', {
                     send_page_view: true
                 });
-            }, 2500);
-        });
+            }
+
+            window.addEventListener('scroll', loadGtm, { once: true, passive: true });
+            window.addEventListener('click', loadGtm, { once: true });
+            window.addEventListener('touchstart', loadGtm, { once: true, passive: true });
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadGtm, { timeout: 6000 });
+            } else {
+                setTimeout(loadGtm, 6000);
+            }
+        })();
     </script>
 
     @yield('custom-script')

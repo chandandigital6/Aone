@@ -169,75 +169,96 @@ class FrontController extends Controller
         });
     }
 
-    public function home()
-    {
-        $today = Carbon::today('Asia/Kolkata');
-        $yesterday = Carbon::yesterday('Asia/Kolkata');
+   public function home()
+{
+    $today = Carbon::today('Asia/Kolkata');
+    $yesterday = Carbon::yesterday('Asia/Kolkata');
 
-        $todayDate = $today->format('Y-m-d');
-        $yesterdayDate = $yesterday->format('Y-m-d');
+    $todayDate = $today->format('Y-m-d');
+    $yesterdayDate = $yesterday->format('Y-m-d');
 
-        $todayGames = $this->getGamesResultByDate($todayDate);
-        $yesterdayGames = $this->getGamesResultByDate($yesterdayDate)->keyBy('slug');
+    $todayGames = $this->getGamesResultByDate($todayDate);
+    $yesterdayGames = $this->getGamesResultByDate($yesterdayDate)->keyBy('slug');
 
-        $games = $todayGames->map(function ($game) use ($yesterdayGames) {
-            $slug = $game['slug'] ?? '';
+    $games = $todayGames->map(function ($game) use ($yesterdayGames) {
+        $slug = $game['slug'] ?? '';
 
-            $yesterdayGame = $yesterdayGames->get($slug);
+        $yesterdayGame = $yesterdayGames->get($slug);
 
-            $todayResult = $game['result'] ?? [];
-            $yesterdayResult = is_array($yesterdayGame)
-                ? ($yesterdayGame['result'] ?? [])
-                : [];
+        $todayResult = $game['result'] ?? [];
+        $yesterdayResult = is_array($yesterdayGame)
+            ? ($yesterdayGame['result'] ?? [])
+            : [];
 
-            return (object) [
-                'id'          => $game['id'] ?? null,
-                'name'        => $game['name'] ?? '',
-                'slug'        => $slug,
-                'result_time' => $game['result_time'] ?? '',
-                'sort_order'  => $game['sort_order'] ?? 0,
+        return (object) [
+            'id'          => $game['id'] ?? null,
+            'name'        => $game['name'] ?? '',
+            'slug'        => $slug,
+            'result_time' => $game['result_time'] ?? '',
+            'sort_order'  => $game['sort_order'] ?? 0,
 
-                'todayResult' => (object) [
-                    'id'           => $todayResult['id'] ?? null,
-                    'result_date'  => $todayResult['result_date'] ?? null,
-                    'result'       => $todayResult['result'] ?? null,
-                    'status'       => $todayResult['status'] ?? 'waiting',
-                    'show_minutes' => $todayResult['show_minutes'] ?? 10,
-                    'updated_at'   => $todayResult['updated_at'] ?? null,
-                    'is_live'      => $todayResult['is_live'] ?? false,
-                ],
+            'todayResult' => (object) [
+                'id'           => $todayResult['id'] ?? null,
+                'result_date'  => $todayResult['result_date'] ?? null,
+                'result'       => $todayResult['result'] ?? null,
+                'status'       => $todayResult['status'] ?? 'waiting',
+                'show_minutes' => $todayResult['show_minutes'] ?? 10,
+                'updated_at'   => $todayResult['updated_at'] ?? null,
+                'is_live'      => $todayResult['is_live'] ?? false,
+            ],
 
-                'yesterdayResult' => (object) [
-                    'id'           => $yesterdayResult['id'] ?? null,
-                    'result_date'  => $yesterdayResult['result_date'] ?? null,
-                    'result'       => $yesterdayResult['result'] ?? null,
-                    'status'       => $yesterdayResult['status'] ?? 'waiting',
-                ],
+            'yesterdayResult' => (object) [
+                'id'           => $yesterdayResult['id'] ?? null,
+                'result_date'  => $yesterdayResult['result_date'] ?? null,
+                'result'       => $yesterdayResult['result'] ?? null,
+                'status'       => $yesterdayResult['status'] ?? 'waiting',
+            ],
 
-                'latestResult' => (object) [
-                    'result' => $todayResult['result'] ?? null,
-                    'status' => $todayResult['status'] ?? 'waiting',
-                ],
-            ];
-        })->values();
+            'latestResult' => (object) [
+                'result' => $todayResult['result'] ?? null,
+                'status' => $todayResult['status'] ?? 'waiting',
+            ],
+        ];
+    })->values();
 
-        $chartGames = $games->sortBy('sort_order')->values();
+    $chartGames = $games->sortBy('sort_order')->values();
 
-        $startDate = $today->copy()->startOfMonth();
-        $endDate = $today->copy()->endOfMonth();
+    $startDate = $today->copy()->startOfMonth();
+    $endDate = $today->copy()->endOfMonth();
 
-        $dates = CarbonPeriod::create($startDate, $endDate);
+    $dates = CarbonPeriod::create($startDate, $endDate);
 
-        $monthlyResults = collect();
+    /*
+    |--------------------------------------------------------------------------
+    | Monthly results cache
+    |--------------------------------------------------------------------------
+    | पहले हर page load पर पूरे महीने की API call चल रही थी.
+    | अब monthly chart 10 minutes cache होगा.
+    | Cache में सिर्फ array save होगा, Collection/Object नहीं.
+    */
+    $monthlyCacheKey = 'a1_monthly_results_' . $today->format('Y_m');
+
+    $this->forgetBadCache($monthlyCacheKey);
+
+    $cachedMonthly = Cache::get($monthlyCacheKey);
+
+    if (is_array($cachedMonthly)) {
+        $monthlyResults = collect($cachedMonthly)->map(function ($items) {
+            return collect($items)->map(function ($item) {
+                return (object) $item;
+            })->values();
+        });
+    } else {
+        $monthlyArray = [];
 
         foreach ($dates as $date) {
             $dateKey = $date->format('Y-m-d');
 
-            $dayResults = $this->getGamesResultByDate($dateKey)
+            $monthlyArray[$dateKey] = $this->getGamesResultByDate($dateKey)
                 ->map(function ($game) {
                     $result = $game['result'] ?? [];
 
-                    return (object) [
+                    return [
                         'game_id'     => $game['id'] ?? null,
                         'game_slug'   => $game['slug'] ?? '',
                         'result_date' => $result['result_date'] ?? null,
@@ -245,23 +266,31 @@ class FrontController extends Controller
                         'status'      => $result['status'] ?? 'waiting',
                     ];
                 })
-                ->values();
-
-            $monthlyResults->put($dateKey, $dayResults);
+                ->values()
+                ->toArray();
         }
 
-        $seo = $this->getSeoHome();
-        $advertisements = $this->getActiveAdvertisements();
+        Cache::put($monthlyCacheKey, $monthlyArray, now()->addMinutes(10));
 
-        return view('front.home.index', compact(
-            'games',
-            'chartGames',
-            'dates',
-            'monthlyResults',
-            'seo',
-            'advertisements'
-        ));
+        $monthlyResults = collect($monthlyArray)->map(function ($items) {
+            return collect($items)->map(function ($item) {
+                return (object) $item;
+            })->values();
+        });
     }
+
+    $seo = $this->getSeoHome();
+    $advertisements = $this->getActiveAdvertisements();
+
+    return view('front.home.index', compact(
+        'games',
+        'chartGames',
+        'dates',
+        'monthlyResults',
+        'seo',
+        'advertisements'
+    ));
+}
 
 
     // private string $apiBaseUrl;
