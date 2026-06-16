@@ -2,7 +2,7 @@
 
     <nav class="a1-logo-nav">
         <a href="/" class="a1-logo-box">
-            <img src="{{ asset('a1sattakingresult.png') }}" alt="A1 Satta King Result">
+            <img src="{{ asset('a1sattakingresult.webp') }}" alt="A1 Satta King Result">
         </a>
     </nav>
 

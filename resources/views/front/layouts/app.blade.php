@@ -53,36 +53,33 @@
 
     <link rel="preconnect" href="{{ url('/') }}" crossorigin>
 
-    {{-- Logo preload only if this logo is visible above the fold --}}
+    {{-- LCP image preload --}}
     <link rel="preload"
           href="{{ asset('Logo(2).png') }}"
           as="image"
           fetchpriority="high">
 
-    {{-- Non-critical CSS async load --}}
-    {{-- <link rel="preload"
-          href="{{ asset('next/static/css/b357a2dcbca59595.css') }}"
-          as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
-
-    <link rel="preload"
-          href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}"
-          as="style"
-          onload="this.onload=null;this.rel='stylesheet'"> --}}
-
-          <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
-<link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
-
-    {{-- <noscript>
+    {{-- ============================================================
+         CRITICAL FIX: Render-blocking CSS → async load
+         PageSpeed pe 640ms ki saving milegi
+         ============================================================ --}}
+    <link rel="preload" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
         <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
         <link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
-    </noscript> --}}
+    </noscript>
 
     @if(!empty($seo?->schema_markup))
         {!! $seo->schema_markup !!}
     @endif
 
+    {{-- ============================================================
+         CRITICAL CSS — inline (above-the-fold render ke liye)
+         Yeh CSS block nahi karega kyunki inline hai
+         ============================================================ --}}
     <style>
+        /* ── Reset & Base ── */
         html {
             scroll-behavior: smooth;
             -webkit-text-size-adjust: 100%;
@@ -130,6 +127,7 @@
             object-fit: contain;
         }
 
+        /* ── Advertisement boxes (above fold, CLS avoid) ── */
         .rv-ad-wrap {
             width: 100%;
             margin: 12px auto;
@@ -225,39 +223,50 @@
         <div id="modal"></div>
     </div>
 
-    {{-- GTM ko PageSpeed initial load se bahar rakha hai --}}
-   <script>
-    (function () {
-        let gtmLoaded = false;
+    {{-- GTM: user interaction ke baad hi load hoga (PageSpeed score improve) --}}
+    <script>
+        (function () {
+            var gtmLoaded = false;
 
-        function loadGtm() {
-            if (gtmLoaded) return;
-            gtmLoaded = true;
+            function loadGtm() {
+                if (gtmLoaded) return;
+                gtmLoaded = true;
 
-            const s = document.createElement('script');
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2QEDR9PH55';
-            s.async = true;
-            document.head.appendChild(s);
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2QEDR9PH55';
+                s.async = true;
+                document.head.appendChild(s);
 
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-2QEDR9PH55', { send_page_view: true });
             }
 
-            window.gtag = gtag;
+            /* Interaction pe load — already theek tha, keep as is */
+            window.addEventListener('click',      loadGtm, { once: true });
+            window.addEventListener('touchstart', loadGtm, { once: true, passive: true });
+            window.addEventListener('scroll',     loadGtm, { once: true, passive: true });
 
-            gtag('js', new Date());
-            gtag('config', 'G-2QEDR9PH55', {
-                send_page_view: true
-            });
-        }
+            /* Fallback: 4 second baad bhi load kar do taaki analytics miss na ho */
+            setTimeout(loadGtm, 4000);
+        })();
+    </script>
 
-        window.addEventListener('click', loadGtm, { once: true });
-        window.addEventListener('touchstart', loadGtm, { once: true, passive: true });
-        window.addEventListener('scroll', loadGtm, { once: true, passive: true });
-    })();
-</script>
+    {{-- CSS async polyfill for older browsers (loadCSS-style) --}}
+    <script>
+        /*! Minimal CSS-rel-preload polyfill */
+        (function(){
+            var links = document.querySelectorAll('link[rel="preload"][as="style"]');
+            for (var i = 0; i < links.length; i++) {
+                var l = links[i];
+                if (!l.dataset.loaded) {
+                    l.addEventListener('load', function(){ this.rel = 'stylesheet'; });
+                }
+            }
+        })();
+    </script>
 
     @yield('custom-script')
     @stack('scripts')
