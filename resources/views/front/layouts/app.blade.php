@@ -60,7 +60,7 @@
           fetchpriority="high">
 
     {{-- Non-critical CSS async load --}}
-    <link rel="preload"
+    {{-- <link rel="preload"
           href="{{ asset('next/static/css/b357a2dcbca59595.css') }}"
           as="style"
           onload="this.onload=null;this.rel='stylesheet'">
@@ -68,12 +68,15 @@
     <link rel="preload"
           href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}"
           as="style"
-          onload="this.onload=null;this.rel='stylesheet'">
+          onload="this.onload=null;this.rel='stylesheet'"> --}}
 
-    <noscript>
+          <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
+<link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
+
+    {{-- <noscript>
         <link rel="stylesheet" href="{{ asset('next/static/css/b357a2dcbca59595.css') }}">
         <link rel="stylesheet" href="{{ asset('next/static/css/1aae1bcfa6b95e00.css') }}">
-    </noscript>
+    </noscript> --}}
 
     @if(!empty($seo?->schema_markup))
         {!! $seo->schema_markup !!}
