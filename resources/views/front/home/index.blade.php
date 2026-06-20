@@ -1412,26 +1412,35 @@
             </div>
         </section>
     </div>
+
+
+     <script>
+    function openYearChart() {
+        var gameSelect = document.getElementById('gameSelect');
+        var yearSelect = document.getElementById('yearSelect');
+
+        if (!gameSelect || !yearSelect) {
+            return;
+        }
+
+        var slug = gameSelect.value;
+        var year = yearSelect.value;
+
+        if (!slug || !year) {
+            return;
+        }
+
+        var url = "{{ route('game.yearRecord', ['slug' => '__SLUG__', 'year' => '__YEAR__']) }}";
+
+        url = url.replace('__SLUG__', encodeURIComponent(slug));
+        url = url.replace('__YEAR__', encodeURIComponent(year));
+
+        window.location.href = url;
+    }
+</script>
+
+
 @endsection
 
-@push('scripts')
-    <script>
-        function openYearChart() {
-            var gameSelect = document.getElementById('gameSelect');
-            var yearSelect = document.getElementById('yearSelect');
 
-            if (!gameSelect || !yearSelect) {
-                return;
-            }
-
-            var slug = gameSelect.value;
-            var year = yearSelect.value;
-
-            if (!slug || !year) {
-                return;
-            }
-
-            window.location.href = "{{ url('/records') }}/" + encodeURIComponent(slug) + "/" + encodeURIComponent(year);
-        }
-    </script>
-@endpush
+  
