@@ -1082,25 +1082,26 @@
         </section>
 
         {{-- Year Chart Search --}}
-        <section class="chart-search-box" aria-label="Check All Game Year Chart">
-            <h2>Check All Game Year Chart</h2>
+       {{-- Year Chart Search --}}
+<section class="chart-search-box" aria-label="Check All Game Year Chart">
+    <h2>Check All Game Year Chart</h2>
 
-            <div class="chart-search-form">
-                <select id="gameSelect" aria-label="Select Game">
-                    @foreach ($chartGames as $game)
-                        <option value="{{ $game->slug }}">{{ $game->name }}</option>
-                    @endforeach
-                </select>
+    <div class="chart-search-form">
+        <select id="gameSelect" aria-label="Select Game">
+            @foreach ($chartGames as $game)
+                <option value="{{ $game->slug }}">{{ $game->name }}</option>
+            @endforeach
+        </select>
 
-                <select id="yearSelect" aria-label="Select Year">
-                    @foreach ($years as $year)
-                        <option value="{{ $year }}">{{ $year }}</option>
-                    @endforeach
-                </select>
+        <select id="yearSelect" aria-label="Select Year">
+            @foreach ($years as $year)
+                <option value="{{ $year }}">{{ $year }}</option>
+            @endforeach
+        </select>
 
-                <button type="button" onclick="openYearChart()">Check Chart</button>
-            </div>
-        </section>
+        <button type="button" onclick="openYearChart()">Check Chart</button>
+    </div>
+</section>
 
         {{-- Calendar Style Chart Result --}}
         <section class="year-chart-wrapper" aria-label="All Game Yearly Chart">
