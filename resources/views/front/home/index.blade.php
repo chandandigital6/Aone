@@ -1427,7 +1427,8 @@
 
         url = url.replace('__SLUG__', encodeURIComponent(slug));
 
-        window.location.href = url;
+        // window.location.href = url;
+        window.location.href = "{{ url('/') }}/" + encodeURIComponent(slug);
     }
 </script>
 
