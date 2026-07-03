@@ -6,8 +6,10 @@
     @php
         $games = $games instanceof \__PHP_Incomplete_Class ? collect() : collect($games ?? []);
         $chartGames = $chartGames instanceof \__PHP_Incomplete_Class ? collect() : collect($chartGames ?? []);
-        $monthlyResults = $monthlyResults instanceof \__PHP_Incomplete_Class ? collect() : collect($monthlyResults ?? []);
-        $advertisements = $advertisements instanceof \__PHP_Incomplete_Class ? collect() : collect($advertisements ?? []);
+        $monthlyResults =
+            $monthlyResults instanceof \__PHP_Incomplete_Class ? collect() : collect($monthlyResults ?? []);
+        $advertisements =
+            $advertisements instanceof \__PHP_Incomplete_Class ? collect() : collect($advertisements ?? []);
         $dates = $dates instanceof \__PHP_Incomplete_Class ? collect() : collect($dates ?? []);
 
         if (!function_exists('a1FormatResult')) {
@@ -17,9 +19,7 @@
                     return 'XX';
                 }
 
-                return is_numeric($value) && (int) $value <= 9
-                    ? str_pad($value, 2, '0', STR_PAD_LEFT)
-                    : $value;
+                return is_numeric($value) && (int) $value <= 9 ? str_pad($value, 2, '0', STR_PAD_LEFT) : $value;
             }
         }
 
@@ -44,11 +44,7 @@
         $bottomAdvertisement = $advertisements->where('position', 'bottom')->first();
 
         $currentYear = now('Asia/Kolkata')->year;
-        $years = [
-            $currentYear,
-            $currentYear - 1,
-            $currentYear - 2,
-        ];
+        $years = [$currentYear, $currentYear - 1, $currentYear - 2];
 
         $gameSections = $games->chunk(17);
         $chartGameSections = $chartGames->chunk(15);
@@ -839,23 +835,15 @@
                             <a href="{{ $topAdvertisement->link }}" target="_blank" rel="noopener nofollow" class="rv-ad-link">
                                 <span class="rv-ad-img">
                                     <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                         alt="{{ $topAdvertisement->title ?? 'Advertisement' }}"
-                                         width="139"
-                                         height="48"
-                                         loading="eager"
-                                         decoding="async"
-                                         fetchpriority="high">
+                                        alt="{{ $topAdvertisement->title ?? 'Advertisement' }}" width="139"
+                                        height="48" loading="eager" decoding="async" fetchpriority="high">
                                 </span>
                             </a>
                         @else
                             <span class="rv-ad-img">
                                 <img src="{{ asset('storage/' . $topAdvertisement->image) }}"
-                                     alt="{{ $topAdvertisement->title ?? 'Advertisement' }}"
-                                     width="139"
-                                     height="48"
-                                     loading="eager"
-                                     decoding="async"
-                                     fetchpriority="high">
+                                    alt="{{ $topAdvertisement->title ?? 'Advertisement' }}" width="139" height="48"
+                                    loading="eager" decoding="async" fetchpriority="high">
                             </span>
                         @endif
                     @endif
@@ -875,13 +863,8 @@
                     <h2 class="rv-ad-name">S.K BHAI</h2>
 
                     <span class="rv-ad-img">
-                        <img src="{{ asset('Wp.png') }}"
-                             alt="S.K Bhai"
-                             width="139"
-                             height="48"
-                             loading="eager"
-                             decoding="async"
-                             fetchpriority="high">
+                        <img src="{{ asset('Wp.png') }}" alt="S.K Bhai" width="139" height="48" loading="eager"
+                            decoding="async" fetchpriority="high">
                     </span>
                 </div>
             </section>
@@ -899,24 +882,19 @@
 
                     @if (!empty($middleAdvertisement->image))
                         @if (!empty($middleAdvertisement->link))
-                            <a href="{{ $middleAdvertisement->link }}" target="_blank" rel="noopener nofollow" class="rv-ad-link">
+                            <a href="{{ $middleAdvertisement->link }}" target="_blank" rel="noopener nofollow"
+                                class="rv-ad-link">
                                 <span class="rv-ad-img">
                                     <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                         alt="{{ $middleAdvertisement->title ?? 'Advertisement' }}"
-                                         width="139"
-                                         height="48"
-                                         loading="lazy"
-                                         decoding="async">
+                                        alt="{{ $middleAdvertisement->title ?? 'Advertisement' }}" width="139"
+                                        height="48" loading="lazy" decoding="async">
                                 </span>
                             </a>
                         @else
                             <span class="rv-ad-img">
                                 <img src="{{ asset('storage/' . $middleAdvertisement->image) }}"
-                                     alt="{{ $middleAdvertisement->title ?? 'Advertisement' }}"
-                                     width="139"
-                                     height="48"
-                                     loading="lazy"
-                                     decoding="async">
+                                    alt="{{ $middleAdvertisement->title ?? 'Advertisement' }}" width="139"
+                                    height="48" loading="lazy" decoding="async">
                             </span>
                         @endif
                     @endif
@@ -929,14 +907,11 @@
                         व्हाट्सएप पर सुपर फास्ट रिजल्ट देखने के लिए नीचे दिए गए लिंक पर जाएं और चैनल को फॉलो करें।
                     </h3>
 
-                    <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" target="_blank" rel="noopener nofollow" class="rv-ad-link">
+                    <a href="https://whatsapp.com/channel/0029Vb67katLikgE57Pwhj0T" target="_blank" rel="noopener nofollow"
+                        class="rv-ad-link">
                         <span class="rv-ad-img">
-                            <img src="{{ asset('Join-WhatsApp.png') }}"
-                                 alt="Join WhatsApp"
-                                 width="159"
-                                 height="55"
-                                 loading="lazy"
-                                 decoding="async">
+                            <img src="{{ asset('Join-WhatsApp.png') }}" alt="Join WhatsApp" width="159" height="55"
+                                loading="lazy" decoding="async">
                         </span>
                     </a>
                 </div>
@@ -955,24 +930,19 @@
 
                     @if (!empty($bottomAdvertisement->image))
                         @if (!empty($bottomAdvertisement->link))
-                            <a href="{{ $bottomAdvertisement->link }}" target="_blank" rel="noopener nofollow" class="rv-ad-link">
+                            <a href="{{ $bottomAdvertisement->link }}" target="_blank" rel="noopener nofollow"
+                                class="rv-ad-link">
                                 <span class="rv-ad-img">
                                     <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                         alt="{{ $bottomAdvertisement->title ?? 'Advertisement' }}"
-                                         width="139"
-                                         height="48"
-                                         loading="lazy"
-                                         decoding="async">
+                                        alt="{{ $bottomAdvertisement->title ?? 'Advertisement' }}" width="139"
+                                        height="48" loading="lazy" decoding="async">
                                 </span>
                             </a>
                         @else
                             <span class="rv-ad-img">
                                 <img src="{{ asset('storage/' . $bottomAdvertisement->image) }}"
-                                     alt="{{ $bottomAdvertisement->title ?? 'Advertisement' }}"
-                                     width="139"
-                                     height="48"
-                                     loading="lazy"
-                                     decoding="async">
+                                    alt="{{ $bottomAdvertisement->title ?? 'Advertisement' }}" width="139"
+                                    height="48" loading="lazy" decoding="async">
                             </span>
                         @endif
                     @endif
@@ -1013,12 +983,8 @@
                     </div>
 
                     <span class="rv-ad-img">
-                        <img src="{{ asset('whatsAppChat.png') }}"
-                             alt="ABHISHEK BHAI"
-                             width="139"
-                             height="48"
-                             loading="lazy"
-                             decoding="async">
+                        <img src="{{ asset('whatsAppChat.png') }}" alt="ABHISHEK BHAI" width="139" height="48"
+                            loading="lazy" decoding="async">
                     </span>
 
                     <div class="rv-ad-lines">Click to chat</div>
@@ -1067,9 +1033,15 @@
                                     </div>
                                 </div>
 
-                                <a href="{{ route('game.yearRecord', [$game->slug, $currentYear]) }}" class="a1-chart-btn">
+                                {{-- <a href="{{ route('game.yearRecord', [$game->slug, $currentYear]) }}"
+                                    class="a1-chart-btn">
                                     View Chart
-                                </a>
+                                </a> --}}
+
+                                 <a href="{{ route('game.record', $game->slug) }}"
+                            class="a1-chart-btn">
+                            View Chart
+                        </a>
                             </article>
                         @empty
                             <div style="grid-column: span 2;" class="p-3 text-center bg-white border rounded-lg">
@@ -1081,10 +1053,10 @@
             @endforeach
         </section>
 
+
         {{-- Year Chart Search --}}
-       {{-- Year Chart Search --}}
-<section class="chart-search-box" aria-label="Check All Game Year Chart">
-    <h2>Check All Game Year Chart</h2>
+<section class="chart-search-box" aria-label="Check All Game 2026 Chart">
+    <h2>Check All Game 2026 Chart</h2>
 
     <div class="chart-search-form">
         <select id="gameSelect" aria-label="Select Game">
@@ -1094,14 +1066,35 @@
         </select>
 
         <select id="yearSelect" aria-label="Select Year">
-            @foreach ($years as $year)
-                <option value="{{ $year }}">{{ $year }}</option>
-            @endforeach
+            <option value="2026">2026</option>
         </select>
 
         <button type="button" onclick="openYearChart()">Check Chart</button>
     </div>
 </section>
+
+
+        {{-- Year Chart Search --}}
+
+        {{-- <section class="chart-search-box" aria-label="Check All Game Year Chart">
+            <h2>Check All Game Year Chart</h2>
+
+            <div class="chart-search-form">
+                <select id="gameSelect" aria-label="Select Game">
+                    @foreach ($chartGames as $game)
+                        <option value="{{ $game->slug }}">{{ $game->name }}</option>
+                    @endforeach
+                </select>
+
+                <select id="yearSelect" aria-label="Select Year">
+                    @foreach ($years as $year)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endforeach
+                </select>
+
+                <button type="button" onclick="openYearChart()">Check Chart</button>
+            </div>
+        </section> --}}
 
         {{-- Calendar Style Chart Result --}}
         <section class="year-chart-wrapper" aria-label="All Game Yearly Chart">
@@ -1415,33 +1408,53 @@
     </div>
 
 
-     <script>
+
+    <script>
     function openYearChart() {
         var gameSelect = document.getElementById('gameSelect');
-        var yearSelect = document.getElementById('yearSelect');
 
-        if (!gameSelect || !yearSelect) {
+        if (!gameSelect) {
             return;
         }
 
         var slug = gameSelect.value;
-        var year = yearSelect.value;
 
-        if (!slug || !year) {
+        if (!slug) {
             return;
         }
 
-        var url = "{{ route('game.yearRecord', ['slug' => '__SLUG__', 'year' => '__YEAR__']) }}";
+        var url = "{{ route('game.record', ['slug' => '__SLUG__']) }}";
 
         url = url.replace('__SLUG__', encodeURIComponent(slug));
-        url = url.replace('__YEAR__', encodeURIComponent(year));
 
         window.location.href = url;
     }
 </script>
 
+    {{-- <script>
+        function openYearChart() {
+            var gameSelect = document.getElementById('gameSelect');
+            var yearSelect = document.getElementById('yearSelect');
+
+            if (!gameSelect || !yearSelect) {
+                return;
+            }
+
+            var slug = gameSelect.value;
+            var year = yearSelect.value;
+
+            if (!slug || !year) {
+                return;
+            }
+
+            var url = "{{ route('game.yearRecord', ['slug' => '__SLUG__', 'year' => '__YEAR__']) }}";
+
+            url = url.replace('__SLUG__', encodeURIComponent(slug));
+            url = url.replace('__YEAR__', encodeURIComponent(year));
+
+            window.location.href = url;
+        }
+    </script> --}}
+
 
 @endsection
-
-
-  
