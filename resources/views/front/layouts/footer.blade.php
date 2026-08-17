@@ -5,7 +5,7 @@
             <li><a href="{{ route('chart') }}">Chart</a></li>
             <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
             <li><a href="{{ route('terms-conditions') }}">Terms &amp; Conditions</a></li>
-            <li><a target="_blank" href="https://wa.me/+917015916793">Connect</a></li>
+            <li><a target="_blank" href="https://wa.me/+918168973121">Connect</a></li>
         </ul>
 
         <hr>
@@ -27,13 +27,13 @@
 </footer>
 
 {{-- Fixed Play Button --}}
-<a href="https://wa.me/919896916793" class="a1-play-btn">
+<a href="https://wa.me/918168973121" class="a1-play-btn">
     <i class="fa fa-arrow-down blink"></i><br>
     PLAY<br>Now
 </a>
 
 {{-- Fixed WhatsApp Button --}}
-<a href="https://api.whatsapp.com/send/?phone=919896916793&text&type=phone_number&app_absent=0"
+<a href="https://api.whatsapp.com/send/?phone=918168973121&text&type=phone_number&app_absent=0"
    target="_blank"
    class="a1-whatsapp-btn">
     <img src="{{ asset('wapp.webp') }}" alt="WhatsApp" width="82" height="82">
